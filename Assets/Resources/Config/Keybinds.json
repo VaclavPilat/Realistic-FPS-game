@@ -1,0 +1,159 @@
+{
+    "Items":
+    [
+        {
+            "Name":"Moving forward",
+            "KeyCode":119,
+            "KeyDown":null,
+            "Key":"Movement_Forward",
+            "KeyUp":null
+        },
+        {
+            "Name":"Moving backward",
+            "KeyCode":115,
+            "KeyDown":null,
+            "Key":"Movement_Backward",
+            "KeyUp":null
+        },
+        {
+            "Name":"Moving left",
+            "KeyCode":97,
+            "KeyDown":null,
+            "Key":"Movement_Left",
+            "KeyUp":null
+        },
+        {
+            "Name":"Moving right",
+            "KeyCode":100,
+            "KeyDown":null,
+            "Key":"Movement_Right",
+            "KeyUp":null
+        },
+        {
+            "Name":"Running",
+            "KeyCode":308,
+            "KeyDown":null,
+            "Key":"Movement_Run",
+            "KeyUp":null
+        },
+        {
+            "Name":"Standing up and jumping",
+            "KeyCode":32,
+            "KeyDown":"Pose_Standup; Movement_Jump",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Switching to last used item",
+            "KeyCode":113,
+            "KeyDown":"Inventory_Last",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Switching to primary weapon",
+            "KeyCode":49,
+            "KeyDown":"Inventory_Primary",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Switching to secondary weapon",
+            "KeyCode":50,
+            "KeyDown":"Inventory_Secondary",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Switching to melee weapon",
+            "KeyCode":51,
+            "KeyDown":"Inventory_Melee",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Switching to throwable",
+            "KeyCode":52,
+            "KeyDown":"Inventory_Throwable",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Switching to consumable item",
+            "KeyCode":53,
+            "KeyDown":"Inventory_Consumable",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Picking up an item",
+            "KeyCode":102,
+            "KeyDown":"Inventory_Pickup",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Throwing an item",
+            "KeyCode":103,
+            "KeyDown":null,
+            "Key":"Inventory_Charge",
+            "KeyUp":"Inventory_Throw"
+        },
+        {
+            "Name":"Dropping all items from inventory",
+            "KeyCode":293,
+            "KeyDown":"Inventory_Dump",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Item primary action",
+            "KeyCode":323,
+            "KeyDown":null,
+            "Key":"Item_Primary",
+            "KeyUp":null
+        },
+        {
+            "Name":"Item secondary action",
+            "KeyCode":324,
+            "KeyDown":null,
+            "Key":"Item_Secondary",
+            "KeyUp":null
+        },
+        {
+            "Name":"Item reload",
+            "KeyCode":114,
+            "KeyDown":"Item_Reload",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Showing debug information",
+            "KeyCode":39,
+            "KeyDown":"Debug_Toggle",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Showing player information",
+            "KeyCode":9,
+            "KeyDown":"Inventory_Tablet",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Crouching",
+            "KeyCode":304,
+            "KeyDown":"Pose_Crouch",
+            "Key":null,
+            "KeyUp":null
+        },
+        {
+            "Name":"Lying down",
+            "KeyCode":306,
+            "KeyDown":"Pose_Lie",
+            "Key":null,
+            "KeyUp":null
+        }
+    ]
+}
