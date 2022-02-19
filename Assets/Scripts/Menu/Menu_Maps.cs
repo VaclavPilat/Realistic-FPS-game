@@ -70,14 +70,24 @@ public class Menu_Maps : MonoBehaviour
             // Adding an action to a start button
             map_content.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(() => Scene_Transition.Load(map));
             // Loading map information from file
-            var file = Resources.Load<TextAsset>("Maps/" + Folder + "/" + map);
+            string resource = "Maps/" + Folder + "/" + map;
+            var file = Resources.Load<TextAsset>(resource);
             if(file != null)
             {
                 var info = JsonUtility.FromJson<Map_Info>(file.text);
                 map_content.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = info.Description;
             }
             else
-                Console.Warning(this, "Canot find map info to '" + map + "'.");
+                Console.Warning(this, "Cannot find map info to '" + map + "' at '" + resource + "'.");
+            // Loading map image
+            resource = "Maps/" + Folder + "/_" + map;
+            var image = Resources.Load<Sprite>(resource);
+            if(image != null)
+            {
+                map_content.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = image;
+            }
+            else
+                Console.Warning(this, "Cannot find image to map '" + map + "' at '" + resource + "'.");
         }
     }
 
