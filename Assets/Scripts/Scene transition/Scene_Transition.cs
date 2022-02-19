@@ -42,18 +42,17 @@ public class Scene_Transition : MonoBehaviour
     public void Load (string scene) => StartCoroutine(Load_Scene(scene));
     private IEnumerator Load_Scene (string scene)
     {
-        Console.Log(this, "Loading \"" + scene + "\" scene...");
-        // Setting menu properties
-        Menu_Variables.Disable_Menu();
-        // Getting new tip
-        New_Tip();
-        // Showing the animation
-        if(Animator == null)
-            Console.Error(this, "\"Animator\" is null");
+        // Disabling calls from Main to Main
+        if(SceneManager.GetActiveScene().name == "Main" && scene == "Main")
+        {
+            yield return null;
+        }
         else
-            Animator.SetTrigger("New scene");
-        yield return new WaitForSecondsRealtime(1);
-        SceneManager.LoadScene(scene);
+        {
+            Console.Log(this, "Loading \"" + scene + "\" scene...");
+            yield return Transition();
+            SceneManager.LoadScene(scene);
+        }
     }
 
     // Exitting the game
@@ -61,6 +60,13 @@ public class Scene_Transition : MonoBehaviour
     private IEnumerator Exit_Game ()
     {
         Console.Log(this, "Exitting game...");
+        yield return Transition();
+        Application.Quit();
+    }
+
+    // Performing transition
+    private IEnumerator Transition ()
+    {
         // Setting menu properties
         Menu_Variables.Disable_Menu();
         // Getting new tip
@@ -71,7 +77,6 @@ public class Scene_Transition : MonoBehaviour
         else
             Animator.SetTrigger("New scene");
         yield return new WaitForSecondsRealtime(1);
-        Application.Quit();
     }
 
     // Displaying a random tip
