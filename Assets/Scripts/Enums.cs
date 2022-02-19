@@ -30,3 +30,13 @@ public enum Character_Pose
     Crouching   = 90,
     Lying       = 50
 }
+
+// Gamemodes
+public enum Game_Mode
+{
+    SOLO,
+    CTF,
+    DM,
+    TDM,
+    KOTH
+}

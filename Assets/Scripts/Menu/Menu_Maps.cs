@@ -66,15 +66,18 @@ public class Menu_Maps : MonoBehaviour
             // Adding tertiary panel with map info and settings
             GameObject map_content = Instantiate(Content, Contents.transform);
             map_content.transform.name = map;
+            map_content.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = map;
             // Adding an action to a start button
             map_content.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(() => Scene_Transition.Load(map));
             // Loading map information from file
             var file = Resources.Load<TextAsset>("Maps/" + Folder + "/" + map);
             if(file != null)
             {
-                string description = file.text;
-                map_content.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = description;
+                var info = JsonUtility.FromJson<Map_Info>(file.text);
+                map_content.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = info.Description;
             }
+            else
+                Console.Warning(this, "Canot find map info to '" + map + "'.");
         }
     }
 
