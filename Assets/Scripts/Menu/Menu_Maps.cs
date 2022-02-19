@@ -68,6 +68,13 @@ public class Menu_Maps : MonoBehaviour
             map_content.transform.name = map;
             // Adding an action to a start button
             map_content.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(() => Scene_Transition.Load(map));
+            // Loading map information from file
+            var file = Resources.Load<TextAsset>("Maps/" + Folder + "/" + map);
+            if(file != null)
+            {
+                string description = file.text;
+                map_content.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = description;
+            }
         }
     }
 
