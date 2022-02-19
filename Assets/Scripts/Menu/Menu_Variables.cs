@@ -107,4 +107,11 @@ public class Menu_Variables : MonoBehaviour
         }
     }
 
+    // Makes menu non-interactable
+    public void Disable_Menu ()
+    {
+        CanvasGroup.blocksRaycasts = false;
+        CanvasGroup.interactable = false;
+    }
+
 }

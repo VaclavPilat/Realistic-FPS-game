@@ -14,6 +14,7 @@ public class Scene_Transition : MonoBehaviour
 
     [SerializeField] private Animator Animator; // Animator component for transitions
     [SerializeField] private GameObject Tip_Label; // Label for displaying a random tip
+    [SerializeField] private Menu_Variables Menu_Variables; // Main menu script
 
 
     //##########################################################################################
@@ -42,7 +43,11 @@ public class Scene_Transition : MonoBehaviour
     private IEnumerator Load_Scene (string scene)
     {
         Console.Log(this, "Loading \"" + scene + "\" scene...");
+        // Setting menu properties
+        Menu_Variables.Disable_Menu();
+        // Getting new tip
         New_Tip();
+        // Showing the animation
         if(Animator == null)
             Console.Error(this, "\"Animator\" is null");
         else
@@ -56,7 +61,11 @@ public class Scene_Transition : MonoBehaviour
     private IEnumerator Exit_Game ()
     {
         Console.Log(this, "Exitting game...");
+        // Setting menu properties
+        Menu_Variables.Disable_Menu();
+        // Getting new tip
         New_Tip();
+        // Showing the animation
         if(Animator == null)
             Console.Error(this, "\"Animator\" is null");
         else
