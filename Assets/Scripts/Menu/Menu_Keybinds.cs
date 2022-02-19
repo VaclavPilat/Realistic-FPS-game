@@ -50,7 +50,6 @@ public class Menu_Keybinds : MonoBehaviour
     {
         if(Keybinds != null)
         {
-            Vector2 size = new Vector2((transform.GetComponent<RectTransform>().rect.width - 60f) / Keybind.transform.childCount, Keybind.transform.GetComponent<RectTransform>().rect.height);
             foreach(Keybind keybind in Keybinds)
             {
                 GameObject bind = Instantiate(Keybind, transform);
@@ -60,8 +59,6 @@ public class Menu_Keybinds : MonoBehaviour
                 bind.transform.GetChild(2).GetComponent<Text>().text = keybind.KeyDown;
                 bind.transform.GetChild(3).GetComponent<Text>().text = keybind.Key;
                 bind.transform.GetChild(4).GetComponent<Text>().text = keybind.KeyUp;
-                // Setting properties
-                bind.GetComponent<GridLayoutGroup>().cellSize = size;
             }
         }
     }
