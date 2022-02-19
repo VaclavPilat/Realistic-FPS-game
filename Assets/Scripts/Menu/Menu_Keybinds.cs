@@ -54,11 +54,11 @@ public class Menu_Keybinds : MonoBehaviour
             {
                 GameObject bind = Instantiate(Keybind, transform);
                 // Setting UI
-                bind.transform.GetChild(0).GetComponent<Text>().text = keybind.Name;
-                bind.transform.GetChild(1).GetComponent<Text>().text = keybind.KeyCode.ToString();
-                bind.transform.GetChild(2).GetComponent<Text>().text = keybind.KeyDown;
-                bind.transform.GetChild(3).GetComponent<Text>().text = keybind.Key;
-                bind.transform.GetChild(4).GetComponent<Text>().text = keybind.KeyUp;
+                bind.transform.GetChild(0).GetComponent<InputField>().text = keybind.Name;
+                bind.transform.GetChild(1).GetComponent<InputField>().text = keybind.KeyCode.ToString();
+                bind.transform.GetChild(2).GetComponent<InputField>().text = keybind.KeyDown;
+                bind.transform.GetChild(3).GetComponent<InputField>().text = keybind.Key;
+                bind.transform.GetChild(4).GetComponent<InputField>().text = keybind.KeyUp;
             }
         }
     }

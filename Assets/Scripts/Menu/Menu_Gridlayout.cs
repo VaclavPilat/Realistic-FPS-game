@@ -15,7 +15,7 @@ public class Menu_Gridlayout : MonoBehaviour
         // Setting sizes of children object based on parent size
         transform.GetComponent<GridLayoutGroup>().cellSize = new Vector2(
             (transform.parent.GetComponent<RectTransform>().rect.width - (transform.GetComponent<GridLayoutGroup>().spacing.x * (transform.childCount -1))) / transform.childCount, 
-            transform.GetComponent<RectTransform>().rect.height
+            transform.GetComponent<GridLayoutGroup>().cellSize.y
         );
     }
 
