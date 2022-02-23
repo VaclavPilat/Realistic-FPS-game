@@ -11,46 +11,29 @@ public class Menu_Keybinds : MonoBehaviour
     //##########################################################################################
 
     public GameObject Keybind; // Keybind UI prefab
+    private Menu_Variables Menu_Variables; // Menu variables
 
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private Keybind[] Keybinds = null; // Array of keybinds
-    private string Resource = "Config/Keybinds"; // Name of resource that stores keybinds
+    private void Awake () 
+    {
+        Menu_Variables = transform.root.GetComponent<Menu_Variables>();
+        Create_UI();
+    }
 
 
     //##########################################################################################
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
 
-    private void Awake () 
-    {
-        Load_Keybinds();
-        Create_UI();
-    }
-
-    // Loading all keybinds
-    private void Load_Keybinds ()
-    {
-        var file = Resources.Load<TextAsset>(Resource);
-        if(file != null)
-        {
-            string json = file.text;
-            Keybinds = JsonHelper.FromJson<Keybind>(json);
-            Console.Log(this, "Found " + Keybinds.Length.ToString() + " keybinds in \"" + Resource + "\"");
-        }
-        else
-            Console.Error(this, "Resource \"" + Resource + "\" doesn't exist");
-    }
-
     // Generates UI for each keybind found
     private void Create_UI ()
     {
-        if(Keybinds != null)
-        {
-            foreach(Keybind keybind in Keybinds)
+        if(Menu_Variables != null)
+            foreach(Keybind keybind in Menu_Variables.Keybinds)
             {
                 GameObject bind = Instantiate(Keybind, transform);
                 // Setting UI
@@ -60,7 +43,6 @@ public class Menu_Keybinds : MonoBehaviour
                 bind.transform.GetChild(3).GetComponent<InputField>().text = keybind.Key;
                 bind.transform.GetChild(4).GetComponent<InputField>().text = keybind.KeyUp;
             }
-        }
     }
 
 }

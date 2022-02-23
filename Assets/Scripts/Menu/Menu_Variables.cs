@@ -32,6 +32,9 @@ public class Menu_Variables : MonoBehaviour
     private bool Switchable; // Is menu visibility switchable?
     private bool Visible; // Is menu visible?
 
+    public Keybind[] Keybinds = null; // Array of keybinds
+    private string Resource = "Config/Keybinds"; // Name of resource that stores keybinds
+
 
     //##########################################################################################
     //#####################################  SCRIPT FLOW  ######################################
@@ -51,6 +54,8 @@ public class Menu_Variables : MonoBehaviour
         Tertiary_Color = new Color(1f, 1f, 1f, 0.3f);
         // Disabling menu when a new scene is loaded
         SceneManager.sceneLoaded += Hide_On_Load;
+        // Loading keybinds for later use
+        Load_Keybinds();
     }
 
     // Hiding menu on most scenes
@@ -112,6 +117,20 @@ public class Menu_Variables : MonoBehaviour
     {
         CanvasGroup.blocksRaycasts = false;
         CanvasGroup.interactable = false;
+    }
+
+    // Loading all keybinds
+    private void Load_Keybinds ()
+    {
+        var file = Resources.Load<TextAsset>(Resource);
+        if(file != null)
+        {
+            string json = file.text;
+            Keybinds = JsonHelper.FromJson<Keybind>(json);
+            Console.Log(this, "Found " + Keybinds.Length.ToString() + " keybinds in \"" + Resource + "\"");
+        }
+        else
+            Console.Error(this, "Resource \"" + Resource + "\" doesn't exist");
     }
 
 }
