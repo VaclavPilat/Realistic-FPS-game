@@ -10,7 +10,10 @@ public class Menu_Scrollview : MonoBehaviour
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
     
-    private void Awake ()
+    private void Awake () => Resize();
+
+    // Resizing element based on its children
+    public void Resize ()
     {
         // Setting height based on contents
         float total = 0f;

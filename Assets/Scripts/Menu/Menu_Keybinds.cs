@@ -43,6 +43,8 @@ public class Menu_Keybinds : MonoBehaviour
                 bind.transform.GetChild(3).GetComponent<InputField>().text = keybind.Key;
                 bind.transform.GetChild(4).GetComponent<InputField>().text = keybind.KeyUp;
             }
+        // Resizing scrollview
+        transform.GetComponent<Menu_Scrollview>().Resize();
     }
 
 }

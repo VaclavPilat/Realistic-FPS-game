@@ -10,7 +10,10 @@ public class Menu_Gridlayout : MonoBehaviour
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
     
-    private void Awake ()
+    private void Awake () => Resize();
+
+    // Resizing element based on its children
+    public void Resize ()
     {
         // Setting sizes of children object based on parent size
         transform.GetComponent<GridLayoutGroup>().cellSize = new Vector2(
