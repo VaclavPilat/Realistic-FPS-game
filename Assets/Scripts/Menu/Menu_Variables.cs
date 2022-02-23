@@ -31,7 +31,7 @@ public class Menu_Variables : MonoBehaviour
     //##########################################################################################
 
     private bool Switchable; // Is menu visibility switchable?
-    private bool Visible; // Is menu visible?
+    public bool Visible; // Is menu visible?
 
     private string Resource = "Config/Keybinds"; // Name of resource that stores keybinds
     [HideInInspector] public Keybind[] Keybinds = null; // Array of keybinds

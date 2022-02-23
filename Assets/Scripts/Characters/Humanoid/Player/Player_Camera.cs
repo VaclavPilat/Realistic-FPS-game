@@ -8,6 +8,9 @@ public class Player_Camera : MonoBehaviour
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
+    private Menu_Variables Menu_Variables; // Menu variables (for checking if player is allowed to do anything)
+    private void Awake () => Menu_Variables = GameObject.Find("/Menu").GetComponent<Menu_Variables>();
+
     public Camera Camera;
 
     
@@ -29,8 +32,11 @@ public class Player_Camera : MonoBehaviour
 
     void FixedUpdate()
     {
-        Rotate_Player();
-        Rotate_Camera();
+        if(!Menu_Variables.Visible) // Only perform stuff if menu is not visible
+        {
+            Rotate_Player();
+            Rotate_Camera();
+        }
     }
 
     // ROTATING PLAYER

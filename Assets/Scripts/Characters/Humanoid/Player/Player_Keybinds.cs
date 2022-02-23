@@ -29,7 +29,11 @@ public class Player_Keybinds : MonoBehaviour
 
     private void Start () => StartCoroutine(Clear_Debug(1f)); // Clears debug messages each X seconds
 
-    private void FixedUpdate () => Check_Keybinds(); // Checking for actions on each frame
+    private void FixedUpdate () 
+    {
+        if(!Menu_Variables.Visible) // Only perform stuff if menu is not visible
+            Check_Keybinds(); // Checking for actions on each frame
+    }
 
 
     //##########################################################################################
