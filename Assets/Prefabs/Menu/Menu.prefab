@@ -467,6 +467,7 @@ MonoBehaviour:
   Secondary_Color: {r: 0, g: 0, b: 0, a: 0.2}
   Tertiary_Color: {r: 0, g: 0, b: 0, a: 0}
   Keybinds: []
+  Player_Prefab: {fileID: 1383893695931622894, guid: fab1155aa9037111f8ff5f1ce5512136, type: 3}
 --- !u!222 &7852172842226802294
 CanvasRenderer:
   m_ObjectHideFlags: 0

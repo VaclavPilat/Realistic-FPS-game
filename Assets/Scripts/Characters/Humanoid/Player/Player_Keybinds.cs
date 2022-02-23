@@ -23,16 +23,11 @@ public class Player_Keybinds : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private Dictionary<string, MethodInfo> Bindable_Methods = new Dictionary<string, MethodInfo>(); // Dictionary with all bindable methods this player can use
     private HashSet<string> Successful = new HashSet<string>(); // Successfully executed commands
     private HashSet<string> Unsuccessful = new HashSet<string>(); // Unsuccessfully executed commands
     private HashSet<string> Incorrect = new HashSet<string>(); // Incorrectly executed commands
 
-    private void Start ()
-    {
-        Load_Bindable(); // Loads all bindable methods into a dictionary
-        StartCoroutine(Clear_Debug(1f)); // Clears debug messages each X seconds
-    }
+    private void Start () => StartCoroutine(Clear_Debug(1f)); // Clears debug messages each X seconds
 
     private void FixedUpdate () => Check_Keybinds(); // Checking for actions on each frame
 
@@ -51,20 +46,6 @@ public class Player_Keybinds : MonoBehaviour
             Unsuccessful.Clear();
             Incorrect.Clear();
         }
-    }
-
-    // Loads all bindable methods into a dictionary
-    private void Load_Bindable ()
-    {
-        var scripts = transform.GetComponents<MonoBehaviour>(); // Loading all script components on the current character
-        foreach(var script in scripts) // Looping through each script in array
-        {
-            string script_name = script.GetType().ToString().Split('_')[1]; // Getting script name suffix
-            foreach(var method in script.GetType().GetMethods()) // Getting public bindable methods
-                if((method.IsPublic && method.DeclaringType == script.GetType()) && (method.GetCustomAttributes(typeof(Bindable), false).Length > 0)) // Checking if the method was declared in the current script
-                    Bindable_Methods.Add(script_name + "_" + method.Name, method);
-        }
-        Console.Log(this, "Found " + Bindable_Methods.Count.ToString() + " bindable methods");
     }
 
     // Checking if any keys hve been pressed
@@ -114,8 +95,8 @@ public class Player_Keybinds : MonoBehaviour
     // Attempts to find a method that corresponds to the selected command
     private MethodInfo Find_Method (string command_name)
     {
-        if(Bindable_Methods.ContainsKey(command_name))
-            return Bindable_Methods[command_name];
+        if(Menu_Variables.Bindable.ContainsKey(command_name))
+            return Menu_Variables.Bindable[command_name];
         else
             return null;
     }

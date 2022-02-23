@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Reflection;
 
 // Variables for UI elements
 public class Menu_Variables : MonoBehaviour
@@ -32,8 +33,11 @@ public class Menu_Variables : MonoBehaviour
     private bool Switchable; // Is menu visibility switchable?
     private bool Visible; // Is menu visible?
 
-    public Keybind[] Keybinds = null; // Array of keybinds
     private string Resource = "Config/Keybinds"; // Name of resource that stores keybinds
+    [HideInInspector] public Keybind[] Keybinds = null; // Array of keybinds
+
+    [SerializeField] private GameObject Player_Prefab; // Player prefab (for getting bindable methods)
+    [HideInInspector] public Dictionary<string, MethodInfo> Bindable = new Dictionary<string, MethodInfo>(); // Dictionary with all bindable methods this player can use
 
 
     //##########################################################################################
@@ -56,6 +60,8 @@ public class Menu_Variables : MonoBehaviour
         SceneManager.sceneLoaded += Hide_On_Load;
         // Loading keybinds for later use
         Load_Keybinds();
+        // Loads all bindable methods into a dictionary
+        Load_Bindable();
     }
 
     // Hiding menu on most scenes
@@ -131,6 +137,20 @@ public class Menu_Variables : MonoBehaviour
         }
         else
             Console.Error(this, "Resource \"" + Resource + "\" doesn't exist");
+    }
+
+    // Loads all bindable methods into a dictionary
+    private void Load_Bindable ()
+    {
+        var scripts = Player_Prefab.GetComponents<MonoBehaviour>(); // Loading all script components on the current character
+        foreach(var script in scripts) // Looping through each script in array
+        {
+            string script_name = script.GetType().ToString().Split('_')[1]; // Getting script name suffix
+            foreach(var method in script.GetType().GetMethods()) // Getting public bindable methods
+                if((method.IsPublic && method.DeclaringType == script.GetType()) && (method.GetCustomAttributes(typeof(Bindable), false).Length > 0)) // Checking if the method was declared in the current script
+                    Bindable.Add(script_name + "_" + method.Name, method);
+        }
+        Console.Log(this, "Found " + Bindable.Count.ToString() + " bindable methods");
     }
 
 }
