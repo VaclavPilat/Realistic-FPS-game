@@ -9,24 +9,27 @@ public class Player_Keybinds : MonoBehaviour
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    private Human_Health Human_Health;
-    private void Awake () => Human_Health = transform.GetComponent<Human_Health>();
+    private Human_Health Human_Health = null; // Player health for enabling checking keybinds
+    private Menu_Variables Menu_Variables = null; // Menu variables (for getting keybinds and bindable methods)
+
+    private void Awake () 
+    {
+        Human_Health = transform.GetComponent<Human_Health>();
+        Menu_Variables = GameObject.Find("/Menu").GetComponent<Menu_Variables>();
+    }
 
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private Keybind[] Keybinds = null; // Array of keybinds
     private Dictionary<string, MethodInfo> Bindable_Methods = new Dictionary<string, MethodInfo>(); // Dictionary with all bindable methods this player can use
-    private string Resource = "Config/Keybinds"; // Name of resource that stores keybinds
     private HashSet<string> Successful = new HashSet<string>(); // Successfully executed commands
     private HashSet<string> Unsuccessful = new HashSet<string>(); // Unsuccessfully executed commands
     private HashSet<string> Incorrect = new HashSet<string>(); // Incorrectly executed commands
 
     private void Start ()
     {
-        Load_Keybinds(); // Load all keybinds on start
         Load_Bindable(); // Loads all bindable methods into a dictionary
         StartCoroutine(Clear_Debug(1f)); // Clears debug messages each X seconds
     }
@@ -50,20 +53,6 @@ public class Player_Keybinds : MonoBehaviour
         }
     }
 
-    // Loading keybinds from file
-    private void Load_Keybinds ()
-    {
-        var file = Resources.Load<TextAsset>(Resource);
-        if(file != null)
-        {
-            string json = file.text;
-            Keybinds = JsonHelper.FromJson<Keybind>(json);
-            Console.Log(this, "Found " + Keybinds.Length.ToString() + " keybinds in \"" + Resource + "\"");
-        }
-        else
-            Console.Error(this, "Resource \"" + Resource + "\" doesn't exist");
-    }
-
     // Loads all bindable methods into a dictionary
     private void Load_Bindable ()
     {
@@ -81,7 +70,7 @@ public class Player_Keybinds : MonoBehaviour
     // Checking if any keys hve been pressed
     private void Check_Keybinds ()
     {
-        foreach (Keybind keybind in Keybinds)
+        foreach (Keybind keybind in Menu_Variables.Keybinds)
         {
             if(Input.GetKeyDown(keybind.KeyCode) && (keybind.KeyDown != null) && (keybind.KeyDown != ""))
                 StartCoroutine(Call_Commands(keybind.KeyDown));
