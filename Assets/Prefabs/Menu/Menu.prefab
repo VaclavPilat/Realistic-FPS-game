@@ -433,10 +433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1000, y: 750}
   m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
@@ -479,6 +479,7 @@ MonoBehaviour:
   Primary_Color: {r: 0, g: 0, b: 0, a: 0.9}
   Secondary_Color: {r: 0, g: 0, b: 0, a: 0.2}
   Tertiary_Color: {r: 0, g: 0, b: 0, a: 0}
+  Visible: 0
   Keybinds: []
   Player_Prefab: {fileID: 1383893695931622894, guid: fab1155aa9037111f8ff5f1ce5512136, type: 3}
 --- !u!222 &7852172842226802294
