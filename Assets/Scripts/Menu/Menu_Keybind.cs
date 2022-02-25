@@ -32,6 +32,46 @@ public class Menu_Keybind : MonoBehaviour
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
 
+    // Setting background color
+    private void Update ()
+    {
+        // Input fields
+        foreach(Transform input in transform)
+        {
+            InputField inputfield = input.GetComponent<InputField>();
+            if(inputfield)
+            {
+                if(inputfield.isFocused)
+                    Set_Focus_Appearance(input);
+                else
+                    Unset_Focus_Appearance(input);
+            }
+        }
+        // Button
+        if(Waiting)
+            Set_Focus_Appearance(Key.transform.parent);
+        else
+            Unset_Focus_Appearance(Key.transform.parent);
+    }
+
+    // Setting focus appearance
+    private void Set_Focus_Appearance (Transform input) 
+    {
+        Color color = new Color(1f, 1f, 1f, 0.5f);
+        Image image = input.GetComponent<Image>();
+        if(image.color != color)
+            image.color = color;
+    }
+
+    // Unsetting focus appearance
+    private void Unset_Focus_Appearance (Transform input) 
+    {
+        Color color = Color.clear;
+        Image image = input.GetComponent<Image>();
+        if(image.color != color)
+            image.color = color;
+    }
+
     // Editing keycode
     public void Edit_Keycode () => Waiting = !Waiting;
 
