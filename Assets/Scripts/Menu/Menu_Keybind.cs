@@ -48,25 +48,29 @@ public class Menu_Keybind : MonoBehaviour
             }
         }
         // Button
-        if(Waiting)
-            Set_Focus_Appearance(Key.transform.parent);
+        if(Key.text == "None" && !Waiting)
+            Set_Error_Appearance(Key.transform.parent);
         else
-            Unset_Focus_Appearance(Key.transform.parent);
+        {
+            if(Waiting)
+                Set_Focus_Appearance(Key.transform.parent);
+            else
+                Unset_Focus_Appearance(Key.transform.parent);
+        }
     }
 
     // Setting focus appearance
-    private void Set_Focus_Appearance (Transform input) 
-    {
-        Color color = new Color(1f, 1f, 1f, 0.5f);
-        Image image = input.GetComponent<Image>();
-        if(image.color != color)
-            image.color = color;
-    }
+    private void Set_Focus_Appearance (Transform input) => Change_Background(input, new Color(1f, 1f, 1f, 0.5f));
+
+    // Setting error appearance
+    private void Set_Error_Appearance (Transform input) => Change_Background(input, new Color(1f, 0f, 0f, 0.5f));
 
     // Unsetting focus appearance
-    private void Unset_Focus_Appearance (Transform input) 
+    private void Unset_Focus_Appearance (Transform input) => Change_Background(input, Color.clear);
+
+    // Changing backgroun color (id not set already)
+    private void Change_Background (Transform input, Color color)
     {
-        Color color = Color.clear;
         Image image = input.GetComponent<Image>();
         if(image.color != color)
             image.color = color;
