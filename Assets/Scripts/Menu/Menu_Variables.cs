@@ -33,7 +33,6 @@ public class Menu_Variables : MonoBehaviour
     private bool Switchable; // Is menu visibility switchable?
     public bool Visible; // Is menu visible?
 
-    private string Resource = "Config/Keybinds"; // Name of resource that stores keybinds
     [HideInInspector] public Keybind[] Keybinds = null; // Array of keybinds
 
     [SerializeField] private GameObject Player_Prefab; // Player prefab (for getting bindable methods)
@@ -138,8 +137,7 @@ public class Menu_Variables : MonoBehaviour
     // Saving keybinds into a file
     public void Save_Keybinds ()
     {
-        Console.Log(this, "Saving keybinds...");
-        Console.Warning(this, Application.persistentDataPath);
+        Config_Loader.Save<Keybind>("Keybinds", Keybinds);
     }
 
     // Loads all bindable methods into a dictionary
