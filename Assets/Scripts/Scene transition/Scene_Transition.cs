@@ -29,7 +29,11 @@ public class Scene_Transition : MonoBehaviour
     //##########################################################################################
 
     // Triggering amination after a scene is loaded
-    private void Awake () => SceneManager.sceneLoaded += Scene_Loaded;
+    private void Awake () 
+    {
+        Tip_Label.SetActive(false);
+        SceneManager.sceneLoaded += Scene_Loaded;
+    }
 
     // Actins after a new scene is loaded
     private void Scene_Loaded (Scene scene, LoadSceneMode mode)
@@ -49,7 +53,6 @@ public class Scene_Transition : MonoBehaviour
         }
         else
         {
-            Tip_Label.SetActive(true);
             Console.Log(this, "Loading \"" + scene + "\" scene...");
             yield return Transition();
             SceneManager.LoadScene(scene);
@@ -68,6 +71,8 @@ public class Scene_Transition : MonoBehaviour
     // Performing transition
     private IEnumerator Transition ()
     {
+        // Setting screen tips
+        Tip_Label.SetActive(true);
         // Setting menu properties
         Menu_Variables.Disable_Menu();
         // Getting new tip

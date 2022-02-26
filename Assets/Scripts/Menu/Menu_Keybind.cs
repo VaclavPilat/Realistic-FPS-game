@@ -130,9 +130,6 @@ public class Menu_Keybind : MonoBehaviour
     }
 
     // Saving keybinds
-    private void Save_Keybinds ()
-    {
-        Console.Log(this, "Saving keybinds...");
-    }
+    private void Save_Keybinds () => Menu_Variables.Save_Keybinds();
 
 }

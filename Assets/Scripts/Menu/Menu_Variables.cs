@@ -125,7 +125,7 @@ public class Menu_Variables : MonoBehaviour
         CanvasGroup.interactable = false;
     }
 
-    // Loading all keybinds
+    // Loading all keybinds (from a config file if possible)
     private void Load_Keybinds ()
     {
         var file = Resources.Load<TextAsset>(Resource);
@@ -137,6 +137,13 @@ public class Menu_Variables : MonoBehaviour
         }
         else
             Console.Error(this, "Resource \"" + Resource + "\" doesn't exist");
+    }
+
+    // Saving keybinds into a file
+    public void Save_Keybinds ()
+    {
+        Console.Log(this, "Saving keybinds...");
+        Console.Warning(this, Application.persistentDataPath);
     }
 
     // Loads all bindable methods into a dictionary
