@@ -49,6 +49,7 @@ public class Scene_Transition : MonoBehaviour
         }
         else
         {
+            Tip_Label.SetActive(true);
             Console.Log(this, "Loading \"" + scene + "\" scene...");
             yield return Transition();
             SceneManager.LoadScene(scene);
