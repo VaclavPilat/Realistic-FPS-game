@@ -15,7 +15,10 @@ public class Console
     // Gets a prefix -- current scene name, object name and script name
     private static string Prefix (MonoBehaviour script) 
     {
-        return SceneManager.GetActiveScene().name + " → " + script.transform.name + " → " + script.GetType().Name + " ::: ";
+        if(script != null)
+            return SceneManager.GetActiveScene().name + " → " + script.transform.name + " → " + script.GetType().Name + " ::: ";
+        else
+            return null;
     }
 
     // Calling debug methods with added prefix

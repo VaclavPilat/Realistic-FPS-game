@@ -126,17 +126,13 @@ public class Menu_Variables : MonoBehaviour
     }
 
     // Loading all keybinds (from a config file if possible)
-    private void Load_Keybinds ()
+    private void Load_Keybinds () 
     {
-        var file = Resources.Load<TextAsset>(Resource);
-        if(file != null)
-        {
-            string json = file.text;
-            Keybinds = JsonHelper.FromJson<Keybind>(json);
-            Console.Log(this, "Found " + Keybinds.Length.ToString() + " keybinds in \"" + Resource + "\"");
-        }
+        Keybinds = Config_Loader.Load<Keybind>("Keybinds");
+        if(Keybinds != null)
+            Console.Log(this, "Found " + Keybinds.Length.ToString() + " keybinds");
         else
-            Console.Error(this, "Resource \"" + Resource + "\" doesn't exist");
+            Console.Warning(this, "No keybinds found");
     }
 
     // Saving keybinds into a file
