@@ -96,10 +96,21 @@ public class Menu_Keybind : MonoBehaviour
         if(Waiting)
         {
             Event e = Event.current;
+            // Catching keyboard event
             if (e.isKey)
             {
                 Set_Keycode(e.keyCode);
                 Waiting = false;
+            }
+            else if(e.isMouse)
+            // Catching mouse event
+            {
+                KeyCode mouseButton;
+                if (Enum.TryParse("Mouse" + e.button.ToString(), out mouseButton))
+                {
+                    Set_Keycode(mouseButton);
+                    Waiting = false;
+                }
             }
         }
     }

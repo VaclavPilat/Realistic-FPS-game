@@ -104,6 +104,13 @@ public class Player_Debug : MonoBehaviour
             Event e = Event.current;
             if (e.isKey)
                 Keycodes.Add(e.keyCode);
+            else if(e.isMouse)
+            {
+                Console.Warning(this, e.button.ToString());
+                KeyCode mouseButton;
+                if (Enum.TryParse("Mouse" + e.button.ToString(), out mouseButton))
+                    Keycodes.Add(mouseButton);
+            }
             // Generating GUI text
             string debug = "";
             var scripts = transform.GetComponents<MonoBehaviour>(); // Loading all script components on the current character
