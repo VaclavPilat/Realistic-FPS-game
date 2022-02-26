@@ -42,7 +42,12 @@ public class Menu_Keybind : MonoBehaviour
             if(inputfield)
             {
                 if(inputfield.isFocused)
+                {
                     Set_Focus_Appearance(input);
+                    // Stopping waiting for keys
+                    foreach(Transform keybind in transform.parent)
+                        keybind.GetComponent<Menu_Keybind>().Waiting = false;
+                }
                 else
                     Unset_Focus_Appearance(input);
             }
@@ -77,7 +82,13 @@ public class Menu_Keybind : MonoBehaviour
     }
 
     // Editing keycode
-    public void Edit_Keycode () => Waiting = !Waiting;
+    public void Edit_Keycode () 
+    {
+        foreach(Transform keybind in transform.parent)
+            if(keybind != transform)
+                keybind.GetComponent<Menu_Keybind>().Waiting = false;
+        Waiting = !Waiting;
+    }
 
     // Detecting pressed keys
     private void OnGUI()
