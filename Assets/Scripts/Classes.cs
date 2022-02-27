@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using System;
 
 // Keybind
-[Serializable]
 public class Keybind
 {
     public string Name; // Name of the keybind
@@ -20,4 +20,16 @@ public class Map_Info
     public string Description; // Map decription
     public string Size; // Map size
     public Game_Mode[] Modes; // Game modes compatible with this map
+}
+
+// Sound
+[Serializable]
+public class Sound
+{
+    public string Name; // Sound name
+    public AudioClip Clip; // Audio clip
+    public float Volume = 1f; // Default volume
+    public bool Loop = false; // Enable looping?
+    public float Spatial = 1f; // 0=2D; 1=3D
+    [HideInInspector] public AudioSource Source; // Audio source component
 }
