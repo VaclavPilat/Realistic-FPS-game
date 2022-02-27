@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using System;
 
 // Keybind
+[Serializable]
 public class Keybind
 {
     public string Name; // Name of the keybind
@@ -29,7 +30,9 @@ public class Sound
     public string Name; // Sound name
     public AudioClip Clip; // Audio clip
     public float Volume = 1f; // Default volume
+    public float Pitch = 1f; // Default pitch
     public bool Loop = false; // Enable looping?
     public float Spatial = 1f; // 0=2D; 1=3D
+    public bool Autoplay = false; // Play automatically (on Awake) ?
     [HideInInspector] public AudioSource Source; // Audio source component
 }

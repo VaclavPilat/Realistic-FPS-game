@@ -27,8 +27,10 @@ public class Sound_Manager : MonoBehaviour
             s.Source = transform.gameObject.AddComponent<AudioSource>();
             s.Source.clip = s.Clip;
             s.Source.volume = s.Volume;
+            s.Source.pitch = s.Pitch;
             s.Source.loop = s.Loop;
             s.Source.spatialBlend = s.Spatial;
+            s.Source.playOnAwake = s.Autoplay;
         }
     }
 
