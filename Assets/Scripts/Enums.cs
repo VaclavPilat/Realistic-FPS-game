@@ -34,9 +34,9 @@ public enum Character_Pose
 // Gamemodes
 public enum Game_Mode
 {
-    SOLO,
-    CTF,
-    DM,
-    TDM,
-    KOTH
+    SOLO, // Solo matches
+    CTF, // Cpture the flag
+    DM, // Deathmatch
+    TDM, // Team deathmatch
+    KOTH // King of the hill
 }

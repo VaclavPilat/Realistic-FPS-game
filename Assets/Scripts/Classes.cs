@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// Keybind
 [Serializable]
 public class Keybind
 {
@@ -11,11 +12,12 @@ public class Keybind
     public string KeyDown; // GetKeyDown actions
     public string Key; // GetKey actions
     public string KeyUp; // GetKeyUp actions
+}
 
-    // TOSTRING
-    public override string ToString ()
-    {
-        return "Name: " + ((Name != null) ? Name : "null") + "; KeyCode: " + KeyCode.ToString() + "; KeyDown: " + ((KeyDown != null) ? KeyDown : "null") + "; Key: " + ((Key != null) ? Key : "null") + "; KeyUp: " + ((KeyUp != null) ? KeyUp : "null");
-    }
-
+// Information about maps
+public class Map_Info
+{
+    public string Description; // Map decription
+    public string Size; // Map size
+    public Game_Mode[] Modes; // Game modes compatible with this map
 }

@@ -7,6 +7,10 @@ using UnityEngine;
 // Class for loading configuration files
 public static class Config_Loader
 {
+    //##########################################################################################
+    //#############################  PRIVATE METHODS / VARIABLES  ##############################
+    //##########################################################################################
+    
     private static string Prefix = "Config loader ::: ";
 
     // Getting config file path
