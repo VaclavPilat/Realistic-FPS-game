@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4284002077845227257}
   - component: {fileID: 5738198256245512120}
   - component: {fileID: 7788100519326130074}
+  - component: {fileID: 7419867271779068539}
+  - component: {fileID: 1596522587216383474}
   m_Layer: 5
   m_Name: Decline button
   m_TagString: Untagged
@@ -121,6 +123,39 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7419867271779068539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575991177408872039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65562e2e567aba54f971f754fc1ce650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - Name: Click
+    Clip: {fileID: 8300000, guid: 7c3d54a264580223daef55bc30c778f6, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+--- !u!114 &1596522587216383474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575991177408872039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62742b484c0a0d68a74f634411c45f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4345797222291204845
 GameObject:
   m_ObjectHideFlags: 0

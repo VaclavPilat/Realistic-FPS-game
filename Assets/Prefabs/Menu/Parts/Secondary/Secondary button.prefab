@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 5860945724427256451}
   - component: {fileID: 6188414071018319742}
   - component: {fileID: 5611680042702660886}
+  - component: {fileID: 5475378439425375869}
   m_Layer: 5
   m_Name: Secondary button
   m_TagString: Untagged
@@ -254,3 +255,15 @@ MonoBehaviour:
     Spatial: 0
     Autoplay: 0
     Source: {fileID: 0}
+--- !u!114 &5475378439425375869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860945724427256477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62742b484c0a0d68a74f634411c45f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
