@@ -956,6 +956,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
+--- !u!224 &8670013970943605337 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9030657618138449632, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
+  m_PrefabInstance: {fileID: 360644781284867257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8275937829948235868 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8636581507158056165, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
@@ -966,11 +971,122 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6858332913052734431, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
   m_PrefabInstance: {fileID: 360644781284867257}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &8670013970943605337 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9030657618138449632, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
-  m_PrefabInstance: {fileID: 360644781284867257}
-  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &467925640519793885
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8275937829948235868}
+    m_Modifications:
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143105482209645788, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352262346214726765, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_Text
+      value: "Keybinds are used to bind (multiple) actions on a key on your keyboard,
+        mouse and joystick. \n\nKeybinds have three actions - Press (when you push
+        the key; triggers only once per key click), Hold (when you hold the key,
+        this action will be triggered each fixed frame) and Release (triggered once,
+        when you release the key). \n\nYou can bind multiple methods to one action
+        and separate them with \";\" to make them perform after one another. For
+        example, using \"Pose_Standup; Movement_Jump\\\" will make your character
+        attempt to stand up and then attempt to jump.\n\nYou can also make \"clusters\"
+        by separating commands with \"&\". This will check if each command is allowed
+        to be run based on the result of the previous one. An example of this: \"Inventory_Throwable
+        & Item_Primary\" will attempt to select a throwable item (grenade) from your
+        inventory and if it is successful (you own the item), it will perform a primary
+        action on it (in this case, pulling the pin). If no throwable item is found,
+        nothing happens.\n\nYou can find examples in default preset of keybind settings.\n\nCheck
+        \"Bindable methods\" manual to get a list of actions that you can bind onto
+        your input devices."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909879210427142298, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
+      propertyPath: m_Name
+      value: Keybinds
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aea54306960b13c8489ca665c8e42a7c, type: 3}
 --- !u!1001 &925812964600892916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1140,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1551,7 +1667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4143105482209645788, guid: b45e2cafc5a3aab36b6566139afd667e, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4143105482209645788, guid: b45e2cafc5a3aab36b6566139afd667e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2555,6 +2671,107 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5860945724427256450, guid: 051b064db6426bc72a01405508aee66e, type: 3}
   m_PrefabInstance: {fileID: 4154103012380466065}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4871916329210361560
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6497838799424712550}
+    m_Modifications:
+    - target: {fileID: 5860945722742438201, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_Text
+      value: Keybinds
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860945724427256477, guid: fa01aebd6401b1a508e578102e137928, type: 3}
+      propertyPath: m_Name
+      value: Keybinds
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa01aebd6401b1a508e578102e137928, type: 3}
 --- !u!1001 &5332045264962694736
 PrefabInstance:
   m_ObjectHideFlags: 0
