@@ -31,6 +31,8 @@ public class Sound_Manager : MonoBehaviour
             s.Source.loop = s.Loop;
             s.Source.spatialBlend = s.Spatial;
             s.Source.playOnAwake = s.Autoplay;
+            if(s.Autoplay)
+                s.Source.Play();
         }
     }
 
