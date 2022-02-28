@@ -12,7 +12,7 @@ public class Sound_Manager : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    [SerializeField] private Sound[] Sounds; // List of sounds
+    [SerializeField] protected Sound[] Sounds; // List of sounds
 
 
     //##########################################################################################
@@ -20,7 +20,7 @@ public class Sound_Manager : MonoBehaviour
     //##########################################################################################
 
     // Applying sound properties to newly created AudioSource components
-    private void Awake ()
+    protected void Awake ()
     {
         foreach(Sound s in Sounds)
         {
