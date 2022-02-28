@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
-// Sound manager
+// Sound queue for playing each sound in the list after one another
 public class Sound_Queue : Sound_Manager
 {
     //##########################################################################################
@@ -12,12 +12,12 @@ public class Sound_Queue : Sound_Manager
     //##########################################################################################
 
     private void Start () => StartCoroutine(Play());
-
     private IEnumerator Play ()
     {
         int i = 0;
         while(Sounds.Length > 0)
         {
+            Console.Log(this, Sounds[i].Name);
             Sounds[i].Source.Play();
             yield return new WaitForSeconds(Sounds[i].Source.clip.length);
             if(i == Sounds.Length -1)

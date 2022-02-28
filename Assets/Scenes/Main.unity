@@ -206,3 +206,119 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2113409354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113409355}
+  - component: {fileID: 2113409356}
+  m_Layer: 0
+  m_Name: Sound queue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113409355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113409354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113409356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113409354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52efd16d891409df9a8c3de86c11119e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - Name: Theme1
+    Clip: {fileID: 8300000, guid: 1cf1b70cb46acbdf88de2ca24239374d, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme2
+    Clip: {fileID: 8300000, guid: c7b1eecc4527874debb6be9e45f2941a, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme3
+    Clip: {fileID: 8300000, guid: af5f0cd14cecd3a06a0eb38ba3b40e05, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme4
+    Clip: {fileID: 8300000, guid: 9fb059a4187aa3ea0be5169cdf56a8b9, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme5
+    Clip: {fileID: 8300000, guid: 6bf72a97ca9dfd209959e81c815a3e90, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme6
+    Clip: {fileID: 8300000, guid: d5436d36233983f9199f9aa29f2567e3, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme7
+    Clip: {fileID: 8300000, guid: 6bdf0dced124a27b8924822de73254e5, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme8
+    Clip: {fileID: 8300000, guid: d485315385eccc0db9c66604a39ef473, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Theme9
+    Clip: {fileID: 8300000, guid: eae01389efda93e269e184d5cba26051, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}

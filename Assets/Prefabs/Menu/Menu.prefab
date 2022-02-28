@@ -1019,9 +1019,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: 'This game uses these sounds from freesound:
 
+
         "Click_Standard_00.wav",
         "Click_Standard_01.wav" by LittleRobotSoundFactory ( https://freesound.org/people/LittleRobotSoundFactory/
-        ) licensed under CCBY 3.0'
+        ) licensed under CC BY 3.0
+
+
+        "Epoch of War 1 by RAME - War Victory
+        Fight Music Loop", "Epoch of War 2 by RAME - War Victory Fight Music Loop",
+        "Epoch of War 3 by RAME - War Victory Fight Music Loop", "Epoch of War 4
+        by RAME - War Victory Fight Music Loop", "Epoch of War 5 by RAME - War Victory
+        Fight Music Loop", "Epoch of War 6 by RAME - War Victory Fight Music Loop",
+        "Epoch of War 7 by RAME - War Victory Fight Music Loop", "Epoch of War 8
+        by RAME - War Victory Fight Music Loop", "Epoch of War 9 by RAME - War Victory
+        Fight Music Loop" by RokZRooM ( https://freesound.org/people/RokZRooM/ )
+        licensed under CC BY 3.0 and CC BY-NC 3.0'
       objectReference: {fileID: 0}
     - target: {fileID: 8592897979078000062, guid: 9f1375ed75199f2fb8751da2766811ef, type: 3}
       propertyPath: m_Name
