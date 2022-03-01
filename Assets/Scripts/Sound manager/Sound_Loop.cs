@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using System;
 
 // Sound queue for playing each sound in the list after one another
-public class Sound_Loop : Sound_Manager
+public class Sound_Loop : Sound_List
 {
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################

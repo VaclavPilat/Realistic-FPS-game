@@ -6,15 +6,8 @@ using System;
 
 // https://www.youtube.com/watch?v=6OT43pvUyfY
 // Sound manager
-public class Sound_Manager : MonoBehaviour
+public class Sound_Manager : Sound_List
 {
-    //##########################################################################################
-    //#############################  PRIVATE METHODS / VARIABLES  ##############################
-    //##########################################################################################
-
-    [SerializeField] protected Sound[] Sounds; // List of sounds
-
-
     //##########################################################################################
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
@@ -51,6 +44,14 @@ public class Sound_Manager : MonoBehaviour
         Sound s = Get_Sound(name);
         if(s != null)
             s.Source.Play();
+    }
+
+    // Stop sound
+    public void Stop (string name)
+    {
+        Sound s = Get_Sound(name);
+        if(s != null)
+            s.Source.Stop();
     }
 
 }
