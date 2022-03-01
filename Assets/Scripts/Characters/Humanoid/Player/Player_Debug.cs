@@ -106,7 +106,6 @@ public class Player_Debug : MonoBehaviour
                 Keycodes.Add(e.keyCode);
             else if(e.isMouse)
             {
-                Console.Warning(this, e.button.ToString());
                 KeyCode mouseButton;
                 if (Enum.TryParse("Mouse" + e.button.ToString(), out mouseButton))
                     Keycodes.Add(mouseButton);

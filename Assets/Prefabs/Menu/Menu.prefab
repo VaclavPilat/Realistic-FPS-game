@@ -338,8 +338,8 @@ RectTransform:
   - {fileID: 5711476502075030928}
   - {fileID: 7954297675519879043}
   - {fileID: 8181477832001424148}
-  - {fileID: 8426146436639953646}
   - {fileID: 8670013970943605337}
+  - {fileID: 8426146436639953646}
   m_Father: {fileID: 7133769085052815553}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -632,8 +632,8 @@ RectTransform:
   - {fileID: 3022110342606456017}
   - {fileID: 7377706404474472088}
   - {fileID: 7309476287961678621}
-  - {fileID: 4158048019127306336}
   - {fileID: 6925766990123896753}
+  - {fileID: 4158048019127306336}
   - {fileID: 3647420572074147698}
   m_Father: {fileID: 2089762457203276393}
   m_RootOrder: 0
@@ -839,7 +839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030657618138449632, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9030657618138449632, guid: 4c6937122f40e161ea17eac700f1edad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1059,19 +1059,24 @@ PrefabInstance:
 
 
         "Click_Standard_00.wav",
-        "Click_Standard_01.wav" by LittleRobotSoundFactory ( https://freesound.org/people/LittleRobotSoundFactory/
-        ) licensed under CC BY 3.0
+        "Click_Standard_01.wav", "Click_Standard_05.wav" by LittleRobotSoundFactory
+        ( https://freesound.org/people/LittleRobotSoundFactory/ ) licensed under
+        CC BY 3.0
 
 
-        "Epoch of War 1 by RAME - War Victory
-        Fight Music Loop", "Epoch of War 2 by RAME - War Victory Fight Music Loop",
-        "Epoch of War 3 by RAME - War Victory Fight Music Loop", "Epoch of War 4
-        by RAME - War Victory Fight Music Loop", "Epoch of War 5 by RAME - War Victory
-        Fight Music Loop", "Epoch of War 6 by RAME - War Victory Fight Music Loop",
-        "Epoch of War 7 by RAME - War Victory Fight Music Loop", "Epoch of War 8
-        by RAME - War Victory Fight Music Loop", "Epoch of War 9 by RAME - War Victory
+        "Epoch of War 1 by RAME - War Victory Fight Music Loop",
+        "Epoch of War 2 by RAME - War Victory Fight Music Loop", "Epoch of War 3
+        by RAME - War Victory Fight Music Loop", "Epoch of War 4 by RAME - War Victory
+        Fight Music Loop", "Epoch of War 5 by RAME - War Victory Fight Music Loop",
+        "Epoch of War 6 by RAME - War Victory Fight Music Loop", "Epoch of War 7
+        by RAME - War Victory Fight Music Loop", "Epoch of War 8 by RAME - War Victory
         Fight Music Loop" by RokZRooM ( https://freesound.org/people/RokZRooM/ )
-        licensed under CC BY 3.0 and CC BY-NC 3.0'
+        licensed under CC BY 3.0
+
+
+        "Epoch of War 9 by RAME - War Victory
+        Fight Music Loop" by RokZRooM ( https://freesound.org/people/RokZRooM/ )
+        licensed under CC BY-NC 3.0'
       objectReference: {fileID: 0}
     - target: {fileID: 8592897979078000062, guid: 9f1375ed75199f2fb8751da2766811ef, type: 3}
       propertyPath: m_Name
@@ -1087,7 +1092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030657618138449632, guid: 9f1375ed75199f2fb8751da2766811ef, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9030657618138449632, guid: 9f1375ed75199f2fb8751da2766811ef, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1764,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4143105482209645788, guid: b45e2cafc5a3aab36b6566139afd667e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4143105482209645788, guid: b45e2cafc5a3aab36b6566139afd667e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1865,7 +1870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1966,7 +1971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: 051b064db6426bc72a01405508aee66e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: 051b064db6426bc72a01405508aee66e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2878,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4143105482209645788, guid: b45e2cafc5a3aab36b6566139afd667e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4143105482209645788, guid: b45e2cafc5a3aab36b6566139afd667e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2983,7 +2988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: fa01aebd6401b1a508e578102e137928, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3222,7 +3227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: 051b064db6426bc72a01405508aee66e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5860945724427256450, guid: 051b064db6426bc72a01405508aee66e, type: 3}
       propertyPath: m_AnchorMax.x
