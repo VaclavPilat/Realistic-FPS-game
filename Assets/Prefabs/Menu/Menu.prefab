@@ -589,6 +589,14 @@ MonoBehaviour:
     Spatial: 0
     Autoplay: 0
     Source: {fileID: 0}
+  - Name: Input
+    Clip: {fileID: 8300000, guid: 1a3b3e5f9631f9c0680526d2326913b8, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
 --- !u!1 &7133769085544891670
 GameObject:
   m_ObjectHideFlags: 0
