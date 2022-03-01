@@ -322,3 +322,5 @@ MonoBehaviour:
     Spatial: 0
     Autoplay: 0
     Source: {fileID: 0}
+  Autoplay: 1
+  Playing: 0

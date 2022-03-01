@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4974616148775237076}
   - component: {fileID: 1769574897400725649}
   - component: {fileID: 1253011774448228985}
+  - component: {fileID: 5457658371331002454}
   m_Layer: 5
   m_Name: Keybind row input
   m_TagString: Untagged
@@ -142,6 +143,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &5457658371331002454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630416133723940290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62742b484c0a0d68a74f634411c45f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: Input
 --- !u!1 &7254183659612257529
 GameObject:
   m_ObjectHideFlags: 0
