@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6714811618756092129}
   - component: {fileID: 7880944447066451138}
   - component: {fileID: 5816364489066282233}
-  - component: {fileID: -293096804047892157}
   - component: {fileID: 2637099416223667252}
   m_Layer: 5
   m_Name: Accept button
@@ -123,27 +122,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-293096804047892157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7043972116035472422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65562e2e567aba54f971f754fc1ce650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sounds:
-  - Name: Click
-    Clip: {fileID: 8300000, guid: 7c3d54a264580223daef55bc30c778f6, type: 3}
-    Volume: 1
-    Pitch: 1
-    Loop: 0
-    Spatial: 0
-    Autoplay: 0
-    Source: {fileID: 0}
 --- !u!114 &2637099416223667252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62742b484c0a0d68a74f634411c45f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sound: Action
 --- !u!1 &7565585938409559803
 GameObject:
   m_ObjectHideFlags: 0

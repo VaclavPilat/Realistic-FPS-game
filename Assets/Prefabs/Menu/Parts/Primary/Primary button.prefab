@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 5860945724427256448}
   - component: {fileID: 5860945724427256451}
   - component: {fileID: 5860945724427256454}
-  - component: {fileID: 686782964144799301}
   - component: {fileID: 7713197102232238952}
   m_Layer: 5
   m_Name: Primary button
@@ -234,27 +233,6 @@ MonoBehaviour:
   Menu: {fileID: 5515933010355763649, guid: e536e56f7eff0cf9c9a14a20d3644ba9, type: 3}
   Image: {fileID: 0}
   Button: {fileID: 0}
---- !u!114 &686782964144799301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5860945724427256477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65562e2e567aba54f971f754fc1ce650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sounds:
-  - Name: Click
-    Clip: {fileID: 8300000, guid: 712330a0094038d80b6671a29b464dc6, type: 3}
-    Volume: 1
-    Pitch: 1
-    Loop: 0
-    Spatial: 0
-    Autoplay: 0
-    Source: {fileID: 0}
 --- !u!114 &7713197102232238952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,3 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62742b484c0a0d68a74f634411c45f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sound: Category

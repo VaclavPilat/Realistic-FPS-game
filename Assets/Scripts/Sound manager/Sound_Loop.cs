@@ -13,6 +13,12 @@ public class Sound_Loop : Sound_List
 
     private AudioSource Source; // A singular audio source for playing all sounds in the list
     private IEnumerator Coroutine; // Stored coroutine
+
+
+    //##########################################################################################
+    //##################################  PUBLIC VARIABLES  ####################################
+    //##########################################################################################
+    
     public bool Autoplay = true; // Should it start automatically?
     public bool Playing = false; // Is the loop playing?
 

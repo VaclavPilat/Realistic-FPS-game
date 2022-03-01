@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 7852172842226802294}
   - component: {fileID: 7333031298714194067}
   - component: {fileID: 2385835569948825761}
+  - component: {fileID: 7600651574799232540}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -559,6 +560,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4969bcf3130b54dfbe2c60bb047b9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7600651574799232540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133769085052815613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65562e2e567aba54f971f754fc1ce650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - Name: Category
+    Clip: {fileID: 8300000, guid: 712330a0094038d80b6671a29b464dc6, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
+  - Name: Action
+    Clip: {fileID: 8300000, guid: 7c3d54a264580223daef55bc30c778f6, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Spatial: 0
+    Autoplay: 0
+    Source: {fileID: 0}
 --- !u!1 &7133769085544891670
 GameObject:
   m_ObjectHideFlags: 0
