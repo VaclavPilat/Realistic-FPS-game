@@ -20,7 +20,7 @@ public class Sound_Manager : MonoBehaviour
     //##########################################################################################
 
     // Applying sound properties to newly created AudioSource components
-    protected void Awake ()
+    private void Awake ()
     {
         foreach(Sound s in Sounds)
         {
