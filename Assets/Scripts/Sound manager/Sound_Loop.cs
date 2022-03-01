@@ -12,6 +12,9 @@ public class Sound_Loop : Sound_Manager
     //##########################################################################################
 
     private AudioSource Source; // A singular audio source for playing all sounds in the list
+    private IEnumerator Coroutine; // Stored coroutine
+    public bool Autoplay = true; // Should it start automatically?
+    public bool Playing = false; // Is the loop playing?
 
 
     //##########################################################################################
@@ -19,18 +22,43 @@ public class Sound_Loop : Sound_Manager
     //##########################################################################################
 
     // Adding a single AudioSource component
-    private void Awake () => Source = gameObject.AddComponent<AudioSource>();
+    private void Awake () 
+    {
+        Source = gameObject.AddComponent<AudioSource>();
+        Coroutine = Loop();
+    }
 
     // Playing on start
-    private void Start () => StartCoroutine(Play());
+    private void Start () 
+    {
+        if(Autoplay)
+            Play();
+    }
+
+    // Starting loop coroutine
+    public void Play () 
+    {
+        Playing = true;
+        Console.Log(this, "Starting a sound loop with " + Sounds.Length + " tracks");
+        StartCoroutine(Coroutine);
+    }
+
+    // Stopping loop coroutine
+    public void Stop ()
+    {
+        Playing = false;
+        Console.Log(this, "Stopped a sound loop with " + Sounds.Length + " tracks");
+        StopCoroutine(Coroutine);
+        Source.Stop();
+    }
 
     // Playing all sounds in loop
-    private IEnumerator Play ()
+    private IEnumerator Loop ()
     {
         int i = 0;
         while(Sounds.Length > 0)
         {
-            Console.Log(this, Sounds[i].Name);
+            Console.Log(this, "Current sound track in loop: " + Sounds[i].Name);
             // Setting sound properties
             Source.clip = Sounds[i].Clip;
             Source.volume = Sounds[i].Volume;
