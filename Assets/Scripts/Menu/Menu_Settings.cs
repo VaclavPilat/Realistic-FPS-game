@@ -12,6 +12,9 @@ public class Menu_Settings : MonoBehaviour
 
     public GameObject Row; // Row prefab
 
+    // Inputs
+    public GameObject Slider; // Slider input
+
 
     //##########################################################################################
     //##################################  PUBLIC VARIABLES  ####################################
@@ -42,8 +45,20 @@ public class Menu_Settings : MonoBehaviour
     {
         foreach(Setting setting in Settings)
         {
-            GameObject s = Instantiate(Row, transform);
-            s.transform.GetChild(0).GetComponent<Text>().text = setting.Description;
+            GameObject row = Instantiate(Row, transform);
+            row.transform.GetChild(0).GetComponent<Text>().text = setting.Description;
+            // Setting correct input type
+            GameObject input;
+            switch(setting.Type)
+            {
+                case "float":
+                    input = Instantiate(Slider, row.transform);
+                    break;
+                default:
+                    break;
+            }
+            // Resizing elements in row
+            row.GetComponent<Menu_Gridlayout>().Resize();
         }
         // Resizing scrollview
         transform.GetComponent<Menu_Scrollview>().Resize();
