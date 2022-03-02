@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 // Showing settings
 public class Menu_Settings : MonoBehaviour
@@ -53,6 +54,10 @@ public class Menu_Settings : MonoBehaviour
             {
                 case "float":
                     input = Instantiate(Slider, row.transform);
+                    float hodnota = 0.5f;
+                    if(!float.TryParse(setting.Value, out hodnota))
+                        Console.Warning(this, "Cannot convert value of setting '" + setting.Name + "' to " + setting.Type);
+                    input.GetComponent<Slider>().value = hodnota;
                     break;
                 default:
                     break;
