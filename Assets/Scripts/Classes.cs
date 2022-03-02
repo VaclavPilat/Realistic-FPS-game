@@ -36,3 +36,13 @@ public class Sound
     public bool Autoplay = false; // Play automatically (on Awake) ?
     [HideInInspector] public AudioSource Source; // Audio source component
 }
+
+// Setting
+[Serializable]
+public class Setting
+{
+    public string Name; // Setting name, used internally
+    public string Description; // Setting description, shown to user
+    public string Type; // Setting type
+    public object Value; // Setting value, stored as an object
+}

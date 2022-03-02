@@ -1,0 +1,35 @@
+{
+    "Items":
+    [
+        {
+            "Name":"Master",
+            "Description": "Master volume",
+            "Type": "float",
+            "Value": 1
+        },
+        {
+            "Name":"Menu_Music",
+            "Description": "Menu music volume",
+            "Type": "float",
+            "Value": 1
+        },
+        {
+            "Name":"Menu_Sound",
+            "Description": "Menu sound volume",
+            "Type": "float",
+            "Value": 1
+        },
+        {
+            "Name":"Game_Music",
+            "Description": "In-game music volume",
+            "Type": "float",
+            "Value": 1
+        },
+        {
+            "Name":"Game_Sound",
+            "Description": "In-game music volume",
+            "Type": "float",
+            "Value": 1
+        }
+    ]
+}

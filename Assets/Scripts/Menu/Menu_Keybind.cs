@@ -26,6 +26,9 @@ public class Menu_Keybind : MonoBehaviour
     //##########################################################################################
 
     private bool Waiting = false; // Waiting for key
+    private Color Focus_Color = new Color(1f, 1f, 1f, 0.5f);
+    private Color Error_Color = new Color(1f, 0f, 0f, 0.5f);
+    private Color Default_Color = new Color(1f, 1f, 1f, 0.2f);
 
 
     //##########################################################################################
@@ -65,13 +68,13 @@ public class Menu_Keybind : MonoBehaviour
     }
 
     // Setting focus appearance
-    private void Set_Focus_Appearance (Transform input) => Change_Background(input, new Color(1f, 1f, 1f, 0.5f));
+    private void Set_Focus_Appearance (Transform input) => Change_Background(input, Focus_Color);
 
     // Setting error appearance
-    private void Set_Error_Appearance (Transform input) => Change_Background(input, new Color(1f, 0f, 0f, 0.5f));
+    private void Set_Error_Appearance (Transform input) => Change_Background(input, Error_Color);
 
     // Unsetting focus appearance
-    private void Unset_Focus_Appearance (Transform input) => Change_Background(input, Color.clear);
+    private void Unset_Focus_Appearance (Transform input) => Change_Background(input, Default_Color);
 
     // Changing backgroun color (id not set already)
     private void Change_Background (Transform input, Color color)
