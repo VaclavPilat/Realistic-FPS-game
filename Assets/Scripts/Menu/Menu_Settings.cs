@@ -14,6 +14,7 @@ public class Menu_Settings : MonoBehaviour
     public GameObject Row; // Row prefab
 
     // Inputs
+    public GameObject Description; // Label
     public GameObject Slider; // Slider input
 
 
@@ -44,13 +45,15 @@ public class Menu_Settings : MonoBehaviour
             try
             {
                 GameObject row = Instantiate(Row, transform);
-                row.transform.GetChild(0).GetComponent<Text>().text = setting.Description;
                 // Setting correct input type
-                GameObject input;
                 switch(setting.Type)
                 {
                     case "float": // Showing sliders for float values
-                        input = Instantiate(Slider, row.transform);
+                        // Setting up label
+                        GameObject label = Instantiate(Description, row.transform);
+                        label.GetComponent<Text>().text = setting.Description;
+                        // Setting up slider
+                        GameObject input = Instantiate(Slider, row.transform);
                         var slider = input.GetComponent<Slider>();
                         string[] check = setting.Check.Split('|');
                         slider.minValue = float.Parse(check[0]);

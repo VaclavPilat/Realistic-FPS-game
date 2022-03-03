@@ -526,7 +526,6 @@ MonoBehaviour:
   Secondary_Color: {r: 0, g: 0, b: 0, a: 0.2}
   Tertiary_Color: {r: 0, g: 0, b: 0, a: 0}
   Visible: 0
-  Keybinds: []
   Player_Prefab: {fileID: 1383893695931622894, guid: fab1155aa9037111f8ff5f1ce5512136, type: 3}
 --- !u!222 &7852172842226802294
 CanvasRenderer:
@@ -815,6 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Row: {fileID: 2857404887556770360, guid: 4eee3f0b544c61fe897168c7c37f6751, type: 3}
+  Description: {fileID: 5006548583473608441, guid: 033a4775c8cb88eb5870156f8890f7a4, type: 3}
   Slider: {fileID: 8822555923913991434, guid: f0b2321dd2a8b160e886dcfc8b876f90, type: 3}
   Name: Audio
 --- !u!1001 &360644781284867257
