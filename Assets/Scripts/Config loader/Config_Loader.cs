@@ -11,7 +11,7 @@ public static class Config_Loader
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
     
-    private static string Prefix = "Config loader ::: ";
+    private static string Prefix = "Config loader ::: "; // Console prefix message
 
     // Getting config file path
     private static string Get_Filepath (string filename)
@@ -24,6 +24,11 @@ public static class Config_Loader
     {
         return "Config/" + filename;
     }
+
+
+    //##########################################################################################
+    //#####################################  SCRIPT FLOW  ######################################
+    //##########################################################################################
 
     // Loading configuration
     public static T[] Load<T> (string filename)

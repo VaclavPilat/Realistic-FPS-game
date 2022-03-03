@@ -54,10 +54,12 @@ public class Menu_Settings : MonoBehaviour
             {
                 case "float":
                     input = Instantiate(Slider, row.transform);
-                    float hodnota = 0.5f;
-                    if(!float.TryParse(setting.Value, out hodnota))
-                        Console.Warning(this, "Cannot convert value of setting '" + setting.Name + "' to " + setting.Type);
-                    input.GetComponent<Slider>().value = hodnota;
+                    var slider = input.GetComponent<Slider>();
+                    // Setting values
+                    string[] check = setting.Check.Split('|');
+                    slider.minValue = float.Parse(check[0]);
+                    slider.maxValue = float.Parse(check[1]);
+                    slider.value = float.Parse(setting.Value);
                     break;
                 default:
                     break;
