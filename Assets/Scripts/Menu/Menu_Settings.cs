@@ -12,10 +12,20 @@ public class Menu_Settings : MonoBehaviour
     //##########################################################################################
 
     public GameObject Row; // Row prefab
-
-    // Inputs
     public GameObject Description; // Label
     public GameObject Slider; // Slider input
+    public GameObject InputField; // Text input field
+    public GameObject Button; // Button
+
+    // Getting input prefabs from resources
+    private void Awake ()
+    {
+        Row          = Resources.Load<GameObject>("Settings/Row");
+        Description  = Resources.Load<GameObject>("Settings/Description");
+        Slider       = Resources.Load<GameObject>("Settings/Slider");
+        InputField   = Resources.Load<GameObject>("Settings/InputField");
+        Button       = Resources.Load<GameObject>("Settings/Button");
+    }
 
 
     //##########################################################################################
@@ -29,7 +39,7 @@ public class Menu_Settings : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private void Awake () => Create_UI();
+    private void Start () => Create_UI();
 
 
     //##########################################################################################
@@ -59,7 +69,7 @@ public class Menu_Settings : MonoBehaviour
             }
             catch (Exception e)
             {
-                Console.Error(this, "Invalid configuration of Audio settings");
+                Console.Error(this, "Failed generating setting row; " + e.Message);
             }
         }
         // Resizing scrollview
@@ -79,15 +89,11 @@ public class Menu_Settings : MonoBehaviour
         slider.minValue = float.Parse(check[0]);
         slider.maxValue = float.Parse(check[1]);
         slider.value = float.Parse(setting.Value);
-        slider.onValueChanged.AddListener(delegate { Save_Slider(slider); });
-    }
-
-    // Saving slider value after being changed
-    private void Save_Slider (Slider slider)
-    {
-        int index = slider.transform.parent.GetSiblingIndex();
-        Config_Loader.Config[Name][index].Value = slider.value.ToString();
-        Config_Loader.Save(Name);
+        slider.onValueChanged.AddListener(delegate { 
+            int index = slider.transform.parent.GetSiblingIndex();
+            Config_Loader.Config[Name][index].Value = slider.value.ToString();
+            Config_Loader.Save(Name); 
+        });
     }
 
 }

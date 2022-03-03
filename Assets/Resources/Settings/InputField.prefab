@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1253011774448228985}
   - component: {fileID: 5457658371331002454}
   m_Layer: 5
-  m_Name: Keybind row input
+  m_Name: InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
