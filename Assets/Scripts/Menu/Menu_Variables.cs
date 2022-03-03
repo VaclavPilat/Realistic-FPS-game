@@ -33,8 +33,6 @@ public class Menu_Variables : MonoBehaviour
     private bool Switchable; // Is menu visibility switchable?
     public bool Visible; // Is menu visible?
 
-    [HideInInspector] public Keybind[] Keybinds = null; // Array of keybinds
-
     [SerializeField] private GameObject Player_Prefab; // Player prefab (for getting bindable methods)
     [HideInInspector] public Dictionary<string, MethodInfo> Bindable = new Dictionary<string, MethodInfo>(); // Dictionary with all bindable methods this player can use
 
@@ -57,8 +55,6 @@ public class Menu_Variables : MonoBehaviour
         Tertiary_Color = new Color(1f, 1f, 1f, 0.3f);
         // Disabling menu when a new scene is loaded
         SceneManager.sceneLoaded += Hide_On_Load;
-        // Loading keybinds for later use
-        Load_Keybinds();
         // Loads all bindable methods into a dictionary
         Load_Bindable();
     }
@@ -122,22 +118,6 @@ public class Menu_Variables : MonoBehaviour
     {
         CanvasGroup.blocksRaycasts = false;
         CanvasGroup.interactable = false;
-    }
-
-    // Loading all keybinds (from a config file if possible)
-    private void Load_Keybinds () 
-    {
-        Keybinds = Config_Loader.Load<Keybind>("Keybinds");
-        if(Keybinds != null)
-            Console.Log(this, "Found " + Keybinds.Length.ToString() + " keybinds");
-        else
-            Console.Warning(this, "No keybinds found");
-    }
-
-    // Saving keybinds into a file
-    public void Save_Keybinds ()
-    {
-        Config_Loader.Save<Keybind>("Keybinds", Keybinds);
     }
 
     // Loads all bindable methods into a dictionary

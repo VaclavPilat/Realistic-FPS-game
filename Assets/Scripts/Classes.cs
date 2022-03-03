@@ -48,7 +48,7 @@ public class Sound
     [HideInInspector] public AudioSource Source; // Audio source component
 }
 
-// Setting
+// Setting class for storing settings of any type
 [Serializable]
 public class Setting
 {

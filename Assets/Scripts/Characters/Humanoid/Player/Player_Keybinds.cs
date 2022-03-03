@@ -55,8 +55,10 @@ public class Player_Keybinds : MonoBehaviour
     // Checking if any keys hve been pressed
     private void Check_Keybinds ()
     {
-        foreach (Keybind keybind in Menu_Variables.Keybinds)
+        Config_Loader.Load("Keybinds");
+        foreach (Setting setting in Config_Loader.Config["Keybinds"])
         {
+            Keybind keybind = setting.ToKeybind();
             if(Input.GetKeyDown(keybind.KeyCode) && (keybind.KeyDown != null) && (keybind.KeyDown != ""))
                 StartCoroutine(Call_Commands(keybind.KeyDown));
             if(Input.GetKey(keybind.KeyCode)     && (keybind.Key != null)     && (keybind.Key != ""))

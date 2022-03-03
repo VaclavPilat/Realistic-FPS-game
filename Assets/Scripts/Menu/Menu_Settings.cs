@@ -28,13 +28,7 @@ public class Menu_Settings : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private Setting[] Settings;
-
-    private void Awake () 
-    {
-        Settings = Config_Loader.Load<Setting>(Name);
-        Create_UI();
-    }
+    private void Awake () => Create_UI();
 
 
     //##########################################################################################
@@ -44,28 +38,35 @@ public class Menu_Settings : MonoBehaviour
     // Generates UI for each setting found
     private void Create_UI ()
     {
-        foreach(Setting setting in Settings)
+        Config_Loader.Load(Name);
+        foreach(Setting setting in Config_Loader.Config[Name])
         {
-            GameObject row = Instantiate(Row, transform);
-            row.transform.GetChild(0).GetComponent<Text>().text = setting.Description;
-            // Setting correct input type
-            GameObject input;
-            switch(setting.Type)
+            try
             {
-                case "float":
-                    input = Instantiate(Slider, row.transform);
-                    var slider = input.GetComponent<Slider>();
-                    // Setting values
-                    string[] check = setting.Check.Split('|');
-                    slider.minValue = float.Parse(check[0]);
-                    slider.maxValue = float.Parse(check[1]);
-                    slider.value = float.Parse(setting.Value);
-                    break;
-                default:
-                    break;
+                GameObject row = Instantiate(Row, transform);
+                row.transform.GetChild(0).GetComponent<Text>().text = setting.Description;
+                // Setting correct input type
+                GameObject input;
+                switch(setting.Type)
+                {
+                    case "float": // Showing sliders for float values
+                        input = Instantiate(Slider, row.transform);
+                        var slider = input.GetComponent<Slider>();
+                        string[] check = setting.Check.Split('|');
+                        slider.minValue = float.Parse(check[0]);
+                        slider.maxValue = float.Parse(check[1]);
+                        slider.value = float.Parse(setting.Value);
+                        break;
+                    default:
+                        break;
+                }
+                // Resizing elements in row
+                row.GetComponent<Menu_Gridlayout>().Resize();
             }
-            // Resizing elements in row
-            row.GetComponent<Menu_Gridlayout>().Resize();
+            catch (Exception e)
+            {
+                Console.Error(this, "Invalid configuration of Audio settings");
+            }
         }
         // Resizing scrollview
         transform.GetComponent<Menu_Scrollview>().Resize();

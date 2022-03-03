@@ -132,18 +132,16 @@ public class Menu_Keybind : MonoBehaviour
         {
             int index = transform.GetSiblingIndex();
             // Setting keybind values
-            Keybind bind = Menu_Variables.Keybinds[index];
+            Keybind bind = new Keybind();
             bind.Name = Name.text;
             bind.KeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), Key.text);
             bind.KeyDown = Down.text;
             bind.Key = Hold.text;
             bind.KeyUp = Up.text;
             // Saving keybinds
-            Save_Keybinds();
+            Config_Loader.Config["Keybinds"][index] = bind.ToSetting();
+            Config_Loader.Save("Keybinds");
         }
     }
-
-    // Saving keybinds
-    private void Save_Keybinds () => Menu_Variables.Save_Keybinds();
 
 }
