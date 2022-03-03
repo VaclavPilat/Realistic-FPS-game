@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Row: {fileID: 2857404887556770360, guid: fbc6852442446eab48f98e7c6595edf8, type: 3}
---- !u!114 &8391662480585392570
+--- !u!114 &1958313893000418558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22,10 +22,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2198209020980429061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835ef3edc6375331681d2245b9170211, type: 3}
+  m_Script: {fileID: 11500000, guid: 1504793c93150753db23e4dd42100528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Keybind: {fileID: 2857404887556770360, guid: eaacadcb71168a85f901e082242a926a, type: 3}
+  Name: Keybinds
 --- !u!1 &2807790176813805074
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,9 +813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1504793c93150753db23e4dd42100528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Row: {fileID: 2857404887556770360, guid: 4eee3f0b544c61fe897168c7c37f6751, type: 3}
-  Description: {fileID: 5006548583473608441, guid: 033a4775c8cb88eb5870156f8890f7a4, type: 3}
-  Slider: {fileID: 8822555923913991434, guid: f0b2321dd2a8b160e886dcfc8b876f90, type: 3}
   Name: Audio
 --- !u!1001 &360644781284867257
 PrefabInstance:

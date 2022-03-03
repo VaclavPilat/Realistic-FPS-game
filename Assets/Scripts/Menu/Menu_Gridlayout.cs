@@ -16,13 +16,14 @@ public class Menu_Gridlayout : MonoBehaviour
     public void Resize ()
     {
         // Setting sizes of children object based on parent size
-        transform.GetComponent<GridLayoutGroup>().cellSize = new Vector2(
+        var grid = transform.GetComponent<GridLayoutGroup>();
+        grid.cellSize = new Vector2(
             (transform.parent.GetComponent<RectTransform>().rect.width 
-                - (transform.GetComponent<GridLayoutGroup>().spacing.x * (transform.childCount -1))
-                - transform.GetComponent<GridLayoutGroup>().padding.left
-                - transform.GetComponent<GridLayoutGroup>().padding.right
-            ) / transform.childCount, 
-            transform.GetComponent<GridLayoutGroup>().cellSize.y
+                - (grid.spacing.x * (transform.childCount -1))
+                - grid.padding.left
+                - grid.padding.right
+                ) / transform.childCount, 
+            grid.cellSize.y
         );
     }
 

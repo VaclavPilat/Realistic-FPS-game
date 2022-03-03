@@ -100,7 +100,7 @@
         },
         {
             "Name": "293",
-            "Description": "opping all items from inventory",
+            "Description": "Dropping all items from inventory",
             "Type": "keybind",
             "Check": "",
             "Value": "Inventory_Dump||"

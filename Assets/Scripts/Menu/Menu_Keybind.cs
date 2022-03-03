@@ -12,13 +12,30 @@ public class Menu_Keybind : MonoBehaviour
     //##########################################################################################
 
     private Menu_Variables Menu_Variables;
-    private void Awake () => Menu_Variables = transform.root.GetComponent<Menu_Variables>();
 
-    [SerializeField] private Text Name;
-    [SerializeField] private Text Key;
-    [SerializeField] private Text Down;
-    [SerializeField] private Text Hold;
-    [SerializeField] private Text Up;
+    private Transform Name;
+    private Transform Key;
+    private Transform Down;
+    private Transform Hold;
+    private Transform Up;
+
+    private void Awake () 
+    {
+        Menu_Variables = transform.root.GetComponent<Menu_Variables>();
+        // Setting text components
+        Name = transform.GetChild(0);
+        Key = transform.GetChild(1);
+        Down = transform.GetChild(2);
+        Hold = transform.GetChild(3);
+        Up = transform.GetChild(4);
+        // Adding onedit actions
+        Name.GetComponent<InputField>().onEndEdit.AddListener(delegate{Update_Keybind();});
+        Key.GetComponent<Button>().onClick.AddListener(Edit_Keycode);
+        Down.GetComponent<InputField>().onEndEdit.AddListener(delegate{Update_Keybind();});
+        Hold.GetComponent<InputField>().onEndEdit.AddListener(delegate{Update_Keybind();});
+        Up.GetComponent<InputField>().onEndEdit.AddListener(delegate{Update_Keybind();});
+
+    }
 
 
     //##########################################################################################
@@ -56,14 +73,14 @@ public class Menu_Keybind : MonoBehaviour
             }
         }
         // Button
-        if(Key.text == "None" && !Waiting)
-            Set_Error_Appearance(Key.transform.parent);
+        if(Key.GetChild(0).GetComponent<Text>().text == "None" && !Waiting)
+            Set_Error_Appearance(Key);
         else
         {
             if(Waiting)
-                Set_Focus_Appearance(Key.transform.parent);
+                Set_Focus_Appearance(Key);
             else
-                Unset_Focus_Appearance(Key.transform.parent);
+                Unset_Focus_Appearance(Key);
         }
     }
 
@@ -121,7 +138,7 @@ public class Menu_Keybind : MonoBehaviour
     // Setting keycode
     private void Set_Keycode (KeyCode key)
     {
-        Key.text = key.ToString();
+        Key.GetChild(0).GetComponent<Text>().text = key.ToString();
         Update_Keybind();
     }
 
@@ -133,11 +150,11 @@ public class Menu_Keybind : MonoBehaviour
             int index = transform.GetSiblingIndex();
             // Setting keybind values
             Keybind bind = new Keybind();
-            bind.Name = Name.text;
-            bind.KeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), Key.text);
-            bind.KeyDown = Down.text;
-            bind.Key = Hold.text;
-            bind.KeyUp = Up.text;
+            bind.Name = Name.GetComponent<InputField>().text;
+            bind.KeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), Key.GetChild(0).GetComponent<Text>().text);
+            bind.KeyDown = Down.GetComponent<InputField>().text;
+            bind.Key = Hold.GetComponent<InputField>().text;
+            bind.KeyUp = Up.GetComponent<InputField>().text;
             // Saving keybinds
             Config_Loader.Config["Keybinds"][index] = bind.ToSetting();
             Config_Loader.Save("Keybinds");

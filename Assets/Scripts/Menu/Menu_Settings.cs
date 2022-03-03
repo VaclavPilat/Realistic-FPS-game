@@ -11,11 +11,11 @@ public class Menu_Settings : MonoBehaviour
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    public GameObject Row; // Row prefab
-    public GameObject Description; // Label
-    public GameObject Slider; // Slider input
-    public GameObject InputField; // Text input field
-    public GameObject Button; // Button
+    private GameObject Row; // Row prefab
+    private GameObject Description; // Label
+    private GameObject Slider; // Slider input
+    private GameObject InputField; // Text input field
+    private GameObject Button; // Button
 
     // Getting input prefabs from resources
     private void Awake ()
@@ -61,6 +61,9 @@ public class Menu_Settings : MonoBehaviour
                     case "float": // Showing sliders for float values
                         Generate_Slider(setting, row);
                         break;
+                    case "keybind": // Generating keybinds
+                        Generate_Keybind(setting, row);
+                        break;
                     default:
                         break;
                 }
@@ -89,11 +92,35 @@ public class Menu_Settings : MonoBehaviour
         slider.minValue = float.Parse(check[0]);
         slider.maxValue = float.Parse(check[1]);
         slider.value = float.Parse(setting.Value);
+        // On edit action
         slider.onValueChanged.AddListener(delegate { 
             int index = slider.transform.parent.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
         });
+    }
+
+    // Generating slider with a description label
+    private void Generate_Keybind (Setting setting, GameObject row)
+    {
+        // Keybind description
+        GameObject description = Instantiate(InputField, row.transform);
+        description.GetComponent<InputField>().text = setting.Description;
+        // Keycode
+        GameObject keycode = Instantiate(Button, row.transform);
+        keycode.transform.GetChild(0).GetComponent<Text>().text = ((KeyCode)int.Parse(setting.Name)).ToString();
+        // KeyDown actions
+        string[] actions = setting.Value.Split('|');
+        GameObject keydown = Instantiate(InputField, row.transform);
+        keydown.GetComponent<InputField>().text = actions[0];
+        // Key actions
+        GameObject key = Instantiate(InputField, row.transform);
+        key.GetComponent<InputField>().text = actions[1];
+        // KeyUp actions
+        GameObject keyup = Instantiate(InputField, row.transform);
+        keyup.GetComponent<InputField>().text = actions[2];
+        // Adding script for handling keybinds
+        row.AddComponent<Menu_Keybind>();
     }
 
 }
