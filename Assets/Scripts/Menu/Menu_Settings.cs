@@ -106,6 +106,7 @@ public class Menu_Settings : MonoBehaviour
         // Keybind description
         GameObject description = Instantiate(InputField, row.transform);
         description.GetComponent<InputField>().text = setting.Description;
+        description.transform.GetChild(0).GetComponent<Text>().fontStyle = FontStyle.Bold;
         // Keycode
         GameObject keycode = Instantiate(Button, row.transform);
         keycode.transform.GetChild(0).GetComponent<Text>().text = ((KeyCode)int.Parse(setting.Name)).ToString();
