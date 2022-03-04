@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
-// Sound queue for playing each sound in the list after one another
+// Sound queue for playing each music track in the list after one another
 public class Sound_Loop : Sound_List
 {
     //##########################################################################################
@@ -13,6 +13,7 @@ public class Sound_Loop : Sound_List
 
     private AudioSource Source; // A singular audio source for playing all sounds in the list
     private IEnumerator Coroutine; // Stored coroutine
+    private int i = 0; // 
 
 
     //##########################################################################################
@@ -30,13 +31,9 @@ public class Sound_Loop : Sound_List
     // Adding a single AudioSource component
     private void Awake () 
     {
+        Config_Loader.Load("Audio");
         Source = gameObject.AddComponent<AudioSource>();
         Coroutine = Loop();
-    }
-
-    // Playing on start
-    private void Start () 
-    {
         if(Autoplay)
             Play();
     }
@@ -61,13 +58,12 @@ public class Sound_Loop : Sound_List
     // Playing all sounds in loop
     private IEnumerator Loop ()
     {
-        int i = 0;
         while(Sounds.Length > 0)
         {
             Console.Log(this, "Current sound track in loop: " + Sounds[i].Name);
             // Setting sound properties
             Source.clip = Sounds[i].Clip;
-            Source.volume = Sounds[i].Volume;
+            Set_Volume(Sounds[i]);
             Source.pitch = Sounds[i].Pitch;
             Source.loop = false;
             Source.spatialBlend = Sounds[i].Spatial;
@@ -80,6 +76,20 @@ public class Sound_Loop : Sound_List
             else
                 i++;
         }
+    }
+
+    // Setting current volume
+    private void Update ()
+    {
+        if(Sounds.Length > 0)
+            Set_Volume(Sounds[i]);
+    }
+
+    // Setting volume
+    private void Set_Volume (Sound sound)
+    {
+        Setting setting = Array.Find(Config_Loader.Config["Audio"], s => s.Name == (Is_Menu ? "Menu_Music" : "Game_Music"));
+        Source.volume = float.Parse(setting.Value) * sound.Volume;
     }
 
 }

@@ -13,4 +13,11 @@ public class Sound_List : MonoBehaviour
 
     [SerializeField] protected Sound[] Sounds; // List of sounds
 
+
+    //##########################################################################################
+    //##################################  PUBLIC VARIABLES  ####################################
+    //##########################################################################################
+
+    public bool Is_Menu = false; // Does the sound belong to menu?
+
 }
