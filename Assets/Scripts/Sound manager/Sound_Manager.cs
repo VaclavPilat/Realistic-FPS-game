@@ -13,9 +13,8 @@ public class Sound_Manager : Sound_List
     //##########################################################################################
 
     // Applying sound properties to newly created AudioSource components
-    private void Awake ()
+    private void Start ()
     {
-        Config_Loader.Load("Audio");
         foreach(Sound s in Sounds)
         {
             s.Source = transform.gameObject.AddComponent<AudioSource>();
@@ -56,7 +55,7 @@ public class Sound_Manager : Sound_List
     }
 
     // Setting current volume
-    private void Update ()
+    private void LateUpdate ()
     {
         foreach(Sound sound in Sounds)
             Set_Volume(sound);

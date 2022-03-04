@@ -29,9 +29,8 @@ public class Sound_Loop : Sound_List
     //##########################################################################################
 
     // Adding a single AudioSource component
-    private void Awake () 
+    private void Start () 
     {
-        Config_Loader.Load("Audio");
         Source = gameObject.AddComponent<AudioSource>();
         Coroutine = Loop();
         if(Autoplay)
@@ -79,7 +78,7 @@ public class Sound_Loop : Sound_List
     }
 
     // Setting current volume
-    private void Update ()
+    private void LateUpdate ()
     {
         if(Sounds.Length > 0)
             Set_Volume(Sounds[i]);
