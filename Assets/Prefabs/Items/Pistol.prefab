@@ -129,15 +129,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weight: 0
   Use_Rate: 0
-  Category: 2
-  Usage: 1
-  Switchable: 1
+  Category: 0
+  Usage: 0
+  Switchable: 0
   Default_Rotation: {x: 0, y: 90, z: 0}
   Bullet: {fileID: 7475580959876285859, guid: 29834ffdf01018ddb890a7918354b9bd, type: 3}
-  Bleeding: 0
-  Gun_Failure: 0
-  Ammo_Failure: 0
-  Bullet_Speed: 5
+  Bleeding: 20
+  Gun_Failure: 0.01
+  Ammo_Failure: 0.01
+  Bullet_Speed: 100
 --- !u!114 &5218398961023452589
 MonoBehaviour:
   m_ObjectHideFlags: 0

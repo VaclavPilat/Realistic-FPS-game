@@ -26,7 +26,7 @@ public class Projectile_Bullet : MonoBehaviour
     // Despawning bullet after hit
     private void OnCollisionEnter (Collision collision)
     {
-        Console.Log(this, "HIT");
+        Console.Log(this, "HIT " + collision.transform.name);
         GameObject.Destroy(gameObject);
     }
 

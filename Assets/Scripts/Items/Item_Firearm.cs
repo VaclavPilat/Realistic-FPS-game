@@ -35,7 +35,7 @@ public class Item_Firearm : Item
     public float Bleeding = 20f; // Bleeding caused by a shot
     public float Gun_Failure = 0.01f; // Chance that an empty bullet shell causes the gun to stop working
     public float Ammo_Failure = 0.01f; // Chance that ammunition fails
-    public float Bullet_Speed = 5f;
+    public float Bullet_Speed = 100f;
 
 
     //##########################################################################################
@@ -45,11 +45,18 @@ public class Item_Firearm : Item
     // Shooting
     public override bool Primary ()
     {
-        Sound_Manager.Play("Fire");
-        var bullet = Instantiate(Bullet, Bullet_Spawn.position, Bullet_Spawn.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = Bullet_Spawn.TransformDirection(new Vector3(-Bullet_Speed, 0f, 0f));
-        //bullet.GetComponent<Projectile_Bullet>().Damage = Damage;
-        return true;
+        if(Bullet_In_Chamber)
+        {
+            Sound_Manager.Play("Fire");
+            GameObject bullet = Instantiate(Bullet, Bullet_Spawn);
+            bullet.transform.SetParent(null);
+            bullet.GetComponent<Rigidbody>().velocity = Bullet_Spawn.TransformDirection(new Vector3(-Bullet_Speed, 0f, 0f));
+            //bullet.GetComponent<Projectile_Bullet>().Damage = Damage;
+            Bullet_In_Chamber = false;
+            return true;
+        }
+        else
+            return false;
     }
 
     // Aiming down sights
@@ -67,6 +74,7 @@ public class Item_Firearm : Item
     // 
     public override bool Reload () 
     {
+        Bullet_In_Chamber = true;
         return true;
     }
 
