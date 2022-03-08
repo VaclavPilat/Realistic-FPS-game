@@ -11,12 +11,12 @@ public class Item_Firearm : Item
     //##########################################################################################
 
     private Sound_Manager Sound_Manager; // Sound manager
-    private GameObject Bullet_Spawn; // Place where a bullet spawns
+    private Transform Bullet_Spawn; // Place where a bullet spawns
     
     private void Awake () 
     {
         Sound_Manager = GetComponent<Sound_Manager>();
-        Bullet_Spawn = transform.GetChild(0).gameObject;
+        Bullet_Spawn = transform.GetChild(0);
     }
 
 
@@ -32,9 +32,10 @@ public class Item_Firearm : Item
     //##########################################################################################
 
     public GameObject Bullet; // Bullet prefab
-    public float Bleeding; // Bleeding caused by a shot
-    public float Gun_Failure; // Chance that an empty bullet shell causes the gun to stop working
-    public float Ammo_Failure; // Chance that ammunition fails
+    public float Bleeding = 20f; // Bleeding caused by a shot
+    public float Gun_Failure = 0.01f; // Chance that an empty bullet shell causes the gun to stop working
+    public float Ammo_Failure = 0.01f; // Chance that ammunition fails
+    public float Bullet_Speed = 5f;
 
 
     //##########################################################################################
@@ -45,6 +46,9 @@ public class Item_Firearm : Item
     public override bool Primary ()
     {
         Sound_Manager.Play("Fire");
+        var bullet = Instantiate(Bullet, Bullet_Spawn.position, Bullet_Spawn.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = Bullet_Spawn.TransformDirection(new Vector3(-Bullet_Speed, 0f, 0f));
+        //bullet.GetComponent<Projectile_Bullet>().Damage = Damage;
         return true;
     }
 
