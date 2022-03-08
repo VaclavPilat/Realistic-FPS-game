@@ -40,3 +40,11 @@ public enum Game_Mode
     TDM, // Team deathmatch
     KOTH // King of the hill
 }
+
+// Fire modes for firearms
+public enum Firearm_Mode
+{
+    Action, // User has to manually reload the weapon between shots
+    Semi, // Semi-automatic fire - one click, one shot, waiting for trigger reset
+    Auto // Full-automatic fire
+}

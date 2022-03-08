@@ -163,6 +163,7 @@ MonoBehaviour:
   Usage: 2
   Switchable: 0
   Default_Rotation: {x: 0, y: 90, z: 0}
+  Mode: 2
   Bullet: {fileID: 7475580959876285859, guid: 29834ffdf01018ddb890a7918354b9bd, type: 3}
   Bleeding: 20
   Gun_Failure: 0.01

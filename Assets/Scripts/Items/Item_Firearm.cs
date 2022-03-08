@@ -24,13 +24,16 @@ public class Item_Firearm : Item
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private bool Bullet_In_Chamber; // Bullet in chamber?
+    private bool Bullet_In_Chamber = false; // Bullet in chamber?
+    private bool Ammo_Failed = false; // Did the ammunition fail to shoot?
+    private bool Casing_Stuck = false; // Is the bullet case stuck in the chamber, making the gun unable to shoot?
 
 
     //##########################################################################################
     //##################################  PUBLIC VARIABLES  ####################################
     //##########################################################################################
 
+    public Firearm_Mode Mode; // Firearm firing mode
     public GameObject Bullet; // Bullet prefab
     public float Bleeding = 20f; // Bleeding caused by a shot
     public float Gun_Failure = 0.01f; // Chance that an empty bullet shell causes the gun to stop working
@@ -47,12 +50,9 @@ public class Item_Firearm : Item
     {
         if(Bullet_In_Chamber)
         {
-            Sound_Manager.Play("Fire");
-            GameObject bullet = Instantiate(Bullet, Bullet_Spawn);
-            bullet.transform.SetParent(null);
-            bullet.GetComponent<Rigidbody>().velocity = Bullet_Spawn.TransformDirection(new Vector3(-Bullet_Speed, 0f, 0f));
-            //bullet.GetComponent<Projectile_Bullet>().Damage = Damage;
-            Bullet_In_Chamber = false;
+            Shoot();
+            if(Mode == Firearm_Mode.Semi || Mode == Firearm_Mode.Auto)
+                Reload();
             return true;
         }
         else
@@ -82,6 +82,17 @@ public class Item_Firearm : Item
     public override bool Stash () 
     {
         return true;
+    }
+
+    // Shooting
+    private void Shoot ()
+    {
+        Sound_Manager.Play("Fire");
+        GameObject bullet = Instantiate(Bullet, Bullet_Spawn);
+        bullet.transform.SetParent(null);
+        bullet.GetComponent<Rigidbody>().velocity = Bullet_Spawn.TransformDirection(new Vector3(-Bullet_Speed, 0f, 0f));
+        //bullet.GetComponent<Projectile_Bullet>().Damage = Damage;
+        Bullet_In_Chamber = false;
     }
 
 
