@@ -30,7 +30,7 @@
         },
         {
             "Name":"Game_Sound",
-            "Description": "In-game music volume",
+            "Description": "In-game sound volume",
             "Type": "float",
             "Check": "0|1|0.05",
             "Value": "1"

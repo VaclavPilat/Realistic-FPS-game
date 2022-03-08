@@ -7,6 +7,20 @@ using System;
 public class Item_Firearm : Item
 {
     //##########################################################################################
+    //######################################  COMPONENTS  ######################################
+    //##########################################################################################
+
+    private Sound_Manager Sound_Manager; // Sound manager
+    private GameObject Bullet_Spawn; // Place where a bullet spawns
+    
+    private void Awake () 
+    {
+        Sound_Manager = GetComponent<Sound_Manager>();
+        Bullet_Spawn = transform.GetChild(0).gameObject;
+    }
+
+
+    //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
@@ -30,6 +44,7 @@ public class Item_Firearm : Item
     // Shooting
     public override bool Primary ()
     {
+        Sound_Manager.Play("Fire");
         return true;
     }
 
