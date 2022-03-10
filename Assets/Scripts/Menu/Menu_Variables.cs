@@ -85,10 +85,7 @@ public class Menu_Variables : MonoBehaviour
     {
         if(Switchable && Input.GetKeyDown(KeyCode.Escape))
         {
-            if(Visible)
-                Visible = false;
-            else
-                Visible = true;
+            Visible = !Visible;
             Update_Visibility();
         }
     }

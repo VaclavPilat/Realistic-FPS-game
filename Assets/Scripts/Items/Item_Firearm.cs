@@ -31,6 +31,9 @@ public class Item_Firearm : Item
     private bool Ammo_Failed = false; // Did the ammunition fail to shoot?
     private bool Casing_Stuck = false; // Is the bullet case stuck in the chamber, making the gun unable to shoot?
 
+    private bool Trigger_Reset = true; // Is the trigger reset?
+    private float Trigger_Pressed = 0f; // Time since the last trigger press
+
 
     //##########################################################################################
     //##################################  PUBLIC VARIABLES  ####################################
@@ -48,13 +51,31 @@ public class Item_Firearm : Item
     //#####################################  SCRIPT FLOW  ######################################
     //##########################################################################################
 
+    // Resetting trigger for not-full-auto firearms
+    private void FixedUpdate ()
+    {
+        if(transform.parent != null && Mode != Firearm_Mode.Auto)
+        {
+            // Chacking if there is a delay after the last time the trigger was pulled
+            if(Time.fixedTime > (Trigger_Pressed + 2*Time.fixedDeltaTime))
+                Trigger_Reset = true;
+            else
+                Trigger_Reset = false;
+        }
+    }
+
     // Shooting
     public override bool Primary ()
     {
+        Trigger_Pressed = Time.fixedTime;
         bool value = Shoot();
-        if(Mode == Firearm_Mode.Semi || Mode == Firearm_Mode.Auto)
-            if(value)
+        if(value)
+        {
+            if(Mode == Firearm_Mode.Semi || Mode == Firearm_Mode.Auto)
                 Reload();
+            if(Mode == Firearm_Mode.Auto)
+                Trigger_Reset = true;
+        }
         return value;
     }
 
@@ -136,6 +157,12 @@ public class Item_Firearm : Item
             Console.Log(this, "No ammo in chamber");
             return false;
         }
+        // Ammo not in chamber
+        if(!Trigger_Reset)
+        {
+            Console.Log(this, "Trigger is not reset");
+            return false;
+        }
         // Ammo failure chance
         if(Random.Range(0f, 1f) <= Ammo_Failure)
         {
@@ -153,6 +180,7 @@ public class Item_Firearm : Item
             //bullet.GetComponent<Projectile_Bullet>().Damage = Damage;
             Ammo_In_Chamber = false;
             Casing_In_Chamber = true;
+            Trigger_Reset = false;
             return true;
         }
     }
