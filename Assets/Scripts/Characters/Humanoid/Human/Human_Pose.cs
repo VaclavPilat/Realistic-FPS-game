@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Setting pose
-public class Human_Pose : MonoBehaviour
+public class Human_Pose : Lockable_Script
 {
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################

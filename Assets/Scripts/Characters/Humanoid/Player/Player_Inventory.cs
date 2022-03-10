@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 
 // Inventory
-public class Player_Inventory : MonoBehaviour
+public class Player_Inventory : Lockable_Script
 {
     //##########################################################################################
     //######################################  COMPONENTS  ######################################

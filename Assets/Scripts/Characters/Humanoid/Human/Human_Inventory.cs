@@ -5,7 +5,7 @@ using System.Linq;
 using Random = System.Random;
 
 // Inventory
-public class Human_Inventory : MonoBehaviour
+public class Human_Inventory : Lockable_Script
 {
     //##########################################################################################
     //######################################  COMPONENTS  ######################################

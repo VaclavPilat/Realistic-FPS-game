@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 
-public class Player_Keybinds : MonoBehaviour
+public class Player_Keybinds : Lockable_Script
 {
     //##########################################################################################
     //######################################  COMPONENTS  ######################################

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Controlling the current item
-public class Human_Item : MonoBehaviour
+public class Human_Item : Lockable_Script
 {
     //##########################################################################################
     //######################################  COMPONENTS  ######################################

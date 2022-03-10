@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Tracks current health state
-public class Human_Health : MonoBehaviour
+public class Human_Health : Lockable_Script
 {
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################

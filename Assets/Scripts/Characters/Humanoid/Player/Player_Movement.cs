@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player_Movement : MonoBehaviour
+public class Player_Movement : Lockable_Script
 {
     //##########################################################################################
     //######################################  COMPONENTS  ######################################

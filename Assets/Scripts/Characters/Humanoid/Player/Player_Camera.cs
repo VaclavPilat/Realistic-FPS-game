@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Camera : MonoBehaviour
+public class Player_Camera : Lockable_Script
 {
     //##########################################################################################
     //######################################  COMPONENTS  ######################################

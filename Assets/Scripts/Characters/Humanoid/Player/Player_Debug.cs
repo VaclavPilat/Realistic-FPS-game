@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 
 // Allows showing debugging info from each script on the current player
-public class Player_Debug : MonoBehaviour
+public class Player_Debug : Lockable_Script
 {
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
