@@ -53,7 +53,7 @@ public class Item_Firearm : Item
     {
         bool value = Shoot();
         if(Mode == Firearm_Mode.Semi || Mode == Firearm_Mode.Auto)
-            if(!Ammo_Failed)
+            if(value)
                 Reload();
         return value;
     }
