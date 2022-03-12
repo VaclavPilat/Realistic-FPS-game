@@ -11,17 +11,17 @@ public class Human_Inventory : Lockable_Script
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    private Camera Camera; // Camera ##################################################################################################################
-    private Transform Item_Position; // Transform of item position
-
-    private void Awake () 
-    {
-        Camera = transform.GetComponent<Player_Camera>().Camera;
-        Item_Position = Camera.transform.Find("Item");
-    }
+    private Human_Camera Human_Camera;
+    private void Awake () => Human_Camera = GetComponent<Human_Camera>();
 
     public GameObject Tablet; // Tablet prefab
     private void Start () => Pickup(Instantiate(Tablet));
+
+    //##########################################################################################
+    //#############################  PRIVATE METHODS / VARIABLES  ##############################
+    //##########################################################################################
+
+    private float Throw_Force = 600f; // Throw force
 
 
     //##########################################################################################
@@ -31,7 +31,6 @@ public class Human_Inventory : Lockable_Script
     [HideInInspector] public GameObject Current_Item = null; // Current selected item
     [HideInInspector] public GameObject Last_Item = null; // Last used item
     [HideInInspector] public List<GameObject> Inventory = new List<GameObject>(); // List of all items in inventory
-    public float Throw_Force = 600f; // Throw force
 
 
     //##########################################################################################
@@ -62,8 +61,8 @@ public class Human_Inventory : Lockable_Script
         item.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         item.GetComponent<Collider>().enabled = false;
         item.GetComponent<Rigidbody>().isKinematic = true;
-        item.transform.position = Item_Position.position;
-        item.transform.parent = Item_Position;
+        item.transform.position = Human_Camera.Item_Position.position;
+        item.transform.parent = Human_Camera.Item_Position;
         item.transform.localEulerAngles = item.GetComponent<Item>().Default_Rotation;
     }
 
@@ -95,7 +94,7 @@ public class Human_Inventory : Lockable_Script
         item.GetComponent<Collider>().enabled = true;
         item.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         item.transform.parent = null;
-        item.GetComponent<Rigidbody>().AddForce(Camera.transform.forward * multiplier * Throw_Force); // Throwing the item with a force in the direction camera is looking at
+        item.GetComponent<Rigidbody>().AddForce(Human_Camera.Camera.transform.forward * multiplier * Throw_Force); // Throwing the item with a force in the direction Human_Camera.Camera is looking at
         Random rand = new Random();
         item.transform.localRotation *= Quaternion.Euler(rand.Next(-10, 10), rand.Next(-10, 10), rand.Next(-10, 10)); // Giving the object random rotation
     }

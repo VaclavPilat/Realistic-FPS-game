@@ -8,10 +8,14 @@ public class Player_Camera : Lockable_Script
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
+    private Human_Camera Human_Camera; // Human Camera script
     private Menu_Variables Menu_Variables; // Menu variables (for checking if player is allowed to do anything)
-    private void Awake () => Menu_Variables = GameObject.Find("/Menu").GetComponent<Menu_Variables>();
-
-    public Camera Camera;
+    
+    private void Awake () 
+    {
+        Human_Camera = GetComponent<Human_Camera>();
+        Menu_Variables = GameObject.Find("/Menu").GetComponent<Menu_Variables>();
+    }
 
     
     //##########################################################################################
@@ -52,12 +56,12 @@ public class Player_Camera : Lockable_Script
             transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Sensitivity * Time.fixedDeltaTime);
     }
 
-    // ROTATING CAMERA
+    // ROTATING Human_Camera.Camera
     private void Rotate_Camera ()
     {
         vertical_rotation -= Input.GetAxis("Mouse Y") * Sensitivity * Time.fixedDeltaTime;
         vertical_rotation = Mathf.Clamp(vertical_rotation, -Vertical, Vertical); // Clamping rotation so the player will not be able to look behind
-        Camera.transform.localRotation = Quaternion.Euler(vertical_rotation, 0.0f, 0.0f); // Applying vertical rotation to the Camera
+        Human_Camera.Camera.transform.localRotation = Quaternion.Euler(vertical_rotation, 0.0f, 0.0f); // Applying vertical rotation to the Camera
     }
 
 
@@ -71,7 +75,7 @@ public class Player_Camera : Lockable_Script
         output += "Sensitivity: " + Sensitivity.ToString() + "\n";
         output += "Rotation limit (±): ↕ " + Vertical.ToString() + "°; ↔ " + ((Horizontal < 0) ? "none" : Horizontal.ToString() + "°") + "\n";
         output += "Player rotation: " + transform.rotation.eulerAngles.ToString() + " deg\n";
-        output += "Camera rotation: " + Camera.transform.localRotation.eulerAngles.ToString() + " deg\n";
+        output += "Camera rotation: " + Human_Camera.Camera.transform.localRotation.eulerAngles.ToString() + " deg\n";
         return output;
     }
 

@@ -12,12 +12,12 @@ public class Player_Inventory : Lockable_Script
     //##########################################################################################
 
     private Human_Inventory Human_Inventory; // Common inventory code
-    private Player_Camera Player_Camera; // Player camera script
+    private Human_Camera Human_Camera; // Player camera script
     
     private void Awake () 
     {
         Human_Inventory = transform.GetComponent<Human_Inventory>();
-        Player_Camera = transform.GetComponent<Player_Camera>();
+        Human_Camera = transform.GetComponent<Human_Camera>();
     }
 
 
@@ -167,7 +167,7 @@ public class Player_Inventory : Lockable_Script
     private GameObject Check_For_Item ()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Player_Camera.Camera.transform.position, Player_Camera.Camera.transform.forward, out hit, Distance, 1 << Item_Layer))
+        if (Physics.Raycast(Human_Camera.Camera.transform.position, Human_Camera.Camera.transform.forward, out hit, Distance, 1 << Item_Layer))
             return hit.transform.gameObject;
         else 
             return null;
