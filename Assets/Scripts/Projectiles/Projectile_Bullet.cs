@@ -26,7 +26,19 @@ public class Projectile_Bullet : MonoBehaviour
     // Despawning bullet after hit
     private void OnCollisionEnter (Collision collision)
     {
-        //Console.Log(this, "HIT " + collision.transform.name);
+        int layer = collision.gameObject.layer;
+        switch(layer)
+        {
+            case 3: // Ground layer
+                Console.Warning(this, "Ground hit");
+                break;
+            case 8: // Character bodypart layer
+                Console.Warning(this, "Character hit - " + collision.transform.name + " (" + collision.transform.root.name + ")");
+                break;
+            default:
+                Console.Warning(this, "hit " + collision.gameObject.name + " = layer " + layer.ToString());
+                break;
+        }
         GameObject.Destroy(gameObject);
     }
 
