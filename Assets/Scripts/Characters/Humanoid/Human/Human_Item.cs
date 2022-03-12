@@ -9,7 +9,7 @@ public class Human_Item : Lockable_Script
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    public Human_Inventory Human_Inventory;
+    private Human_Inventory Human_Inventory;
     private void Awake () => Human_Inventory = transform.GetComponent<Human_Inventory>();
 
 

@@ -11,8 +11,8 @@ public class Player_Inventory : Lockable_Script
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    public Human_Inventory Human_Inventory; // Common inventory code
-    public Player_Camera Player_Camera; // Player camera script
+    private Human_Inventory Human_Inventory; // Common inventory code
+    private Player_Camera Player_Camera; // Player camera script
     
     private void Awake () 
     {
