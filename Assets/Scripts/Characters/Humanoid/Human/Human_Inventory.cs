@@ -14,8 +14,7 @@ public class Human_Inventory : Lockable_Script
     private Human_Camera Human_Camera;
     private void Awake () => Human_Camera = GetComponent<Human_Camera>();
 
-    public GameObject Tablet; // Tablet prefab
-    private void Start () => Pickup(Instantiate(Tablet));
+    public GameObject[] Start_Items; // List of items the player will get
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
@@ -36,6 +35,13 @@ public class Human_Inventory : Lockable_Script
     //##########################################################################################
     //#####################################  SCRIPT FLOW  ######################################
     //##########################################################################################
+
+    // Giving the player all items in the list
+    private void Start ()
+    {
+        foreach(GameObject item in Start_Items)
+            Pickup(Instantiate(item));
+    }
 
     // Sorting inventory
     private void Sort_Inventory () => Inventory = Inventory.OrderBy(item => item.GetComponent<Item>().Category).ToList();

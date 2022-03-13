@@ -9,9 +9,16 @@ public class Player_Movement : Lockable_Script
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    public CharacterController CharacterController;
-    public Transform GroundCheck;
-    public LayerMask Ground;
+    private CharacterController CharacterController; // Character controller
+    private Transform Ground_Check; // Ground check
+    private LayerMask Ground; // Layer mask for ground
+
+    private void Awake ()
+    {
+        CharacterController = GetComponent<CharacterController>();
+        Ground_Check = transform.Find("Ground Check");
+        Ground = LayerMask.GetMask("Ground");
+    }
 
 
     //##########################################################################################
@@ -121,7 +128,7 @@ public class Player_Movement : Lockable_Script
         if (Input_Left && Input_Right)
             Input_Left = Input_Right = false;
         // Gravity
-        Grounded = Physics.CheckSphere(GroundCheck.position, 0.2f, Ground);
+        Grounded = Physics.CheckSphere(Ground_Check.position, 0.2f, Ground);
     }
     
     // Updating variables at the end of FixedUpdate

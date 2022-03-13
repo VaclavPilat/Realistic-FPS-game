@@ -1001,7 +1001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa4c78c9153c6bd38f796f5941d83de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tablet: {fileID: 2142064353797507924, guid: 8f8769eb5a8219588ac35858e35c987c, type: 3}
+  Start_Items:
+  - {fileID: 2142064353797507924, guid: 8f8769eb5a8219588ac35858e35c987c, type: 3}
+  - {fileID: 7414646546418887611, guid: ea0df4e4d835ef6ea9a6fcd8ad407534, type: 3}
   Current_Item: {fileID: 0}
   Last_Item: {fileID: 0}
   Inventory: []

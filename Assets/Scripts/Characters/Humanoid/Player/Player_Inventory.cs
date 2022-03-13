@@ -13,26 +13,21 @@ public class Player_Inventory : Lockable_Script
 
     private Human_Inventory Human_Inventory; // Common inventory code
     private Human_Camera Human_Camera; // Player camera script
+    private LayerMask Item_Layer; // Item layer
     
     private void Awake () 
     {
         Human_Inventory = transform.GetComponent<Human_Inventory>();
         Human_Camera = transform.GetComponent<Human_Camera>();
+        Item_Layer = LayerMask.GetMask("Item");
     }
-
-
-    //##########################################################################################
-    //##################################  PUBLIC VARIABLES  ####################################
-    //##########################################################################################
-
-    public int Item_Layer = 6; // Item layer number
-    public float Distance = 2.5f; // Maximum distance for picking up items
 
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
+    private float Distance = 2.5f; // Maximum distance for picking up items
     private float Charged = 0f; // Amount charged in seconds
     private bool Charging = false; // Is throw being charged?
 
@@ -167,10 +162,16 @@ public class Player_Inventory : Lockable_Script
     private GameObject Check_For_Item ()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Human_Camera.Camera.transform.position, Human_Camera.Camera.transform.forward, out hit, Distance, 1 << Item_Layer))
+        if (Physics.Raycast(Human_Camera.Camera.transform.position, Human_Camera.Camera.transform.forward, out hit, Distance, Item_Layer))
+        {
+            Console.Warning(this, hit.transform.name);
             return hit.transform.gameObject;
+        }
         else 
+        {
+            Console.Warning(this, "nic");
             return null;
+        }
     }
 
 
