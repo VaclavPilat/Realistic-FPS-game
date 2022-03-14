@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 // Tracks current health state
 public class Human_Health : Lockable_Script
@@ -37,6 +38,46 @@ public class Human_Health : Lockable_Script
     {
         // Setting blood volume
         Blood = Maximum_Blood;
+    }
+
+    // Updating health
+    private void FixedUpdate () => Bleed();
+
+    // Bleeding
+    private void Bleed ()
+    {
+        if(Blood > 0f)
+            Blood -= Bleeding * Time.fixedDeltaTime;
+        else
+        {
+            Die();
+            Blood = 0f;
+            Bleeding = 0f;
+        }
+    }
+
+    // Causing pain on a selected body part
+    public void Cause_Pain (Collider collider, float amount)
+    {
+
+    }
+
+    // Causing damage with pain on a selected body part
+    public void Cause_Damage (Collider collider, float amount)
+    {
+        if(Array.IndexOf(Head, collider) > -1) // Hit in the head
+        {
+            Die();
+        }
+        Bleeding += amount;
+    }
+
+    // Dying
+    private void Die ()
+    {
+        Alive = false;
+        Console.Log(this, "DEAD");
+        GameObject.Destroy(this);
     }
 
 

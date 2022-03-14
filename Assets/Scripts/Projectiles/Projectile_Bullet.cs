@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Projectile_Bullet : MonoBehaviour
 {
@@ -30,9 +31,13 @@ public class Projectile_Bullet : MonoBehaviour
         switch(layer)
         {
             case 3: // Ground layer
-                Console.Warning(this, "Ground hit");
                 break;
             case 8: // Character bodypart layer
+                try
+                {
+                    collision.transform.root.GetComponent<Human_Health>().Cause_Damage(collision.collider, 1000f);
+                }
+                catch (Exception e) {}
                 Console.Warning(this, "Character hit - " + collision.transform.name + " (" + collision.transform.root.name + ")");
                 break;
             default:
