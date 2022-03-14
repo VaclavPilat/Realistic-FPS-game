@@ -12,8 +12,14 @@ public class Human_Health : Lockable_Script
     private float Maximum_Blood = 5000f; // Maximum blood amount in milileters
     private float Blood = 0f; // Current amount of blood in milileters
     private float Bleeding = 0f; // Bleeding speed (ml/s)
-
-    private void Awake () => Blood = Maximum_Blood;
+    
+    // List of colliders
+    [SerializeField] private Collider[] Head; 
+    [SerializeField] private Collider[] Left_Arm; 
+    [SerializeField] private Collider[] Right_Arm; 
+    [SerializeField] private Collider[] Chest;
+    [SerializeField] private Collider[] Left_Leg;
+    [SerializeField] private Collider[] Right_Leg;
 
 
     //##########################################################################################
@@ -21,6 +27,17 @@ public class Human_Health : Lockable_Script
     //##########################################################################################
     
     public bool Alive = true; // Is character alive?
+
+
+    //##########################################################################################
+    //#####################################  SCRIPT FLOW  ######################################
+    //##########################################################################################
+
+    private void Awake () 
+    {
+        // Setting blood volume
+        Blood = Maximum_Blood;
+    }
 
 
     //##########################################################################################

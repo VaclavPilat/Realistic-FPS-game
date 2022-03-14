@@ -1019,6 +1019,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a9a5bb2eda5642db2f67e83daa00da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Head:
+  - {fileID: 2309058062720511805}
+  - {fileID: 2309058062720511794}
+  Left_Arm:
+  - {fileID: 2309058062720511809}
+  - {fileID: 2309058062720511814}
+  - {fileID: 2309058062720511815}
+  Right_Arm:
+  - {fileID: 2309058062720511812}
+  - {fileID: 2309058062720511813}
+  - {fileID: 2309058062720511802}
+  Chest:
+  - {fileID: 2309058062720511831}
+  Left_Leg:
+  - {fileID: 2309058062720511821}
+  - {fileID: 2309058062720511810}
+  - {fileID: 2309058062720511823}
+  Right_Leg:
+  - {fileID: 2309058062720511817}
+  - {fileID: 2309058062720511819}
+  - {fileID: 2309058062720511829}
   Alive: 1
 --- !u!1 &3231128847897390562
 GameObject:
