@@ -30,8 +30,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fc976dad182c02084700bd09d09baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_Layer: 6
-  Distance: 2.5
 --- !u!114 &4101690706884351802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,11 +42,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c594bdf1d828dbd599a05fd96d5664f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterController: {fileID: 4903263924102906697}
-  GroundCheck: {fileID: 6368152404578752590}
-  Ground:
-    serializedVersion: 2
-    m_Bits: 8
   Position: {x: 0, y: 0, z: 0}
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &4690142824389393078
@@ -178,6 +171,10 @@ PrefabInstance:
     - target: {fileID: 3227398418548134496, guid: faba5498e04595fbda6b52de2d128ebf, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270070302056381970, guid: faba5498e04595fbda6b52de2d128ebf, type: 3}
+      propertyPath: m_Depth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7270070302056381970, guid: faba5498e04595fbda6b52de2d128ebf, type: 3}
       propertyPath: m_Enabled

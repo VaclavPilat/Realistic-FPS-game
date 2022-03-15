@@ -163,15 +163,9 @@ public class Player_Inventory : Lockable_Script
     {
         RaycastHit hit;
         if (Physics.Raycast(Human_Camera.Camera.transform.position, Human_Camera.Camera.transform.forward, out hit, Distance, Item_Layer))
-        {
-            Console.Warning(this, hit.transform.name);
             return hit.transform.gameObject;
-        }
         else 
-        {
-            Console.Warning(this, "nic");
             return null;
-        }
     }
 
 
