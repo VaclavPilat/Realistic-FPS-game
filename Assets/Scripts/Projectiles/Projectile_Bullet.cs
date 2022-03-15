@@ -36,9 +36,12 @@ public class Projectile_Bullet : MonoBehaviour
                 try
                 {
                     collision.transform.root.GetComponent<Human_Health>().Cause_Damage(collision.collider, 1000f);
+                    Console.Log(this, "Character hit - " + collision.transform.name + " (" + collision.transform.root.name + ")");
                 }
-                catch (Exception e) {}
-                Console.Warning(this, "Character hit - " + collision.transform.name + " (" + collision.transform.root.name + ")");
+                catch (Exception e) 
+                {
+                    Console.Warning(this, "An error occured while hitting collider '" + collision.transform.name + "'");
+                }
                 break;
             default:
                 Console.Warning(this, "hit " + collision.gameObject.name + " = layer " + layer.ToString());

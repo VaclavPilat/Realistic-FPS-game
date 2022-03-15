@@ -7,6 +7,13 @@ using System;
 public class Human_Health : Lockable_Script
 {
     //##########################################################################################
+    //######################################  COMPONENTS  ######################################
+    //##########################################################################################
+
+    private Human_Ragdoll Human_Ragdoll; // Human Ragdoll script
+
+    
+    //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
@@ -36,6 +43,7 @@ public class Human_Health : Lockable_Script
 
     private void Awake () 
     {
+        Human_Ragdoll = GetComponent<Human_Ragdoll>();
         // Setting blood volume
         Blood = Maximum_Blood;
     }
@@ -82,7 +90,8 @@ public class Human_Health : Lockable_Script
     {
         Alive = false;
         Console.Log(this, "DEAD");
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        Human_Ragdoll.Enable();
     }
 
 
