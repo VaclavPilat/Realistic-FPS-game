@@ -46,6 +46,9 @@ public class Human_Health : Lockable_Script
     // Bleeding
     private void Bleed ()
     {
+        if(Bleeding <= 0f)
+            return;
+        // Subtracting certain amount of blood each fixed frame
         if(Blood > 0f)
             Blood -= Bleeding * Time.fixedDeltaTime;
         else
@@ -59,16 +62,18 @@ public class Human_Health : Lockable_Script
     // Causing pain on a selected body part
     public void Cause_Pain (Collider collider, float amount)
     {
-
+        if(!Alive)
+            return;
     }
 
     // Causing damage with pain on a selected body part
     public void Cause_Damage (Collider collider, float amount)
     {
-        if(Array.IndexOf(Head, collider) > -1) // Hit in the head
-        {
+        if(!Alive)
+            return;
+        // Taking damage based on affected collider
+        if(Array.IndexOf(Head, collider) > -1) // Hit in the head = instant death
             Die();
-        }
         Bleeding += amount;
     }
 
@@ -77,7 +82,7 @@ public class Human_Health : Lockable_Script
     {
         Alive = false;
         Console.Log(this, "DEAD");
-        GameObject.Destroy(this);
+        Destroy(gameObject);
     }
 
 
