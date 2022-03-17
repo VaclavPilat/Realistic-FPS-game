@@ -89,7 +89,7 @@ public class Menu_Settings : MonoBehaviour
         Create_Title(setting, row);
         // Setting up slider
         GameObject input = Instantiate(Find_Prefab("Slider"), row.transform);
-        var slider = input.GetComponent<Slider>();
+        Slider slider = input.GetComponent<Slider>();
         string[] check = setting.Check.Split('|');
         slider.minValue = float.Parse(check[0]);
         slider.maxValue = float.Parse(check[1]);
@@ -108,6 +108,14 @@ public class Menu_Settings : MonoBehaviour
         Create_Title(setting, row);
         // Setting up selection box
         GameObject input = Instantiate(Find_Prefab("Selection"), row.transform);
+        Dropdown dropdown = input.GetComponent<Dropdown>();
+        foreach(string text in setting.Check.Split('|'))
+        {
+            var option = new Dropdown.OptionData();
+            option.text = text;
+            dropdown.options.Add(option);
+        }
+        dropdown.value = int.Parse(setting.Value);
     }
 
     // Generating slider with a description label
