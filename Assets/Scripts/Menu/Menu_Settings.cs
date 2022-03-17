@@ -96,7 +96,7 @@ public class Menu_Settings : MonoBehaviour
         slider.value = float.Parse(setting.Value);
         // On edit action
         slider.onValueChanged.AddListener(delegate { 
-            int index = slider.transform.parent.GetSiblingIndex();
+            int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
         });
@@ -116,6 +116,12 @@ public class Menu_Settings : MonoBehaviour
             dropdown.options.Add(option);
         }
         dropdown.value = int.Parse(setting.Value);
+        // On edit action
+        dropdown.onValueChanged.AddListener(delegate { 
+            int index = row.transform.GetSiblingIndex();
+            Config_Loader.Config[Name][index].Value = dropdown.value.ToString();
+            Config_Loader.Save(Name); 
+        });
     }
 
     // Generating slider with a description label
