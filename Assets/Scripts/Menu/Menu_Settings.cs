@@ -16,6 +16,7 @@ public class Menu_Settings : MonoBehaviour
     private GameObject Slider; // Slider input
     private GameObject InputField; // Text input field
     private GameObject Button; // Button
+    private GameObject Selection; // Selection (dropdown?)
 
     // Getting input prefabs from resources
     private void Awake ()
@@ -25,6 +26,7 @@ public class Menu_Settings : MonoBehaviour
         Slider       = Resources.Load<GameObject>("Settings/Slider");
         InputField   = Resources.Load<GameObject>("Settings/InputField");
         Button       = Resources.Load<GameObject>("Settings/Button");
+        Selection    = Resources.Load<GameObject>("Settings/Selection");
     }
 
 
@@ -64,6 +66,9 @@ public class Menu_Settings : MonoBehaviour
                     case "keybind": // Generating keybinds
                         Generate_Keybind(setting, row);
                         break;
+                    case "selection": // Showing boxes withc selection (dropdowns?)
+                        Generate_Selection(setting, row);
+                        break;
                     default:
                         break;
                 }
@@ -79,12 +84,18 @@ public class Menu_Settings : MonoBehaviour
         transform.GetComponent<Menu_Scrollview>().Resize();
     }
 
-    // Generating slider with a description label
-    private void Generate_Slider (Setting setting, GameObject row)
+    // Generating a label that contains text description of the setting
+    private void Create_Title (Setting setting, GameObject row)
     {
         // Setting up label
         GameObject label = Instantiate(Description, row.transform);
         label.GetComponent<Text>().text = setting.Description;
+    }
+
+    // Generating slider with a description label
+    private void Generate_Slider (Setting setting, GameObject row)
+    {
+        Create_Title(setting, row);
         // Setting up slider
         GameObject input = Instantiate(Slider, row.transform);
         var slider = input.GetComponent<Slider>();
@@ -98,6 +109,14 @@ public class Menu_Settings : MonoBehaviour
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
         });
+    }
+
+    // Generating a selection box (dropdown?)
+    private void Generate_Selection (Setting setting, GameObject row)
+    {
+        Create_Title(setting, row);
+        // Setting up selection box
+        GameObject input = Instantiate(Selection, row.transform);
     }
 
     // Generating slider with a description label

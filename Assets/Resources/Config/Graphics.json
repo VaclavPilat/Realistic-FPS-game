@@ -1,0 +1,11 @@
+{
+    "Items": [
+        {
+            "Name":"Quality",
+            "Description": "Quality",
+            "Type": "selection",
+            "Check": "Very Low|Low|Medium|High|Very High|Ultra",
+            "Value": "0"
+        }
+    ]
+}
