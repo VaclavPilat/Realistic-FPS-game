@@ -58,7 +58,7 @@ public class Menu_Settings : MonoBehaviour
                 // Setting correct input type
                 switch(setting.Type)
                 {
-                    case "float": // Showing sliders for float values
+                    case "slider": // Showing sliders for float values
                         Generate_Slider(setting, row);
                         break;
                     case "keybind": // Generating keybinds
