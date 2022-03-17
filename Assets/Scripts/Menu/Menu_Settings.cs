@@ -11,23 +11,8 @@ public class Menu_Settings : MonoBehaviour
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    private GameObject Row; // Row prefab
-    private GameObject Description; // Label
-    private GameObject Slider; // Slider input
-    private GameObject InputField; // Text input field
-    private GameObject Button; // Button
-    private GameObject Selection; // Selection (dropdown?)
-
-    // Getting input prefabs from resources
-    private void Awake ()
-    {
-        Row          = Resources.Load<GameObject>("Settings/Row");
-        Description  = Resources.Load<GameObject>("Settings/Description");
-        Slider       = Resources.Load<GameObject>("Settings/Slider");
-        InputField   = Resources.Load<GameObject>("Settings/InputField");
-        Button       = Resources.Load<GameObject>("Settings/Button");
-        Selection    = Resources.Load<GameObject>("Settings/Selection");
-    }
+    private GameObject[] Prefabs; // Array of loaded setting prefabs
+    private void Awake () => Prefabs = Resources.LoadAll<GameObject>("Settings/");
 
 
     //##########################################################################################
@@ -48,6 +33,12 @@ public class Menu_Settings : MonoBehaviour
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
 
+    // Attempts to find a setting prefab by name
+    private GameObject Find_Prefab (string name)
+    {
+        return Array.Find(Prefabs, g => g.name == name);
+    }
+
     // Generates UI for each setting found
     private void Create_UI ()
     {
@@ -56,7 +47,7 @@ public class Menu_Settings : MonoBehaviour
         {
             try
             {
-                GameObject row = Instantiate(Row, transform);
+                GameObject row = Instantiate(Find_Prefab("Row"), transform);
                 // Setting correct input type
                 switch(setting.Type)
                 {
@@ -88,7 +79,7 @@ public class Menu_Settings : MonoBehaviour
     private void Create_Title (Setting setting, GameObject row)
     {
         // Setting up label
-        GameObject label = Instantiate(Description, row.transform);
+        GameObject label = Instantiate(Find_Prefab("Description"), row.transform);
         label.GetComponent<Text>().text = setting.Description;
     }
 
@@ -97,7 +88,7 @@ public class Menu_Settings : MonoBehaviour
     {
         Create_Title(setting, row);
         // Setting up slider
-        GameObject input = Instantiate(Slider, row.transform);
+        GameObject input = Instantiate(Find_Prefab("Slider"), row.transform);
         var slider = input.GetComponent<Slider>();
         string[] check = setting.Check.Split('|');
         slider.minValue = float.Parse(check[0]);
@@ -116,28 +107,28 @@ public class Menu_Settings : MonoBehaviour
     {
         Create_Title(setting, row);
         // Setting up selection box
-        GameObject input = Instantiate(Selection, row.transform);
+        GameObject input = Instantiate(Find_Prefab("Selection"), row.transform);
     }
 
     // Generating slider with a description label
     private void Generate_Keybind (Setting setting, GameObject row)
     {
         // Keybind description
-        GameObject description = Instantiate(InputField, row.transform);
+        GameObject description = Instantiate(Find_Prefab("InputField"), row.transform);
         description.GetComponent<InputField>().text = setting.Description;
         description.transform.GetChild(0).GetComponent<Text>().fontStyle = FontStyle.Bold;
         // Keycode
-        GameObject keycode = Instantiate(Button, row.transform);
+        GameObject keycode = Instantiate(Find_Prefab("Button"), row.transform);
         keycode.transform.GetChild(0).GetComponent<Text>().text = ((KeyCode)int.Parse(setting.Name)).ToString();
         // KeyDown actions
         string[] actions = setting.Value.Split('|');
-        GameObject keydown = Instantiate(InputField, row.transform);
+        GameObject keydown = Instantiate(Find_Prefab("InputField"), row.transform);
         keydown.GetComponent<InputField>().text = actions[0];
         // Key actions
-        GameObject key = Instantiate(InputField, row.transform);
+        GameObject key = Instantiate(Find_Prefab("InputField"), row.transform);
         key.GetComponent<InputField>().text = actions[1];
         // KeyUp actions
-        GameObject keyup = Instantiate(InputField, row.transform);
+        GameObject keyup = Instantiate(Find_Prefab("InputField"), row.transform);
         keyup.GetComponent<InputField>().text = actions[2];
         // Adding script for handling keybinds
         row.AddComponent<Menu_Keybind>();
