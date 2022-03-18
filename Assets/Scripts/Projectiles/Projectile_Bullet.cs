@@ -35,8 +35,8 @@ public class Projectile_Bullet : MonoBehaviour
             case 8: // Character bodypart layer
                 try
                 {
-                    collision.transform.root.GetComponent<Human_Health>().Cause_Damage(collision.collider, 1000f);
-                    Console.Log(this, "Character hit - " + collision.transform.name + " (" + collision.transform.root.name + ")");
+                    collision.transform.root.GetComponent<Human_Health>().Cause_Damage(collision.collider, 0f);
+                    Console.Warning(this, "Character hit - " + collision.transform.name + " (" + collision.transform.root.name + ")");
                 }
                 catch
                 {
