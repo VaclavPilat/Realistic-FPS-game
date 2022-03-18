@@ -64,6 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3523684097198039457}
+  - {fileID: 470735508904921258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,8 +164,9 @@ MonoBehaviour:
   Usage: 2
   Switchable: 1
   Default_Rotation: {x: 0, y: 90, z: 0}
-  Mode: 0
   Bullet: {fileID: 7475580959876285859, guid: 29834ffdf01018ddb890a7918354b9bd, type: 3}
+  Bullet_Casing: {fileID: 1328643358549092255, guid: 7f4246238411fbe37baadc3735556b13, type: 3}
+  Mode: 0
   Bleeding: 20
   Gun_Failure: 0.01
   Ammo_Failure: 0.01
@@ -191,3 +193,33 @@ MonoBehaviour:
     Autoplay: 0
     Source: {fileID: 0}
   Is_Menu: 0
+--- !u!1 &5510791440867615117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470735508904921258}
+  m_Layer: 6
+  m_Name: Bullet Casing Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &470735508904921258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510791440867615117}
+  m_LocalRotation: {x: 0.000000059604645, y: 0.00000004371139, z: -4.57732e-15, w: 1}
+  m_LocalPosition: {x: -0.0291, y: 0.0706, z: 0.0422}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2982183506527320299}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

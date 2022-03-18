@@ -13,12 +13,17 @@ public class Item_Firearm : Item
 
     private Sound_Manager Sound_Manager; // Sound manager
     private Transform Bullet_Spawn; // Place where a bullet spawns
+    private Transform Bullet_Casing_Spawn; // Place where a bullet spawns
     
     private void Awake () 
     {
         Sound_Manager = GetComponent<Sound_Manager>();
         Bullet_Spawn = transform.GetChild(0);
+        Bullet_Casing_Spawn = transform.GetChild(1);
     }
+
+    public GameObject Bullet; // Bullet prefab
+    public GameObject Bullet_Casing; // Bullet casing prefab
 
 
     //##########################################################################################
@@ -40,7 +45,6 @@ public class Item_Firearm : Item
     //##########################################################################################
 
     public Firearm_Mode Mode; // Firearm firing mode
-    public GameObject Bullet; // Bullet prefab
     public float Bleeding = 20f; // Bleeding caused by a shot
     public float Gun_Failure = 0.01f; // Chance that an empty bullet shell causes the gun to stop working
     public float Ammo_Failure = 0.01f; // Chance that ammunition fails
@@ -94,11 +98,21 @@ public class Item_Firearm : Item
     // Reloading the weapon - getting new ammo into the chamber
     public override bool Reload () 
     {
+        GameObject casing = null;
+        if(Casing_In_Chamber || Ammo_In_Chamber)
+        {
+            if(Bullet_Casing_Spawn.childCount == 0)
+                casing = Instantiate(Bullet_Casing, Bullet_Casing_Spawn);
+            else
+                casing = Bullet_Casing_Spawn.GetChild(0).gameObject;
+        }
         // Fixing issue with stuck ammo casing
         if(Casing_Stuck)
         {
             if(Random.Range(0f, 1f) <= 0.8f)
             {
+                if(Casing_In_Chamber || Ammo_In_Chamber)
+                    Move_Casing(casing);
                 Console.Log(this, "Ammo casing unstuck");
                 Casing_Stuck = false;
                 Casing_In_Chamber = false;
@@ -121,6 +135,8 @@ public class Item_Firearm : Item
             }
             else // Old casing out, new ammo in
             {
+                if(Casing_In_Chamber || Ammo_In_Chamber)
+                    Move_Casing(casing);
                 Console.Log(this, "New ammo loaded");
                 Casing_In_Chamber = false;
                 Ammo_In_Chamber = true;
@@ -128,6 +144,16 @@ public class Item_Firearm : Item
             }
         }
         return true;
+    }
+
+    // Setting the bullet casing in motion
+    private void Move_Casing (GameObject casing)
+    {
+        casing.transform.SetParent(null);
+        casing.GetComponent<Rigidbody>().isKinematic = false;
+        casing.GetComponent<Rigidbody>().useGravity = true;
+        casing.GetComponent<Rigidbody>().AddForce( transform.up * 100f + transform.forward * 100f );
+        Destroy(casing, 5f);
     }
 
     // Getting new magazine or stashing it
