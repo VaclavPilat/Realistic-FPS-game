@@ -10,7 +10,7 @@ public class Global_Settings : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private int Last_Quality = -1; // Last value of graphics quality
+    private int? Last_Quality = null; // Last value of graphics quality
 
 
     //##########################################################################################
@@ -22,7 +22,7 @@ public class Global_Settings : MonoBehaviour
     {
         Config_Loader.Load("Graphics");
         // Starting a coroutine that periodically applies the global settings
-        StartCoroutine(Repeat(2f));
+        StartCoroutine(Repeat(1f));
     }
 
     // Applying global settings
@@ -33,7 +33,7 @@ public class Global_Settings : MonoBehaviour
             // Waiting for a specified amount of time
             yield return new WaitForSecondsRealtime(period);
             // Setting graphics quality
-            Setting setting = Array.Find(Config_Loader.Config["Graphics"], s => s.Name == "Quality");
+            Setting setting = Config_Loader.Get("Graphics", "Quality");
             if(setting != null)
             {
                 int index = int.Parse(setting.Value);

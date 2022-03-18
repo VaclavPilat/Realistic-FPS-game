@@ -81,4 +81,10 @@ public static class Config_Loader
         Console.Log(null, Prefix + "Data should be saved in '" + filepath + "'");
     }
 
+    // Getting a certain setting by name
+    public static Setting Get (string filename, string settingname)
+    {
+        return Array.Find(Config_Loader.Config[filename], s => s.Name == settingname);
+    }
+
 }

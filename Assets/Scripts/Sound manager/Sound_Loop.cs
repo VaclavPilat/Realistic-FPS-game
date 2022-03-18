@@ -87,7 +87,7 @@ public class Sound_Loop : Sound_List
     // Setting volume
     private void Set_Volume (Sound sound)
     {
-        Setting setting = Array.Find(Config_Loader.Config["Audio"], s => s.Name == (Is_Menu ? "Menu_Music" : "Game_Music"));
+        Setting setting = Config_Loader.Get("Audio", (Is_Menu ? "Menu_Music" : "Game_Music"));
         Source.volume = float.Parse(setting.Value) * sound.Volume;
     }
 

@@ -31,7 +31,7 @@ public class Sound_List : MonoBehaviour
     // Setting master volume
     protected void Update () 
     {
-        AudioListener.volume = float.Parse(Array.Find(Config_Loader.Config["Audio"], s => s.Name == "Master").Value);
+        AudioListener.volume = float.Parse(Config_Loader.Get("Audio", "Master").Value);
     }
 
 }
