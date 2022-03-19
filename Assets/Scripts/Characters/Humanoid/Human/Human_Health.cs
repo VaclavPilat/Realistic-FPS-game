@@ -79,9 +79,19 @@ public class Human_Health : Lockable_Script
     {
         if(!Alive)
             return;
-        // Taking damage based on affected collider
-        if(Array.IndexOf(Head, collider) > -1) // Hit in the head = instant death
+        // Hit in the head = instant death
+        if(Array.IndexOf(Head, collider) > -1)
             Die();
+        // Hit in the limbs equals to loss of the limb
+        if(Array.IndexOf(Left_Arm, collider) > -1)
+            Human_Ragdoll.Enable_Some(Left_Arm);
+        if(Array.IndexOf(Right_Arm, collider) > -1)
+            Human_Ragdoll.Enable_Some(Right_Arm);
+        if(Array.IndexOf(Left_Leg, collider) > -1)
+            Human_Ragdoll.Enable_Some(Left_Leg);
+        if(Array.IndexOf(Right_Leg, collider) > -1)
+            Human_Ragdoll.Enable_Some(Right_Leg);
+        // Taking damage
         Bleeding += amount;
     }
 

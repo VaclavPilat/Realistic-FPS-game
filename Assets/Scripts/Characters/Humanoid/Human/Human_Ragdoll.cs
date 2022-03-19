@@ -12,15 +12,31 @@ public class Human_Ragdoll : Lockable_Script
 
     private void Awake () => Disable();
 
-    public void Enable () => Set_Enable(true);
-    public void Disable () => Set_Enable(false);
-
-    // Enabling or disabling current character ragdoll physics
-    private void Set_Enable (bool enable)
+    // Disable ragdoll behaviour on all bodyparts
+    private void Disable ()
     {
         foreach(Rigidbody rb in transform.GetComponentsInChildren<Rigidbody>())
             if(rb.gameObject != gameObject)
-                rb.isKinematic = !enable;
+                rb.isKinematic = true;
+    }
+
+    // Enabling character ragdoll physics
+    public void Enable ()
+    {
+        foreach(Rigidbody rb in transform.GetComponentsInChildren<Rigidbody>())
+            if(rb.gameObject != gameObject)
+                rb.isKinematic = false;
+    }
+
+    // Enabling ragdoll behaviour only on some bodyparts
+    public void Enable_Some (Collider[] colliders)
+    {
+        foreach(Collider c in colliders)
+        {
+            Rigidbody rb = c.transform.GetComponent<Rigidbody>();
+            if(rb)
+                rb.isKinematic = false;
+        }
     }
 
 }
