@@ -7,13 +7,6 @@ using System;
 public class Global_Settings : MonoBehaviour
 {
     //##########################################################################################
-    //#############################  PRIVATE METHODS / VARIABLES  ##############################
-    //##########################################################################################
-
-    private int? Last_Quality = null; // Last value of graphics quality
-
-
-    //##########################################################################################
     //#####################################  SCRIPT FLOW  ######################################
     //##########################################################################################
     
@@ -32,21 +25,26 @@ public class Global_Settings : MonoBehaviour
         {
             // Waiting for a specified amount of time
             yield return new WaitForSecondsRealtime(period);
-            // Setting graphics quality
-            Setting setting = Config_Loader.Get("Graphics", "Quality");
-            if(setting != null)
-            {
-                int index = int.Parse(setting.Value);
-                if(Last_Quality != index)
-                {
-                    Console.Log(this, "Setting new graphics quality to " + index.ToString() + " = " + setting.Check.Split('|')[index]);
-                    QualitySettings.SetQualityLevel(index, true);
-                    Last_Quality = index;
-                }
-            }
-            else
-                Console.Warning(this, "Graphics quality setting cannot be found");
+            Apply_Settings();
         }
+    }
+
+    // Applying settings
+    private void Apply_Settings ()
+    {
+        // Setting graphics quality
+        Setting setting = Config_Loader.Get("Graphics", "Quality");
+        if(setting != null)
+        {
+            int index = int.Parse(setting.Value);
+            if(QualitySettings.GetQualityLevel() != index)
+            {
+                Console.Log(this, "Setting new graphics quality to " + index.ToString() + " = " + setting.Check.Split('|')[index]);
+                QualitySettings.SetQualityLevel(index, true);
+            }
+        }
+        else
+            Console.Warning(this, "Graphics quality setting cannot be found");
     }
 
 }
