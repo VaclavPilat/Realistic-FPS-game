@@ -6,6 +6,13 @@
             "Type": "selection",
             "Check": "Very Low|Low|Medium|High|Very High|Ultra",
             "Value": "3"
+        },
+        {
+            "Name":"Fullscreen",
+            "Description": "Fullscreen mode",
+            "Type": "checkbox",
+            "Check": "",
+            "Value": "true"
         }
     ]
 }

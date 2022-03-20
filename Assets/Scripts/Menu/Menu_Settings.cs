@@ -60,6 +60,9 @@ public class Menu_Settings : MonoBehaviour
                     case "selection": // Showing boxes withc selection (dropdowns?)
                         Generate_Selection(setting, row);
                         break;
+                    case "checkbox": // Showing a simple checkbox
+                        Generate_Checkbox(setting, row);
+                        break;
                     default:
                         break;
                 }
@@ -146,6 +149,22 @@ public class Menu_Settings : MonoBehaviour
         keyup.GetComponent<InputField>().text = actions[2];
         // Adding script for handling keybinds
         row.AddComponent<Menu_Keybind>();
+    }
+
+    // Generating a checkbox
+    private void Generate_Checkbox (Setting setting, GameObject row)
+    {
+        Create_Title(setting, row);
+        // Setting up selection box
+        GameObject input = Instantiate(Find_Prefab("Checkbox"), row.transform);
+        Toggle toggle = input.GetComponent<Toggle>();
+        toggle.isOn = bool.Parse(setting.Value);
+        // On edit action
+        toggle.onValueChanged.AddListener(delegate { 
+            int index = row.transform.GetSiblingIndex();
+            Config_Loader.Config[Name][index].Value = toggle.isOn.ToString();
+            Config_Loader.Save(Name); 
+        });
     }
 
 }

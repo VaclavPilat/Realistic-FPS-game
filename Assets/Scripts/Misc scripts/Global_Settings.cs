@@ -32,8 +32,9 @@ public class Global_Settings : MonoBehaviour
     // Applying settings
     private void Apply_Settings ()
     {
+        Setting setting;
         // Setting graphics quality
-        Setting setting = Config_Loader.Get("Graphics", "Quality");
+        setting = Config_Loader.Get("Graphics", "Quality");
         if(setting != null)
         {
             int index = int.Parse(setting.Value);
@@ -45,6 +46,19 @@ public class Global_Settings : MonoBehaviour
         }
         else
             Console.Warning(this, "Graphics quality setting cannot be found");
+        // Setting graphics quality
+        setting = Config_Loader.Get("Graphics", "Fullscreen");
+        if(setting != null)
+        {
+            bool value = bool.Parse(setting.Value);
+            if(Screen.fullScreen != value)
+            {
+                Console.Log(this, "Setting fullscreen mode to " + value.ToString());
+                Screen.fullScreen = value;
+            }
+        }
+        else
+            Console.Warning(this, "Fullscreen mode setting cannot be found");
     }
 
 }
