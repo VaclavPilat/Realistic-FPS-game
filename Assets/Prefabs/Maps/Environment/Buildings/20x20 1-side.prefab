@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4431645968942411930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 20x20 1-side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6913987581819422487}
   - component: {fileID: 6913987581819422480}
   - component: {fileID: 6913987581819422481}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
