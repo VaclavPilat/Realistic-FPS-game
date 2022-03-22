@@ -443,7 +443,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 1
+    m_SubmeshIndex: 0
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
@@ -460,7 +460,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 1
+    m_SubmeshIndex: 0
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
@@ -808,9 +808,25 @@ MonoBehaviour:
   assetGuid: 
   m_Mesh: {fileID: 0}
   m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
+  m_SelectedFaces: 1500000014000000
+  m_SelectedEdges:
+  - a: 74
+    b: 75
+  - a: 75
+    b: 76
+  - a: 76
+    b: 77
+  - a: 77
+    b: 74
+  - a: 70
+    b: 71
+  - a: 71
+    b: 72
+  - a: 72
+    b: 73
+  - a: 73
+    b: 70
+  m_SelectedVertices: 4a0000004b0000004c0000004d00000046000000470000004800000049000000
 --- !u!33 &7178081635814630376
 MeshFilter:
   m_ObjectHideFlags: 0
