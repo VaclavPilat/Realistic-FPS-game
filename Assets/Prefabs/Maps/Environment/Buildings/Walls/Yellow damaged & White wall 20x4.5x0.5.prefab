@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 9162510925998448484}
   - component: {fileID: 622498809580873761}
   - component: {fileID: 6396222579862983824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Yellow damaged & White wall 20x4.5x0.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6998752285123254492
 Transform:

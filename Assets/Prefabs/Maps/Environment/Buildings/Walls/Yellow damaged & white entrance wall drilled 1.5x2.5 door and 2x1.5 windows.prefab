@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 7623459905586277624}
   - component: {fileID: 7623459905586277627}
   - component: {fileID: 4787878477193806258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Yellow damaged & white entrance wall drilled 1.5x2.5 door and 2x1.5 windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7623459905586277630
 Transform:
