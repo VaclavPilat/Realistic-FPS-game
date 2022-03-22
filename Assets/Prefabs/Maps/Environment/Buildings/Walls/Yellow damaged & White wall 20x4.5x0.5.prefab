@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 292100874428357647}
   - component: {fileID: 9162510925998448484}
   - component: {fileID: 622498809580873761}
+  - component: {fileID: 6396222579862983824}
   m_Layer: 0
   m_Name: Yellow damaged & White wall 20x4.5x0.5
   m_TagString: Untagged
@@ -407,3 +408,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214733978125018385}
   m_Mesh: {fileID: 0}
+--- !u!65 &6396222579862983824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214733978125018385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 4.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
