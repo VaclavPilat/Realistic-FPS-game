@@ -31,6 +31,7 @@ Transform:
   - {fileID: 5818828071702138606}
   - {fileID: 274249474029172891}
   - {fileID: 1612832857749390900}
+  - {fileID: 936046339896825636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -927,4 +928,79 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6998752285123254492, guid: c3e2675caff89f7119a2bee5edf51002, type: 3}
   m_PrefabInstance: {fileID: 7128851240638816327}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7293150011234057178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6719129903685614642}
+    m_Modifications:
+    - target: {fileID: 4787878477193806258, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277624, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277626, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_Name
+      value: Yellow damaged & white entrance wall drilled 1.5x2.5 door and 2x1.5
+        windows
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277627, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+--- !u!4 &936046339896825636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7623459905586277630, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+  m_PrefabInstance: {fileID: 7293150011234057178}
   m_PrefabAsset: {fileID: 0}
