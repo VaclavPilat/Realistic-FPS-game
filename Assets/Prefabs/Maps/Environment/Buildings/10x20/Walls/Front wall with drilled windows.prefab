@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5115564073719947819}
   - component: {fileID: 5115564073719947820}
   - component: {fileID: 5115564073719947821}
+  - component: {fileID: 9011994122883409585}
   m_Layer: 3
   m_Name: Front wall with drilled windows
   m_TagString: Untagged
@@ -3792,4 +3793,18 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5115564073719947822}
+  m_Mesh: {fileID: 0}
+--- !u!64 &9011994122883409585
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115564073719947822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
