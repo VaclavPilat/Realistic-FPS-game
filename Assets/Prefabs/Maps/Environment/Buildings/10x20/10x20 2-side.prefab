@@ -781,6 +781,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5417712011668888407, guid: 2c479ed9a3b076990b208ebe2b339009, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73573251fe0a74e74a8a7479b6f9cfea, type: 2}
+    - target: {fileID: 5417712011668888407, guid: 2c479ed9a3b076990b208ebe2b339009, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73573251fe0a74e74a8a7479b6f9cfea, type: 2}
     - target: {fileID: 5417712011668888408, guid: 2c479ed9a3b076990b208ebe2b339009, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -917,6 +925,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow damaged & White wall 20x4.5x0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 292100874428357647, guid: c3e2675caff89f7119a2bee5edf51002, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73573251fe0a74e74a8a7479b6f9cfea, type: 2}
     - target: {fileID: 622498809580873761, guid: c3e2675caff89f7119a2bee5edf51002, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1129,6 +1141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow damaged & White wall 9x4.5x0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2742987647401557147, guid: 2fff8228b5f098defb41d7b9304ceaf0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73573251fe0a74e74a8a7479b6f9cfea, type: 2}
     - target: {fileID: 3469391984722951037, guid: 2fff8228b5f098defb41d7b9304ceaf0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1159,6 +1175,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7623459905586277625, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73573251fe0a74e74a8a7479b6f9cfea, type: 2}
     - target: {fileID: 7623459905586277626, guid: 3da9a80d9e36fb2b4a021851b534370c, type: 3}
       propertyPath: m_Name
       value: Yellow damaged & white entrance wall drilled 1.5x2.5 door and 2x1.5
