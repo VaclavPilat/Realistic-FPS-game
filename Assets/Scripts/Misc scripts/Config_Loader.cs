@@ -49,24 +49,27 @@ public static class Config_Loader
             if(File.Exists(filepath))
             {
                 Console.Log(null, Prefix + "Config file found: '" + filepath + "'");
-                using (var stream = new StreamReader(filepath))
+                try 
                 {
+                    var stream = new StreamReader(filepath);
                     Config[filename] = JsonHelper.FromJson<Setting>(stream.ReadToEnd());
+                    return;
                 }
+                catch (Exception)
+                {
+                    Console.Warning(null, "Config file '" + filename + "' is not valid, using resource variant instead.");
+                }
+            }
+            // If the config file doesn't exist, a resource file is used instead
+            var file = Resources.Load<TextAsset>(resource);
+            if(file != null)
+            {
+                Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
+                string json = file.text;
+                Config[filename] = JsonHelper.FromJson<Setting>(json);
             }
             else
-            // If the config file doesn't exist, a resource file is used instead
-            {
-                var file = Resources.Load<TextAsset>(resource);
-                if(file != null)
-                {
-                    Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
-                    string json = file.text;
-                    Config[filename] = JsonHelper.FromJson<Setting>(json);
-                }
-                else
-                    Console.Error(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
-            }
+                Console.Error(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
         }
     }
 
