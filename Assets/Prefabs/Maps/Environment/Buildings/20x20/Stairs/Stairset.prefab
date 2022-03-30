@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6605267936510754829, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6773577073406562792, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -366,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6773577073406562792, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 6773577073406562792, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -429,6 +433,10 @@ PrefabInstance:
     - target: {fileID: 1924351662445435739, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
       propertyPath: m_Name
       value: Stairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605267936510754829, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6773577073406562792, guid: 9e0f5a9558a1cf52face98b3e983a02f, type: 3}
       propertyPath: m_RootOrder
