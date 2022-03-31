@@ -11,6 +11,7 @@ public class Human_Health : Lockable_Script
     //##########################################################################################
 
     private Human_Ragdoll Human_Ragdoll; // Human Ragdoll script
+    private Human_Inventory Human_Inventory; // Human inventory script
 
     
     //##########################################################################################
@@ -44,6 +45,7 @@ public class Human_Health : Lockable_Script
     private void Awake () 
     {
         Human_Ragdoll = GetComponent<Human_Ragdoll>();
+        Human_Inventory = GetComponent<Human_Inventory>();
         // Setting blood volume
         Blood = Maximum_Blood;
     }
@@ -100,8 +102,9 @@ public class Human_Health : Lockable_Script
     {
         Alive = false;
         Console.Log(this, "DEAD");
-        //Destroy(gameObject);
         Human_Ragdoll.Enable();
+        Human_Inventory.Dump();
+        Destroy(gameObject, 5f);
     }
 
 
