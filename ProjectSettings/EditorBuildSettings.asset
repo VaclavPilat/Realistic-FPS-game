@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Singleplayer/Streetfight.unity
     guid: 230b3f94aed2622fbad8b0b4118d0c20
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Singleplayer/Testmap.unity
     guid: b1adddad8de8a57df8ad02149327c3af
   m_configObjects: {}
