@@ -12,12 +12,14 @@ public class Player_Movement : Lockable_Script
     private CharacterController CharacterController; // Character controller
     private Transform Ground_Check; // Ground check
     private LayerMask Ground; // Layer mask for ground
+    private Human_Health Human_Health; // Human healts script
 
     private void Awake ()
     {
         CharacterController = GetComponent<CharacterController>();
         Ground_Check = transform.Find("Ground Check");
         Ground = LayerMask.GetMask("Ground");
+        Human_Health = GetComponent<Human_Health>();
     }
 
 
@@ -45,8 +47,11 @@ public class Player_Movement : Lockable_Script
 
     private void FixedUpdate () 
     {
-        Update_Speed();
-        Move();
+        if(Human_Health.Alive)
+        {
+            Update_Speed();
+            Move();
+        }
     }
 
 

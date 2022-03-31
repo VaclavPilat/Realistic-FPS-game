@@ -12,7 +12,13 @@ public class Bot_Movement : Lockable_Script
     //##########################################################################################
 
     private NavMeshAgent NavMeshAgent; // Nav mesh agent component
-    private void Awake () => NavMeshAgent = GetComponent<NavMeshAgent>();
+    private Human_Health Human_Health; // Human healts script
+
+    private void Awake () 
+    {
+        NavMeshAgent = GetComponent<NavMeshAgent>();
+        Human_Health = GetComponent<Human_Health>();
+    }
 
 
     //##########################################################################################
@@ -31,6 +37,11 @@ public class Bot_Movement : Lockable_Script
     // Finding and going after a new enemy
     private void Target_An_Enemy ()
     {
+        if(!Human_Health.Alive)
+        {
+            NavMeshAgent.enabled = false;
+            return;
+        }
         // Following the current target
         if(Current_Target != null)
         {
