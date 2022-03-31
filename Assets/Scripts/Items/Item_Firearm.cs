@@ -12,7 +12,7 @@ public class Item_Firearm : Item
     //##########################################################################################
 
     private Sound_Manager Sound_Manager; // Sound manager
-    private Transform Bullet_Spawn; // Place where a bullet spawns
+    public Transform Bullet_Spawn; // Place where a bullet spawns
     private Transform Bullet_Casing_Spawn; // Place where a bullet spawns
     
     private void Awake () 
