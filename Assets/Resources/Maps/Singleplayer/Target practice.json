@@ -2,6 +2,6 @@
     "Description":"A map for target practice. Located in desert. Your objective is to find and destroy all paper targets as fast as possible.",
     "Size":"Small",
     "Modes":[
-        "SOLO"
+        "CTS"
     ]
 }
