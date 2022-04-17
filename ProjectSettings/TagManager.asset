@@ -8,6 +8,7 @@ TagManager:
   - Team2
   - Team3
   - Team4
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Item
   - Character
   - Character bodypart
-  - 
+  - Paper target
   - 
   - 
   - 
