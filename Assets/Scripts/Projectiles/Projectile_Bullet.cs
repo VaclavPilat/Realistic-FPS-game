@@ -43,6 +43,9 @@ public class Projectile_Bullet : MonoBehaviour
                     Console.Warning(this, "An error occured while hitting collider '" + collision.transform.name + "'");
                 }
                 break;
+            case 9: // Paper target layer
+                Destroy(collision.gameObject);
+                break;
             default:
                 Console.Warning(this, "hit " + collision.gameObject.name + " = layer " + layer.ToString());
                 break;
