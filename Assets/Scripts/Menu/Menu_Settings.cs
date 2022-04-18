@@ -171,10 +171,14 @@ public class Menu_Settings : MonoBehaviour
     // Generating a CTS record
     private void Generate_Record (Setting setting, GameObject row)
     {
+        // Setting up label with order
+        GameObject order = Instantiate(Find_Prefab("Description"), row.transform);
+        order.GetComponent<Text>().text = transform.childCount.ToString();
+        // Setting up label with time
+        GameObject time = Instantiate(Find_Prefab("Description"), row.transform);
+        time.GetComponent<Text>().text = setting.Value + " s";
+        // Setting up label with datetime
         Create_Title(setting, row);
-        // Setting up label
-        GameObject label = Instantiate(Find_Prefab("Description"), row.transform);
-        label.GetComponent<Text>().text = setting.Value;
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Target_Counter : MonoBehaviour
 {
@@ -72,6 +73,30 @@ public class Target_Counter : MonoBehaviour
     {
         Ended = true;
         Console.Log(this, "Run ended");
+        // Creating record setting
+        Setting setting = new Setting();
+        setting.Type = "record";
+        setting.Description = DateTime.Now.ToString("dd.MM.yyyy H:mm:ss");
+        setting.Value = Current_Time.ToString();
+        // Saving record settings
+        string filename = SceneManager.GetActiveScene().name;
+        Setting[] new_settings;
+        if(Config_Loader.Load(filename))
+        {
+            // Creating new setting array
+            new_settings = new Setting[Config_Loader.Config[filename].Length + 1];
+            for(int i = 0; i < Config_Loader.Config[filename].Length; i++)
+                new_settings[i] = Config_Loader.Config[filename][i];
+            new_settings[new_settings.Length -1] = setting;
+            Config_Loader.Config[filename] = new_settings;
+            Config_Loader.Save(filename);
+        }
+        else
+        {
+            new_settings = new Setting[1];
+            new_settings[0] = setting;
+            Config_Loader.Save_Raw(filename, new_settings);
+        }
     }
 
     // Starting run after the player triggers the start collider
