@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// Tracks number of remaining paper targets. If there are none left, saves the run time.
 public class Target_Counter : MonoBehaviour
 {
     //##########################################################################################
@@ -80,27 +81,25 @@ public class Target_Counter : MonoBehaviour
         setting.Value = Current_Time.ToString();
         // Saving record settings
         string filename = SceneManager.GetActiveScene().name;
-        Setting[] new_settings;
         if(Config_Loader.Load(filename))
         {
-            // Creating new setting array
-            new_settings = new Setting[Config_Loader.Config[filename].Length + 1];
-            for(int i = 0; i < Config_Loader.Config[filename].Length; i++)
-                new_settings[i] = Config_Loader.Config[filename][i];
-            new_settings[new_settings.Length -1] = setting;
-            Array.Sort(new_settings, delegate(Setting x, Setting y) 
+            Setting[] records = Config_Loader.Config[filename];
+            // Adding new record to the array
+            Array.Resize(ref records, records.Length + 1);
+            records[records.Length -1] = setting;
+            // Sorting array
+            Array.Sort(records, delegate(Setting x, Setting y) 
             {
                 return float.Parse(x.Value).CompareTo( float.Parse(y.Value) ); 
             });
-            Config_Loader.Config[filename] = new_settings;
+            // Resizing array down to X elements
+            Array.Resize(ref records, Math.Min(records.Length, 10));
+            // Saving array
+            Config_Loader.Config[filename] = records;
             Config_Loader.Save(filename);
         }
         else
-        {
-            new_settings = new Setting[1];
-            new_settings[0] = setting;
-            Config_Loader.Save_Raw(filename, new_settings);
-        }
+            Config_Loader.Save_Raw(filename, new Setting[]{setting});
     }
 
     // Starting run after the player triggers the start collider
