@@ -88,6 +88,10 @@ public class Target_Counter : MonoBehaviour
             for(int i = 0; i < Config_Loader.Config[filename].Length; i++)
                 new_settings[i] = Config_Loader.Config[filename][i];
             new_settings[new_settings.Length -1] = setting;
+            Array.Sort(new_settings, delegate(Setting x, Setting y) 
+            {
+                return float.Parse(x.Value).CompareTo( float.Parse(y.Value) ); 
+            });
             Config_Loader.Config[filename] = new_settings;
             Config_Loader.Save(filename);
         }
