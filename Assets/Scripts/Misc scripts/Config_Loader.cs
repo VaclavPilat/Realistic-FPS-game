@@ -40,48 +40,62 @@ public static class Config_Loader
     // Loading configuration
     public static void Load (string filename)
     {
-        if(!Config.ContainsKey(filename))
+        try
         {
-            // Getting file paths
-            string filepath = Get_Filepath(filename);
-            string resource = Get_Resource(filename);
-            // Checking if a configuration file already exists
-            if(File.Exists(filepath))
+            if(!Config.ContainsKey(filename))
             {
-                Console.Log(null, Prefix + "Config file found: '" + filepath + "'");
-                try 
+                // Getting file paths
+                string filepath = Get_Filepath(filename);
+                string resource = Get_Resource(filename);
+                // Checking if a configuration file already exists
+                if(File.Exists(filepath))
                 {
-                    var stream = new StreamReader(filepath);
-                    Config[filename] = JsonHelper.FromJson<Setting>(stream.ReadToEnd());
-                    return;
+                    Console.Log(null, Prefix + "Config file found: '" + filepath + "'");
+                    try 
+                    {
+                        var stream = new StreamReader(filepath);
+                        Config[filename] = JsonHelper.FromJson<Setting>(stream.ReadToEnd());
+                        return;
+                    }
+                    catch (Exception)
+                    {
+                        Console.Warning(null, "Config file '" + filename + "' is not valid, using resource variant instead.");
+                    }
                 }
-                catch (Exception)
+                // If the config file doesn't exist, a resource file is used instead
+                var file = Resources.Load<TextAsset>(resource);
+                if(file != null)
                 {
-                    Console.Warning(null, "Config file '" + filename + "' is not valid, using resource variant instead.");
+                    Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
+                    string json = file.text;
+                    Config[filename] = JsonHelper.FromJson<Setting>(json);
                 }
+                else
+                    Console.Error(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
             }
-            // If the config file doesn't exist, a resource file is used instead
-            var file = Resources.Load<TextAsset>(resource);
-            if(file != null)
-            {
-                Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
-                string json = file.text;
-                Config[filename] = JsonHelper.FromJson<Setting>(json);
-            }
-            else
-                Console.Error(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
+        }
+        catch (Exception e)
+        {
+            Console.Error(null, "Cannot load config '" + filename + "': " + e.ToString());
         }
     }
 
     // Saving configuration to file
     public static void Save (string filename)
     {
-        string filepath = Get_Filepath(filename);
-        using (var stream = new StreamWriter(filepath, false))
+        try
         {
-            stream.Write(JsonHelper.ToJson<Setting>(Config[filename], true));
+            string filepath = Get_Filepath(filename);
+            using (var stream = new StreamWriter(filepath, false))
+            {
+                stream.Write(JsonHelper.ToJson<Setting>(Config[filename], true));
+            }
+            Console.Log(null, Prefix + "Data should be saved in '" + filepath + "'");
         }
-        Console.Log(null, Prefix + "Data should be saved in '" + filepath + "'");
+        catch (Exception e)
+        {
+            Console.Error(null, "Cannot save config '" + filename + "': " + e.ToString());
+        }
     }
 
     // Getting a certain setting by name
