@@ -38,7 +38,7 @@ public static class Config_Loader
     //##########################################################################################
 
     // Loading configuration
-    public static void Load (string filename)
+    public static bool Load (string filename)
     {
         try
         {
@@ -55,7 +55,7 @@ public static class Config_Loader
                     {
                         var stream = new StreamReader(filepath);
                         Config[filename] = JsonHelper.FromJson<Setting>(stream.ReadToEnd());
-                        return;
+                        return true;
                     }
                     catch (Exception)
                     {
@@ -69,19 +69,23 @@ public static class Config_Loader
                     Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
                     string json = file.text;
                     Config[filename] = JsonHelper.FromJson<Setting>(json);
+                    return true;
                 }
                 else
-                    Console.Error(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
+                    Console.Warning(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
             }
+            else
+                return true;
         }
         catch (Exception e)
         {
             Console.Error(null, "Cannot load config '" + filename + "': " + e.ToString());
         }
+        return false;
     }
 
     // Saving configuration to file
-    public static void Save (string filename)
+    public static bool Save (string filename)
     {
         try
         {
@@ -91,11 +95,20 @@ public static class Config_Loader
                 stream.Write(JsonHelper.ToJson<Setting>(Config[filename], true));
             }
             Console.Log(null, Prefix + "Data should be saved in '" + filepath + "'");
+            return true;
         }
         catch (Exception e)
         {
             Console.Error(null, "Cannot save config '" + filename + "': " + e.ToString());
         }
+        return false;
+    }
+
+    // Saving raw configuration to file
+    public static bool Save_Raw (string filename, Setting[] content)
+    {
+        Config[filename] = content;
+        return Save(filename);
     }
 
     // Getting a certain setting by name

@@ -76,6 +76,13 @@ public class Menu_Maps : MonoBehaviour
             {
                 var info = JsonUtility.FromJson<Map_Info>(file.text);
                 map_content.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = info.Description;
+                // Generating map records
+                string filename = "Records/" + map;
+                if(Config_Loader.Load(filename))
+                {
+                    var map_settings = map_content.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).gameObject.AddComponent<Menu_Settings>();
+                    map_settings.Name = "Records/" + map;
+                }
             }
             else
                 Console.Warning(this, "Cannot find map info to '" + map + "' at '" + resource + "'.");

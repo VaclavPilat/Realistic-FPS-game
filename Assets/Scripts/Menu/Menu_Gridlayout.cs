@@ -10,7 +10,7 @@ public class Menu_Gridlayout : MonoBehaviour
     //###################################### SCRIPT FLOW #######################################
     //##########################################################################################
     
-    private void Awake () => Resize();
+    private void Start () => Resize();
 
     // Resizing element based on its children
     public void Resize ()
@@ -18,7 +18,7 @@ public class Menu_Gridlayout : MonoBehaviour
         // Setting sizes of children object based on parent size
         var grid = transform.GetComponent<GridLayoutGroup>();
         grid.cellSize = new Vector2(
-            (transform.parent.GetComponent<RectTransform>().rect.width 
+            (transform.GetComponent<RectTransform>().rect.width 
                 - (grid.spacing.x * (transform.childCount -1))
                 - grid.padding.left
                 - grid.padding.right

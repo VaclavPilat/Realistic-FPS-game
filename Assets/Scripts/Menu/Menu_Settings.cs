@@ -42,38 +42,39 @@ public class Menu_Settings : MonoBehaviour
     // Generates UI for each setting found
     private void Create_UI ()
     {
-        Config_Loader.Load(Name);
-        foreach(Setting setting in Config_Loader.Config[Name])
-        {
-            try
+        if(Config_Loader.Load(Name))
+            foreach(Setting setting in Config_Loader.Config[Name])
             {
-                GameObject row = Instantiate(Find_Prefab("Row"), transform);
-                // Setting correct input type
-                switch(setting.Type)
+                try
                 {
-                    case "slider": // Showing sliders for float values
-                        Generate_Slider(setting, row);
-                        break;
-                    case "keybind": // Generating keybinds
-                        Generate_Keybind(setting, row);
-                        break;
-                    case "selection": // Showing boxes withc selection (dropdowns?)
-                        Generate_Selection(setting, row);
-                        break;
-                    case "checkbox": // Showing a simple checkbox
-                        Generate_Checkbox(setting, row);
-                        break;
-                    default:
-                        break;
+                    GameObject row = Instantiate(Find_Prefab("Row"), transform);
+                    // Setting correct input type
+                    switch(setting.Type)
+                    {
+                        case "slider": // Showing sliders for float values
+                            Generate_Slider(setting, row);
+                            break;
+                        case "keybind": // Generating keybinds
+                            Generate_Keybind(setting, row);
+                            break;
+                        case "selection": // Showing boxes withc selection (dropdowns?)
+                            Generate_Selection(setting, row);
+                            break;
+                        case "checkbox": // Showing a simple checkbox
+                            Generate_Checkbox(setting, row);
+                            break;
+                        case "record": // Showing a CTS record
+                            Generate_Record(setting, row);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-                // Resizing elements in row
-                row.GetComponent<Menu_Gridlayout>().Resize();
+                catch (Exception e)
+                {
+                    Console.Error(this, "Failed generating setting row; " + e.Message);
+                }
             }
-            catch (Exception e)
-            {
-                Console.Error(this, "Failed generating setting row; " + e.Message);
-            }
-        }
         // Resizing scrollview
         transform.GetComponent<Menu_Scrollview>().Resize();
     }
@@ -165,6 +166,15 @@ public class Menu_Settings : MonoBehaviour
             Config_Loader.Config[Name][index].Value = toggle.isOn.ToString();
             Config_Loader.Save(Name); 
         });
+    }
+
+    // Generating a CTS record
+    private void Generate_Record (Setting setting, GameObject row)
+    {
+        Create_Title(setting, row);
+        // Setting up label
+        GameObject label = Instantiate(Find_Prefab("Description"), row.transform);
+        label.GetComponent<Text>().text = setting.Value;
     }
 
 }
