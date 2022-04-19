@@ -15,6 +15,9 @@ public class Target_Counter : MonoBehaviour
     [SerializeField] private Text Count;
     [SerializeField] private Text Timer;
 
+    private GameObject Menu;
+    private void Awake () => Menu = GameObject.Find("/Menu");
+
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
@@ -32,7 +35,7 @@ public class Target_Counter : MonoBehaviour
     //#####################################  SCRIPT FLOW  ######################################
     //##########################################################################################
 
-    private void Awake () => StartCoroutine(Check_Targets());
+    private void Start () => StartCoroutine(Check_Targets());
 
     // Checking target count
     private IEnumerator Check_Targets()
@@ -100,6 +103,11 @@ public class Target_Counter : MonoBehaviour
         }
         else
             Config_Loader.Save_Raw(filename, new Setting[]{setting});
+        // Regenerating settings
+        Console.Warning(this, Menu.GetComponentsInChildren<Menu_Settings>(true).Length.ToString());
+        foreach(Menu_Settings settings in Menu.GetComponentsInChildren<Menu_Settings>(true))
+            if(settings.Name == filename)
+                StartCoroutine(settings.Recreate());
     }
 
     // Starting run after the player triggers the start collider

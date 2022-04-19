@@ -26,7 +26,7 @@ public class Menu_Settings : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private void Start () => Create_UI();
+    private void Start () => Create();
 
 
     //##########################################################################################
@@ -39,8 +39,21 @@ public class Menu_Settings : MonoBehaviour
         return Array.Find(Prefabs, g => g.name == name);
     }
 
+    // Regenerating settings
+    public IEnumerator Recreate ()
+    {
+        // Removing current settings
+        foreach(Transform row in transform)
+            Destroy(row.gameObject);
+        // Waiting for the end of the frame
+        yield return new WaitForEndOfFrame();
+        // Generating new settings
+        Create();
+        Console.Log(this, "Settings '" + Name + "' regenerated");
+    }
+
     // Generates UI for each setting found
-    private void Create_UI ()
+    private void Create ()
     {
         if(Config_Loader.Load(Name))
             foreach(Setting setting in Config_Loader.Config[Name])
