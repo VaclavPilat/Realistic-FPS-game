@@ -79,6 +79,9 @@ public class Menu_Settings : MonoBehaviour
                         case "record": // Showing a CTS record
                             Generate_Record(setting, row);
                             break;
+                        case "credit": // Showing a credit
+                            Generate_Credit(setting, row);
+                            break;
                         default:
                             break;
                     }
@@ -92,8 +95,16 @@ public class Menu_Settings : MonoBehaviour
         transform.GetComponent<Menu_Scrollview>().Resize();
     }
 
+    // Generating a label that contains text name of the setting
+    private void Create_Label_Name (Setting setting, GameObject row)
+    {
+        // Setting up label
+        GameObject label = Instantiate(Find_Prefab("Description"), row.transform);
+        label.GetComponent<Text>().text = setting.Name;
+    }
+
     // Generating a label that contains text description of the setting
-    private void Create_Title (Setting setting, GameObject row)
+    private void Create_Label_Description (Setting setting, GameObject row)
     {
         // Setting up label
         GameObject label = Instantiate(Find_Prefab("Description"), row.transform);
@@ -103,7 +114,7 @@ public class Menu_Settings : MonoBehaviour
     // Generating slider with a description label
     private void Generate_Slider (Setting setting, GameObject row)
     {
-        Create_Title(setting, row);
+        Create_Label_Description(setting, row);
         // Setting up slider
         GameObject input = Instantiate(Find_Prefab("Slider"), row.transform);
         Slider slider = input.GetComponent<Slider>();
@@ -122,7 +133,7 @@ public class Menu_Settings : MonoBehaviour
     // Generating a selection box (dropdown?)
     private void Generate_Selection (Setting setting, GameObject row)
     {
-        Create_Title(setting, row);
+        Create_Label_Description(setting, row);
         // Setting up selection box
         GameObject input = Instantiate(Find_Prefab("Selection"), row.transform);
         Dropdown dropdown = input.GetComponent<Dropdown>();
@@ -168,7 +179,7 @@ public class Menu_Settings : MonoBehaviour
     // Generating a checkbox
     private void Generate_Checkbox (Setting setting, GameObject row)
     {
-        Create_Title(setting, row);
+        Create_Label_Description(setting, row);
         // Setting up selection box
         GameObject input = Instantiate(Find_Prefab("Checkbox"), row.transform);
         Toggle toggle = input.GetComponent<Toggle>();
@@ -191,7 +202,14 @@ public class Menu_Settings : MonoBehaviour
         GameObject time = Instantiate(Find_Prefab("Description"), row.transform);
         time.GetComponent<Text>().text = setting.Value + " s";
         // Setting up label with datetime
-        Create_Title(setting, row);
+        Create_Label_Description(setting, row);
+    }
+
+    // Generating a credit row
+    private void Generate_Credit (Setting setting, GameObject row)
+    {
+        Create_Label_Name(setting, row);
+        Create_Label_Description(setting, row);
     }
 
 }
