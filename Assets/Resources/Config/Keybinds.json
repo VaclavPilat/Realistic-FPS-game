@@ -153,6 +153,41 @@
             "Type": "keybind",
             "Check": "",
             "Value": "Pose_Lie||"
+        },
+        {
+            "Name": "0",
+            "Description": "User defined 1",
+            "Type": "keybind",
+            "Check": "",
+            "Value": "||"
+        },
+        {
+            "Name": "0",
+            "Description": "User defined 2",
+            "Type": "keybind",
+            "Check": "",
+            "Value": "||"
+        },
+        {
+            "Name": "0",
+            "Description": "User defined 3",
+            "Type": "keybind",
+            "Check": "",
+            "Value": "||"
+        },
+        {
+            "Name": "0",
+            "Description": "User defined 4",
+            "Type": "keybind",
+            "Check": "",
+            "Value": "||"
+        },
+        {
+            "Name": "0",
+            "Description": "User defined 5",
+            "Type": "keybind",
+            "Check": "",
+            "Value": "||"
         }
     ]
 }
