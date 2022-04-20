@@ -4,7 +4,7 @@
             "Name":"Sensitivity",
             "Description": "Mouse sensitivity",
             "Type": "slider",
-            "Check": "1|1000|1",
+            "Check": "1|500|1",
             "Value": "100"
         }
     ]
