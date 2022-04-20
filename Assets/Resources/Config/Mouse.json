@@ -1,0 +1,11 @@
+{
+    "Items": [
+        {
+            "Name":"Sensitivity",
+            "Description": "Mouse sensitivity",
+            "Type": "slider",
+            "Check": "1|1000|1",
+            "Value": "100"
+        }
+    ]
+}
