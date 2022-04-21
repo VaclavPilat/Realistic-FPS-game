@@ -11,8 +11,8 @@ public class Menu_Settings : MonoBehaviour
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    private GameObject[] Prefabs; // Array of loaded setting prefabs
-    private void Awake () => Prefabs = Resources.LoadAll<GameObject>("Settings/");
+    protected GameObject[] Prefabs; // Array of loaded setting prefabs
+    protected void Awake () => Prefabs = Resources.LoadAll<GameObject>("Settings/");
 
 
     //##########################################################################################
@@ -34,7 +34,7 @@ public class Menu_Settings : MonoBehaviour
     //##########################################################################################
 
     // Attempts to find a setting prefab by name
-    private GameObject Find_Prefab (string name)
+    protected GameObject Find_Prefab (string name)
     {
         return Array.Find(Prefabs, g => g.name == name);
     }
