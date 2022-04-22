@@ -15,57 +15,37 @@ public class Sound_Manager : Sound_List
     // Applying sound properties to newly created AudioSource components
     private void Start ()
     {
-        foreach(Sound s in Sounds)
+        foreach(Sound sound in Sounds)
         {
-            s.Source = transform.gameObject.AddComponent<AudioSource>();
-            s.Source.clip = s.Clip;
-            Set_Volume(s);
-            s.Source.pitch = s.Pitch;
-            s.Source.loop = s.Loop;
-            s.Source.spatialBlend = s.Spatial;
-            s.Source.playOnAwake = s.Autoplay;
-            if(s.Autoplay)
-                s.Source.Play();
+            sound.Source = transform.gameObject.AddComponent<AudioSource>();
+            sound.Source.clip = sound.Clip;
+            sound.Source.pitch = sound.Pitch;
+            sound.Source.loop = sound.Loop;
+            sound.Source.spatialBlend = sound.Spatial;
+            //sound.Source.playOnAwake = sound.Autoplay;
+            if(sound.Autoplay)
+                Play(sound.Name);
+        }
+    }
+
+    // Play sound
+    public void Play (string name)
+    {
+        Sound sound = Get_Sound(name);
+        if(sound != null)
+        {
+            Setting setting = Config_Loader.Get("Audio", (Is_Menu ? "Menu_Sound" : "Game_Sound"));
+            sound.Source.PlayOneShot(sound.Clip, float.Parse(setting.Value) * sound.Volume);
         }
     }
 
     // Finding sound by name
     private Sound Get_Sound (string name)
     {
-        Sound s = Array.Find(Sounds, sound => sound.Name == name);
-		if (s == null)
+        Sound sound = Array.Find(Sounds, sound => sound.Name == name);
+		if (sound == null)
 			Console.Warning(this, "Sound '" + name + "' not found!");
-        return s;
-    }
-
-    // Play sound
-    public void Play (string name)
-    {
-        Sound s = Get_Sound(name);
-        if(s != null)
-            s.Source.Play();
-    }
-
-    // Stop sound
-    public void Stop (string name)
-    {
-        Sound s = Get_Sound(name);
-        if(s != null)
-            s.Source.Stop();
-    }
-
-    // Setting current volume
-    private void Update ()
-    {
-        foreach(Sound sound in Sounds)
-            Set_Volume(sound);
-    }
-
-    // Setting volume
-    private void Set_Volume (Sound sound)
-    {
-        Setting setting = Config_Loader.Get("Audio", (Is_Menu ? "Menu_Sound" : "Game_Sound"));
-        sound.Source.volume = float.Parse(setting.Value) * sound.Volume;
+        return sound;
     }
 
 }
