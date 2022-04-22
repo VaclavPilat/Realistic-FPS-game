@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using System;
 
 // List of sounds
@@ -27,11 +26,4 @@ public class Sound_List : MonoBehaviour
 
     // Loading audio settings
     protected void Awake () => Config_Loader.Load("Audio");
-
-    // Setting master volume
-    protected void Update () 
-    {
-        AudioListener.volume = float.Parse(Config_Loader.Get("Audio", "Master").Value);
-    }
-
 }

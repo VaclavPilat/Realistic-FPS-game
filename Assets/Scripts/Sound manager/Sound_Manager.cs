@@ -55,7 +55,7 @@ public class Sound_Manager : Sound_List
     }
 
     // Setting current volume
-    private void LateUpdate ()
+    private void Update ()
     {
         foreach(Sound sound in Sounds)
             Set_Volume(sound);

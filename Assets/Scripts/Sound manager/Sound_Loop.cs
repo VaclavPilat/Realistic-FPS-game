@@ -78,7 +78,7 @@ public class Sound_Loop : Sound_List
     }
 
     // Setting current volume
-    private void LateUpdate ()
+    private void Update ()
     {
         if(Sounds.Length > 0)
             Set_Volume(Sounds[i]);
