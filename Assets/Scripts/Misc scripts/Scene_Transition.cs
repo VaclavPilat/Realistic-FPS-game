@@ -22,6 +22,7 @@ public class Scene_Transition : MonoBehaviour
     //##########################################################################################
 
     private string Resource = "Config/Tips"; // Resource name (address)
+    private bool Loading_Scene = false;
 
 
     //##########################################################################################
@@ -38,6 +39,7 @@ public class Scene_Transition : MonoBehaviour
     // Actins after a new scene is loaded
     private void Scene_Loaded (Scene scene, LoadSceneMode mode)
     {
+        Loading_Scene = false;
         Console.Log(this, "Loaded scene " + scene.name + " with mode " + mode.ToString());
         Animator.SetTrigger("This scene");
     }
@@ -55,7 +57,13 @@ public class Scene_Transition : MonoBehaviour
         {
             Console.Log(this, "Loading \"" + scene + "\" scene...");
             yield return Transition();
-            SceneManager.LoadScene(scene);
+            // Doing stuff while the scene is still loading
+            AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+            while(!operation.isDone)
+            {
+                //Console.Log(this, operation.progress.ToString());
+                yield return null;
+            }
         }
     }
 
@@ -76,7 +84,7 @@ public class Scene_Transition : MonoBehaviour
         // Setting menu properties
         Menu_Variables.Disable_Menu();
         // Getting new tip
-        New_Tip();
+        StartCoroutine(Change_Tips());
         // Showing the animation
         if(Animator == null)
             Console.Error(this, "\"Animator\" is null");
@@ -103,6 +111,18 @@ public class Scene_Transition : MonoBehaviour
             }
             else
                 Console.Warning(this, "Resource \"" + Resource + "\" doesn't exist");
+        }
+    }
+
+    // Changing tips after a while
+    private IEnumerator Change_Tips ()
+    {
+        Loading_Scene = true;
+        while(Loading_Scene)
+        {
+            New_Tip();
+            Console.Log(this, "New tip shown");
+            yield return new WaitForSecondsRealtime(5f);
         }
     }
 
