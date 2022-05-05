@@ -21,8 +21,9 @@ public class Scene_Transition : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private string Resource = "Config/Tips"; // Resource name (address)
-    private bool Loading_Scene = false;
+    private bool Loading_Scene = false; // Is a scene being loaded?
+    private string Resource = "Config/Tips"; // Name of a resource that contains screen tips
+    private string[] Tips = null; // Array with screen tips
 
 
     //##########################################################################################
@@ -32,8 +33,22 @@ public class Scene_Transition : MonoBehaviour
     // Triggering amination after a scene is loaded
     private void Awake () 
     {
+        Load_Tips();
         Tip_Label.SetActive(false);
         SceneManager.sceneLoaded += Scene_Loaded;
+    }
+
+    // Loading tips
+    private void Load_Tips ()
+    {
+        var file = Resources.Load<TextAsset>(Resource);
+        if(file != null)
+        {
+            Tips = JsonHelper.FromJson<string>(file.text);
+            Console.Log(this, "Found " + Tips.Length.ToString() + " tips in \"" + Resource + "\".");
+        }
+        else
+            Console.Warning(this, "Resource \"" + Resource + "\" doesn't exist");
     }
 
     // Actins after a new scene is loaded
@@ -96,21 +111,13 @@ public class Scene_Transition : MonoBehaviour
     // Displaying a random tip
     private void New_Tip ()
     {
-        if(Tip_Label)
+        if(Tip_Label && Tips != null && Tips.Length > 0)
         {
-            // Loading tips
-            var file = Resources.Load<TextAsset>(Resource);
-            if(file != null)
-            {
-                string[] tips = JsonHelper.FromJson<string>(file.text);
-                // Getting a random tip
-                Random random = new Random();
-                string tip = "<b>Tip: </b><color=#dddddd>" + tips[random.Next(0, tips.Length)] + "</color>";
-                // Showing the tip
-                Tip_Label.GetComponent<Text>().text = tip;
-            }
-            else
-                Console.Warning(this, "Resource \"" + Resource + "\" doesn't exist");
+            // Getting a random tip
+            Random random = new Random();
+            string tip = "<b>Tip: </b><color=#dddddd>" + Tips[random.Next(0, Tips.Length)] + "</color>";
+            // Showing the tip
+            Tip_Label.GetComponent<Text>().text = tip;
         }
     }
 
