@@ -15,7 +15,11 @@ public class Player_Keybinds : Lockable_Script
     private void Awake () 
     {
         Human_Health = transform.GetComponent<Human_Health>();
-        Menu_Variables = GameObject.Find("/Menu").GetComponent<Menu_Variables>();
+        var menu = GameObject.Find("/Menu");
+        if(!menu)
+            Console.Error(this, "Menu gameobject is missing!");
+        else
+            Menu_Variables = menu.GetComponent<Menu_Variables>();
     }
 
 
@@ -31,7 +35,7 @@ public class Player_Keybinds : Lockable_Script
 
     private void FixedUpdate () 
     {
-        if(!Menu_Variables.Visible) // Only perform stuff if menu is not visible
+        if(Menu_Variables && !Menu_Variables.Visible) // Only perform stuff if menu is not visible
             Check_Keybinds(); // Checking for actions on each frame
     }
 
@@ -101,7 +105,7 @@ public class Player_Keybinds : Lockable_Script
     // Attempts to find a method that corresponds to the selected command
     private MethodInfo Find_Method (string command_name)
     {
-        if(Menu_Variables.Bindable.ContainsKey(command_name))
+        if(Menu_Variables && Menu_Variables.Bindable.ContainsKey(command_name))
             return Menu_Variables.Bindable[command_name];
         else
             return null;

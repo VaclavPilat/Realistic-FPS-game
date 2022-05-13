@@ -8,13 +8,17 @@ public class Player_Camera : Lockable_Script
     //######################################  COMPONENTS  ######################################
     //##########################################################################################
 
-    private Human_Camera Human_Camera; // Human Camera script
-    private Menu_Variables Menu_Variables; // Menu variables (for checking if player is allowed to do anything)
+    private Human_Camera Human_Camera = null; // Human Camera script
+    private Menu_Variables Menu_Variables = null; // Menu variables (for checking if player is allowed to do anything)
     
     private void Awake () 
     {
         Human_Camera = GetComponent<Human_Camera>();
-        Menu_Variables = GameObject.Find("/Menu").GetComponent<Menu_Variables>();
+        var menu = GameObject.Find("/Menu");
+        if(!menu)
+            Console.Error(this, "Menu gameobject is missing!");
+        else
+            Menu_Variables = menu.GetComponent<Menu_Variables>();
     }
 
     
@@ -35,7 +39,7 @@ public class Player_Camera : Lockable_Script
 
     void FixedUpdate()
     {
-        if(!Menu_Variables.Visible) // Only perform stuff if menu is not visible
+        if(Menu_Variables && !Menu_Variables.Visible) // Only perform stuff if menu is not visible
         {
             Rotate_Player();
             Rotate_Camera();
