@@ -4,22 +4,19 @@
             "Name":"Quality",
             "Description": "Quality preset",
             "Type": "selection",
-            "Check": "string.Join(\"|\", QualitySettings.names);",
-            "Value": "0"
+            "Check": "string.Join(\"|\", QualitySettings.names);"
         },
         {
             "Name":"Fullscreen",
             "Description": "Fullscreen mode",
             "Type": "checkbox",
-            "Check": "",
             "Value": "true"
         },
         {
             "Name":"Resolution",
             "Description": "Screen resolution",
             "Type": "selection",
-            "Check": "string.Join(\"|\", Screen.resolutions.Select(x => x.ToString()).ToArray());",
-            "Value": "0"
+            "Check": "string.Join(\"|\", Screen.resolutions.Select(x => x.ToString()).ToArray());"
         }
     ]
 }

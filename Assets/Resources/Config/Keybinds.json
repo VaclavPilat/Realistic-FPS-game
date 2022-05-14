@@ -4,189 +4,162 @@
             "Name": "119",
             "Description": "Moving forward",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Movement_Forward|"
         },
         {
             "Name": "115",
             "Description": "Moving backward",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Movement_Backward|"
         },
         {
             "Name": "97",
             "Description": "Moving left",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Movement_Left|"
         },
         {
             "Name": "100",
             "Description": "Moving right",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Movement_Right|"
         },
         {
             "Name": "308",
             "Description": "Running",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Movement_Run|"
         },
         {
             "Name": "32",
             "Description": "Standing up and jumping",
             "Type": "keybind",
-            "Check": "",
             "Value": "Pose_Standup; Movement_Jump||"
         },
         {
             "Name": "113",
             "Description": "Switching to last used item",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Last||"
         },
         {
             "Name": "49",
             "Description": "Switching to primary weapon",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Primary||"
         },
         {
             "Name": "50",
             "Description": "Switching to secondary weapon",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Secondary||"
         },
         {
             "Name": "51",
             "Description": "Switching to melee weapon",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Melee||"
         },
         {
             "Name": "52",
             "Description": "Switching to throwable",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Throwable||"
         },
         {
             "Name": "53",
             "Description": "Switching to consumable item",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Consumable||"
         },
         {
             "Name": "102",
             "Description": "Picking up an item",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Pickup||"
         },
         {
             "Name": "103",
             "Description": "Throwing an item",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Inventory_Charge|Inventory_Throw"
         },
         {
             "Name": "293",
             "Description": "Dropping all items from inventory",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Dump||"
         },
         {
             "Name": "323",
             "Description": "Item primary action",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Item_Primary|"
         },
         {
             "Name": "324",
             "Description": "Item secondary action",
             "Type": "keybind",
-            "Check": "",
             "Value": "|Item_Secondary|"
         },
         {
             "Name": "114",
             "Description": "Item reload",
             "Type": "keybind",
-            "Check": "",
             "Value": "Item_Reload||"
         },
         {
             "Name": "39",
             "Description": "Showing debug information",
             "Type": "keybind",
-            "Check": "",
             "Value": "Debug_Toggle||"
         },
         {
             "Name": "9",
             "Description": "Showing player information",
             "Type": "keybind",
-            "Check": "",
             "Value": "Inventory_Tablet||"
         },
         {
             "Name": "304",
             "Description": "Crouching",
             "Type": "keybind",
-            "Check": "",
             "Value": "Pose_Crouch||"
         },
         {
             "Name": "306",
             "Description": "Lying down",
             "Type": "keybind",
-            "Check": "",
             "Value": "Pose_Lie||"
         },
         {
             "Name": "0",
             "Description": "User defined 1",
             "Type": "keybind",
-            "Check": "",
             "Value": "||"
         },
         {
             "Name": "0",
             "Description": "User defined 2",
             "Type": "keybind",
-            "Check": "",
             "Value": "||"
         },
         {
             "Name": "0",
             "Description": "User defined 3",
             "Type": "keybind",
-            "Check": "",
             "Value": "||"
         },
         {
             "Name": "0",
             "Description": "User defined 4",
             "Type": "keybind",
-            "Check": "",
             "Value": "||"
         },
         {
             "Name": "0",
             "Description": "User defined 5",
             "Type": "keybind",
-            "Check": "",
             "Value": "||"
         }
     ]
