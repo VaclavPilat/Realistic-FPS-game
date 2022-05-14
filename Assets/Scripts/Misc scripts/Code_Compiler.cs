@@ -20,6 +20,7 @@ public class Code_Compiler
         {
             string source_code = @"
                 using System;
+                using System.Linq;
                 using UnityEngine;
 
                 public class Compiled_Class {
@@ -38,11 +39,20 @@ public class Code_Compiler
                 compile_parameters.ReferencedAssemblies.Add(assembly.Location);
             // Compiling code
             var code_provider = new CSharpCodeProvider();
-            CompilerResults compilerResults = code_provider.CompileAssemblyFromSource(compile_parameters, source_code);
-            // Calling the selected method
-            var typeInstance = compilerResults.CompiledAssembly.CreateInstance("Compiled_Class");
-            MethodInfo method = typeInstance.GetType().GetMethod("Compiled_Method");
-            return (T)method.Invoke(typeInstance, new object[] {}); 
+            CompilerResults compiler_results = code_provider.CompileAssemblyFromSource(compile_parameters, source_code);
+            try
+            {
+                // Calling the selected method
+                var instance = compiler_results.CompiledAssembly.CreateInstance("Compiled_Class");
+                MethodInfo method = instance.GetType().GetMethod("Compiled_Method");
+                return (T)method.Invoke(instance, new object[] {}); 
+            }
+            catch (Exception)
+            {
+                foreach(var i in compiler_results.Errors)
+                    Console.Warning(null, "Runtime Compiler error: " + i.ToString());
+                throw new Exception();
+            }
         }
         catch (Exception)
         {

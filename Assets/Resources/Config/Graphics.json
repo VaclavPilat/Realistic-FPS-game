@@ -5,7 +5,7 @@
             "Description": "Quality",
             "Type": "selection",
             "Check": "string.Join(\"|\", QualitySettings.names);",
-            "Value": "3"
+            "Value": "0"
         },
         {
             "Name":"Fullscreen",
@@ -13,6 +13,13 @@
             "Type": "checkbox",
             "Check": "",
             "Value": "true"
+        },
+        {
+            "Name":"Resolution",
+            "Description": "Resolution",
+            "Type": "selection",
+            "Check": "string.Join(\"|\", Screen.resolutions.Select(x => x.ToString()).ToArray());",
+            "Value": "0"
         }
     ]
 }
