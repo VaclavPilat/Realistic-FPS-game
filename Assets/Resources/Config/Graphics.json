@@ -11,13 +11,15 @@
             "Name":"Fullscreen",
             "Description": "Fullscreen mode",
             "Type": "checkbox",
-            "Value": "true"
+            "Value": "true",
+            "Changed": "Screen.fullScreen = bool.Parse(variable.Value);"
         },
         {
             "Name":"Resolution",
             "Description": "Screen resolution",
             "Type": "selection",
-            "Check": "string.Join(\"|\", Screen.resolutions.Select(x => x.ToString()).ToArray());"
+            "Check": "string.Join(\"|\", Screen.resolutions.Select(x => x.ToString()).ToArray());",
+            "Changed": "string[] resolution = variable.Check.Split('|')[int.Parse(variable.Value)].Replace(\" \", string.Empty).Replace(\"Hz\", string.Empty).Split(new Char[]{'x', '@'}); Screen.SetResolution(int.Parse(resolution[0]), int.Parse(resolution[1]), bool.Parse(Config_Loader.Get(\"Graphics\", \"Fullscreen\").Value), int.Parse(resolution[2]));"
         }
     ]
 }

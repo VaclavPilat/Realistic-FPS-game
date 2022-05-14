@@ -5,7 +5,8 @@
             "Description": "Master volume",
             "Type": "slider",
             "Check": "0|1|0.05",
-            "Value": "1"
+            "Value": "1",
+            "Changed": "AudioListener.volume = float.Parse(variable.Value);"
         },
         {
             "Name":"Menu_Music",

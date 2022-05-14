@@ -127,6 +127,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
+            if(setting.Changed != "")
+                Code_Compiler.Run<Setting>(setting.Changed, setting);
         });
     }
 
@@ -192,6 +194,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = toggle.isOn.ToString();
             Config_Loader.Save(Name); 
+            if(setting.Changed != "")
+                Code_Compiler.Run<Setting>(setting.Changed, setting);
         });
     }
 
