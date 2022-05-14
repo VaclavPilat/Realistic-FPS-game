@@ -73,6 +73,22 @@ public class Global_Settings : MonoBehaviour
         }
         else
             Console.Warning(this, "Master volume setting cannot be found");
+        // Setting master volume
+        setting = Config_Loader.Get("Graphics", "Resolution");
+        if(setting != null)
+        {
+            int index = int.Parse(setting.Value);
+            string content = setting.Check.Split('|')[index].Replace(" ", string.Empty).Replace("Hz", string.Empty);
+            string[] resolution = content.Split(new Char[]{'x', '@'});
+            Console.Warning(this, Screen.width.ToString() + "_" + Screen.height.ToString());
+            if(Screen.width.ToString() != resolution[0] || Screen.height.ToString() != resolution[1])
+            {
+                Screen.SetResolution(int.Parse(resolution[0]), int.Parse(resolution[1]), bool.Parse(Config_Loader.Get("Graphics", "Fullscreen").Value), int.Parse(resolution[2]));
+                Console.Log(this, "Setting new screen resolution to " + content);
+            }
+        }
+        else
+            Console.Warning(this, "Graphics resolution setting cannot be found");
     }
 
 }
