@@ -2,7 +2,7 @@
     "Items": [
         {
             "Name":"Quality",
-            "Description": "Quality",
+            "Description": "Quality preset",
             "Type": "selection",
             "Check": "string.Join(\"|\", QualitySettings.names);",
             "Value": "0"
@@ -16,7 +16,7 @@
         },
         {
             "Name":"Resolution",
-            "Description": "Resolution",
+            "Description": "Screen resolution",
             "Type": "selection",
             "Check": "string.Join(\"|\", Screen.resolutions.Select(x => x.ToString()).ToArray());",
             "Value": "0"

@@ -94,7 +94,7 @@ public static class Config_Loader
             // Generating check values
             if(setting.Check.EndsWith(";"))
             {
-                string check = Code_Compiler.Line<string>(setting.Check);
+                string check = Code_Compiler.Return<string>(setting.Check);
                 setting.Check = check;
                 setting.Value = (check.Split('|').Length -1).ToString();
                 Save(filename); 
