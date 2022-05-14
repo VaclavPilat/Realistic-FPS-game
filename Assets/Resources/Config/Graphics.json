@@ -4,7 +4,7 @@
             "Name":"Quality",
             "Description": "Quality",
             "Type": "selection",
-            "Check": "Very Low|Low|Medium|High|Very High|Ultra",
+            "Check": "string.Join(\"|\", QualitySettings.names);",
             "Value": "3"
         },
         {

@@ -137,6 +137,7 @@ public class Menu_Settings : MonoBehaviour
         // Setting up selection box
         GameObject input = Instantiate(Find_Prefab("Selection"), row.transform);
         Dropdown dropdown = input.GetComponent<Dropdown>();
+        // Generating options
         foreach(string text in setting.Check.Split('|'))
         {
             var option = new Dropdown.OptionData();

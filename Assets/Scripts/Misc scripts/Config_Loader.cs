@@ -55,6 +55,7 @@ public static class Config_Loader
                     {
                         var stream = new StreamReader(filepath);
                         Config[filename] = JsonHelper.FromJson<Setting>(stream.ReadToEnd());
+                        Generate(filename);
                         return true;
                     }
                     catch (Exception)
@@ -69,6 +70,7 @@ public static class Config_Loader
                     Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
                     string json = file.text;
                     Config[filename] = JsonHelper.FromJson<Setting>(json);
+                    Generate(filename);
                     return true;
                 }
                 else
@@ -82,6 +84,22 @@ public static class Config_Loader
             Console.Error(null, "Cannot load config '" + filename + "': " + e.ToString());
         }
         return false;
+    }
+
+    // Generating setting contents if necessary
+    private static void Generate (string filename)
+    {
+        foreach(Setting setting in Config[filename])
+        {
+            // Generating check values
+            if(setting.Check.EndsWith(";"))
+            {
+                string check = Code_Compiler.Line<string>(setting.Check);
+                setting.Check = check;
+                setting.Value = (check.Split('|').Length -1).ToString();
+                Save(filename); 
+            }
+        }
     }
 
     // Saving configuration to file
