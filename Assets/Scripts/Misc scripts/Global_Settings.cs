@@ -35,7 +35,7 @@ public class Global_Settings : MonoBehaviour
     {
         Setting setting;
         // Setting graphics quality
-        setting = Config_Loader.Get("Graphics", "Quality");
+        /*setting = Config_Loader.Get("Graphics", "Quality");
         if(setting != null)
         {
             int index = int.Parse(setting.Value);
@@ -46,7 +46,7 @@ public class Global_Settings : MonoBehaviour
             }
         }
         else
-            Console.Warning(this, "Graphics quality setting cannot be found");
+            Console.Warning(this, "Graphics quality setting cannot be found");*/
         // Setting graphics quality
         setting = Config_Loader.Get("Graphics", "Fullscreen");
         if(setting != null)

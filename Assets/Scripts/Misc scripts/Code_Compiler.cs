@@ -17,6 +17,7 @@ public class Code_Compiler
     // Compiling source code and returning compiler results
     private static CompilerResults Compile (string source_code)
     {
+        Console.Warning(null, source_code);
         // Adding compile parameters
         CompilerParameters compile_parameters = new CompilerParameters{
             GenerateExecutable = false, 
@@ -61,5 +62,31 @@ public class Code_Compiler
             Console.Error(null, "Runtime code compiler error");
         }
         return default(T);
+    }
+
+    // Runs a method with one parameter of a selected type
+    public static void Run<T> (string code, T variable = default(T)) {
+        try
+        {
+            CompilerResults compiler_results = Compile(@"
+                using System;
+                using System.Linq;
+                using UnityEngine;
+
+                public class Compiled_Class {
+                    public void Compiled_Method (" + typeof(T).ToString() + @" variable = default(" + typeof(T).ToString() + @")) {
+                        " + code + @"
+                    }
+                }
+            ");
+            // Calling the selected method
+            var instance = compiler_results.CompiledAssembly.CreateInstance("Compiled_Class");
+            MethodInfo method = instance.GetType().GetMethod("Compiled_Method");
+            method.Invoke(instance, new object[]{ variable }); 
+        }
+        catch (Exception)
+        {
+            Console.Error(null, "Runtime code compiler error");
+        }
     }
 }

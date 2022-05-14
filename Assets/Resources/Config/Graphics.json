@@ -4,7 +4,8 @@
             "Name":"Quality",
             "Description": "Quality preset",
             "Type": "selection",
-            "Check": "string.Join(\"|\", QualitySettings.names);"
+            "Check": "string.Join(\"|\", QualitySettings.names);",
+            "Changed": "QualitySettings.SetQualityLevel(int.Parse(variable.Value), true);"
         },
         {
             "Name":"Fullscreen",

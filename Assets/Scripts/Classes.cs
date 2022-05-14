@@ -57,6 +57,7 @@ public class Setting
     public string Type = ""; // Setting type
     public string Check = ""; // Setting rules for checking validity
     public string Value = ""; // Setting value, stored as an object
+    public string Changed = ""; // Action that is triggered when the setting is changed
 
     public Keybind ToKeybind ()
     {

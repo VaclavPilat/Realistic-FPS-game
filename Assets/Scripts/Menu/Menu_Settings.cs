@@ -150,6 +150,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = dropdown.value.ToString();
             Config_Loader.Save(Name); 
+            if(setting.Changed != "")
+                Code_Compiler.Run<Setting>(setting.Changed, setting);
         });
     }
 
