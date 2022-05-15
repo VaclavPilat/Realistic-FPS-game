@@ -128,8 +128,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
-            if(setting.Changed_Method != null)
-                setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
+            if(setting.Changed_Method.Key != null)
+                setting.Changed_Method.Value.Invoke(setting.Changed_Method.Key, new object[]{ setting });
         });
     }
 
@@ -153,8 +153,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = dropdown.value.ToString();
             Config_Loader.Save(Name); 
-            if(setting.Changed_Method != null)
-                setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
+            if(setting.Changed_Method.Key != null)
+                setting.Changed_Method.Value.Invoke(setting.Changed_Method.Key, new object[]{ setting });
         });
     }
 
@@ -195,8 +195,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = toggle.isOn.ToString();
             Config_Loader.Save(Name); 
-            if(setting.Changed_Method != null)
-                setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
+            if(setting.Changed_Method.Key != null)
+                setting.Changed_Method.Value.Invoke(setting.Changed_Method.Key, new object[]{ setting });
         });
     }
 

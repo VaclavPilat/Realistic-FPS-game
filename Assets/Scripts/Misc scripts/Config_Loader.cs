@@ -103,11 +103,7 @@ public static class Config_Loader
             }
             // Compiling method that is called after value change
             if(setting.Changed != "")
-            {
-                KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
-                setting.Changed_Instance = tmp.Key;
-                setting.Changed_Method = tmp.Value;
-            }
+                setting.Changed_Method = Code_Compiler.Create_Parameter(setting.Changed, setting);
         }
     }
 
