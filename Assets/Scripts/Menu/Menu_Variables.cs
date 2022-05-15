@@ -57,6 +57,9 @@ public class Menu_Variables : MonoBehaviour
         SceneManager.sceneLoaded += Hide_On_Load;
         // Loads all bindable methods into a dictionary
         Load_Bindable();
+        // Loading all settings files
+        foreach(Menu_Settings settings in gameObject.GetComponentsInChildren<Menu_Settings>(true))
+            Config_Loader.Load(settings.Name);
     }
 
     // Hiding menu on most scenes
