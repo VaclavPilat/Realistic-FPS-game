@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Reflection;
 
 // Showing settings
 public class Menu_Settings : MonoBehaviour
@@ -128,7 +129,15 @@ public class Menu_Settings : MonoBehaviour
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
             if(setting.Changed != "")
-                Code_Compiler.Run<Setting>(setting.Changed, setting);
+            {
+                if(setting.Changed_Instance == null && setting.Changed_Method == null)
+                {
+                    KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
+                    setting.Changed_Instance = tmp.Key;
+                    setting.Changed_Method = tmp.Value;
+                }
+                setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
+            }
         });
     }
 
@@ -153,7 +162,15 @@ public class Menu_Settings : MonoBehaviour
             Config_Loader.Config[Name][index].Value = dropdown.value.ToString();
             Config_Loader.Save(Name); 
             if(setting.Changed != "")
-                Code_Compiler.Run<Setting>(setting.Changed, setting);
+            {
+                if(setting.Changed_Instance == null && setting.Changed_Method == null)
+                {
+                    KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
+                    setting.Changed_Instance = tmp.Key;
+                    setting.Changed_Method = tmp.Value;
+                }
+                setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
+            }
         });
     }
 
@@ -195,7 +212,15 @@ public class Menu_Settings : MonoBehaviour
             Config_Loader.Config[Name][index].Value = toggle.isOn.ToString();
             Config_Loader.Save(Name); 
             if(setting.Changed != "")
-                Code_Compiler.Run<Setting>(setting.Changed, setting);
+            {
+                if(setting.Changed_Instance == null && setting.Changed_Method == null)
+                {
+                    KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
+                    setting.Changed_Instance = tmp.Key;
+                    setting.Changed_Method = tmp.Value;
+                }
+                setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
+            }
         });
     }
 

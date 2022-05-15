@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using System.Reflection;
 
 // Keybind
 [Serializable]
@@ -58,6 +59,8 @@ public class Setting
     public string Check = ""; // Setting rules for checking validity
     public string Value = ""; // Setting value, stored as an object
     public string Changed = ""; // Action that is triggered when the setting is changed
+    [System.NonSerialized] public System.Object Changed_Instance = null; // Compiled object instance that is called after a value change
+    [System.NonSerialized] public MethodInfo Changed_Method = null; // Compiled method that is called after a value change
 
     public Keybind ToKeybind ()
     {

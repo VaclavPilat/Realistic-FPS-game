@@ -64,8 +64,8 @@ public class Code_Compiler
         return default(T);
     }
 
-    // Runs a method with one parameter of a selected type
-    public static void Run<T> (string code, T variable = default(T)) {
+    // Returns a compiled method with one parameter of a selected type
+    public static KeyValuePair<System.Object, MethodInfo> Create_Parameter<T> (string code, T variable = default(T)) {
         try
         {
             CompilerResults compiler_results = Compile(@"
@@ -82,11 +82,12 @@ public class Code_Compiler
             // Calling the selected method
             var instance = compiler_results.CompiledAssembly.CreateInstance("Compiled_Class");
             MethodInfo method = instance.GetType().GetMethod("Compiled_Method");
-            method.Invoke(instance, new object[]{ variable }); 
+            return new KeyValuePair<System.Object, MethodInfo>(instance, method);
         }
         catch (Exception)
         {
             Console.Error(null, "Runtime code compiler error");
+            return new KeyValuePair<System.Object, MethodInfo>(null, null);
         }
     }
 }
