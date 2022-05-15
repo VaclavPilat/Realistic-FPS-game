@@ -25,6 +25,6 @@ public class Menu_Loading : MonoBehaviour
     //##########################################################################################
 
     // Rotating image
-    private void Update() => RectTransform.Rotate(0f, 0f, Speed * Time.deltaTime);
+    private void Update() => RectTransform.Rotate(0f, 0f, -1 * Speed * Time.deltaTime);
 
 }
