@@ -17,7 +17,7 @@ public class Code_Compiler
     // Compiling source code and returning compiler results
     private static CompilerResults Compile (string source_code)
     {
-        Console.Warning(null, source_code);
+        Console.Log(null, source_code);
         // Adding compile parameters
         CompilerParameters compile_parameters = new CompilerParameters{
             GenerateExecutable = false, 

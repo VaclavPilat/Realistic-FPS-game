@@ -128,16 +128,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = slider.value.ToString();
             Config_Loader.Save(Name); 
-            if(setting.Changed != "")
-            {
-                if(setting.Changed_Instance == null && setting.Changed_Method == null)
-                {
-                    KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
-                    setting.Changed_Instance = tmp.Key;
-                    setting.Changed_Method = tmp.Value;
-                }
+            if(setting.Changed_Method != null)
                 setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
-            }
         });
     }
 
@@ -161,16 +153,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = dropdown.value.ToString();
             Config_Loader.Save(Name); 
-            if(setting.Changed != "")
-            {
-                if(setting.Changed_Instance == null && setting.Changed_Method == null)
-                {
-                    KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
-                    setting.Changed_Instance = tmp.Key;
-                    setting.Changed_Method = tmp.Value;
-                }
+            if(setting.Changed_Method != null)
                 setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
-            }
         });
     }
 
@@ -211,16 +195,8 @@ public class Menu_Settings : MonoBehaviour
             int index = row.transform.GetSiblingIndex();
             Config_Loader.Config[Name][index].Value = toggle.isOn.ToString();
             Config_Loader.Save(Name); 
-            if(setting.Changed != "")
-            {
-                if(setting.Changed_Instance == null && setting.Changed_Method == null)
-                {
-                    KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
-                    setting.Changed_Instance = tmp.Key;
-                    setting.Changed_Method = tmp.Value;
-                }
+            if(setting.Changed_Method != null)
                 setting.Changed_Method.Invoke(setting.Changed_Instance, new object[]{ setting });
-            }
         });
     }
 

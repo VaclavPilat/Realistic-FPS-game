@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Reflection;
 
 // Class for loading configuration files
 public static class Config_Loader
@@ -55,6 +56,7 @@ public static class Config_Loader
                     {
                         var stream = new StreamReader(filepath);
                         Config[filename] = JsonHelper.FromJson<Setting>(stream.ReadToEnd());
+                        stream.Close();
                         Generate(filename);
                         return true;
                     }
@@ -98,6 +100,13 @@ public static class Config_Loader
                 setting.Check = check;
                 setting.Value = (check.Split('|').Length -1).ToString();
                 Save(filename); 
+            }
+            // Compiling method that is called after value change
+            if(setting.Changed != "")
+            {
+                KeyValuePair<System.Object, MethodInfo> tmp = Code_Compiler.Create_Parameter(setting.Changed, setting);
+                setting.Changed_Instance = tmp.Key;
+                setting.Changed_Method = tmp.Value;
             }
         }
     }
