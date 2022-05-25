@@ -13,8 +13,12 @@ public class Menu_Gridlayout : MonoBehaviour
     private void Start () => Resize();
 
     // Resizing element based on its children
-    public void Resize ()
+    public void Resize () => StartCoroutine(Resize_Grid());
+
+    // Resizing gridlayout in a new frame
+    private IEnumerator Resize_Grid()
     {
+        yield return new WaitForEndOfFrame();
         // Setting sizes of children object based on parent size
         var grid = transform.GetComponent<GridLayoutGroup>();
         grid.cellSize = new Vector2(
@@ -25,6 +29,7 @@ public class Menu_Gridlayout : MonoBehaviour
                 ) / transform.childCount, 
             grid.cellSize.y
         );
+        yield return null;
     }
 
 }
