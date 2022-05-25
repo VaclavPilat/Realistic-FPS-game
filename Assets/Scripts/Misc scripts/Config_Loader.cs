@@ -94,16 +94,34 @@ public static class Config_Loader
         foreach(Setting setting in Config[filename])
         {
             // Generating check values
-            if(setting.Check.EndsWith(";"))
+            if(setting.Check == "CALL")
             {
-                string check = Code_Compiler.Return<string>(setting.Check);
-                setting.Check = check;
-                setting.Value = (check.Split('|').Length -1).ToString();
-                Save(filename); 
+                string method = setting.Name + "_Check";
+                try
+                {
+                    string check = (string) typeof(Setting_Methods).GetMethod(method).Invoke(null, null);
+                    setting.Check = check;
+                    setting.Value = (check.Split('|').Length -1).ToString();
+                    Save(filename);
+                }
+                catch (Exception e)
+                {
+                    Console.Error(null, "Cannot call check method \"" + method + "\"; " + e.ToString());
+                }
             }
             // Compiling method that is called after value change
-            if(setting.Changed != "")
-                setting.Changed_Method = Code_Compiler.Create_Parameter(setting.Changed, setting);
+            if(setting.Onchange != "")
+            {
+                string method = setting.Name + "_Onchange";
+                try
+                {
+                    setting.Onchange_Method = typeof(Setting_Methods).GetMethod(method);
+                }
+                catch (Exception e)
+                {
+                    Console.Error(null, "Cannot get onchange method \"" + method + "\"; " + e.ToString());
+                }
+            }
         }
     }
 

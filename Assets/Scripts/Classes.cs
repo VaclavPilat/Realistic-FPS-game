@@ -58,8 +58,8 @@ public class Setting
     public string Type = ""; // Setting type
     public string Check = ""; // Setting rules for checking validity
     public string Value = ""; // Setting value, stored as an object
-    public string Changed = ""; // Action that is triggered when the setting is changed
-    [System.NonSerialized] public KeyValuePair<System.Object, MethodInfo> Changed_Method; // Compiled method that is called after a value change
+    public string Onchange = ""; // Action that is triggered when the setting is changed
+    [System.NonSerialized] public MethodInfo Onchange_Method; // Compiled method that is called after a value change
 
     public Keybind ToKeybind ()
     {
