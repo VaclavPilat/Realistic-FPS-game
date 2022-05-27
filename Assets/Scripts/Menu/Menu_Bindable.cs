@@ -20,7 +20,7 @@ public class Menu_Bindable : Menu_Settings
             // Creating row
             GameObject row = Instantiate(Find_Prefab("Row"), transform);
             // Bindable method name
-            GameObject name = Instantiate(Find_Prefab("Description"), row.transform);
+            GameObject name = Instantiate(Find_Prefab("Name"), row.transform);
             name.GetComponent<Text>().text = bindable.Key;
             // Bindable method description
             GameObject description = Instantiate(Find_Prefab("Description"), row.transform);
