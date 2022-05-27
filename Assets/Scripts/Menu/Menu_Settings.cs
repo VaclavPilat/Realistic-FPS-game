@@ -27,7 +27,7 @@ public class Menu_Settings : MonoBehaviour
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
-    private void Start () => Create();
+    protected void Start () => Create();
 
 
     //##########################################################################################
@@ -54,7 +54,7 @@ public class Menu_Settings : MonoBehaviour
     }
 
     // Generates UI for each setting found
-    private void Create ()
+    protected virtual void Create ()
     {
         if(Config_Loader.Load(Name))
             foreach(Setting setting in Config_Loader.Config[Name])
@@ -97,20 +97,20 @@ public class Menu_Settings : MonoBehaviour
     }
 
     // Generating a label
-    private void Create_Label (GameObject row, string type, string content)
+    protected void Create_Label (GameObject row, string type, string content)
     {
         GameObject label = Instantiate(Find_Prefab(type), row.transform);
         label.GetComponent<Text>().text = content;
     }
 
     // Generating a label that contains text
-    private void Create_Label_Name (Setting setting, GameObject row) => Create_Label(row, "Name", setting.Name);
+    protected void Create_Label_Name (Setting setting, GameObject row) => Create_Label(row, "Name", setting.Name);
 
     // Generating a label that contains text description of the setting
-    private void Create_Label_Description (Setting setting, GameObject row) => Create_Label(row, "Description", setting.Description);
+    protected void Create_Label_Description (Setting setting, GameObject row) => Create_Label(row, "Description", setting.Description);
 
     // Generating slider with a description label
-    private void Generate_Slider (Setting setting, GameObject row)
+    protected void Generate_Slider (Setting setting, GameObject row)
     {
         Create_Label_Name(setting, row);
         // Setting up slider
@@ -131,7 +131,7 @@ public class Menu_Settings : MonoBehaviour
     }
 
     // Generating a selection box (dropdown?)
-    private void Generate_Selection (Setting setting, GameObject row)
+    protected void Generate_Selection (Setting setting, GameObject row)
     {
         Create_Label_Name(setting, row);
         // Setting up selection box
@@ -156,7 +156,7 @@ public class Menu_Settings : MonoBehaviour
     }
 
     // Generating slider with a description label
-    private void Generate_Keybind (Setting setting, GameObject row)
+    protected void Generate_Keybind (Setting setting, GameObject row)
     {
         // Keybind description
         GameObject description = Instantiate(Find_Prefab("InputField"), row.transform);
@@ -180,7 +180,7 @@ public class Menu_Settings : MonoBehaviour
     }
 
     // Generating a checkbox
-    private void Generate_Checkbox (Setting setting, GameObject row)
+    protected void Generate_Checkbox (Setting setting, GameObject row)
     {
         Create_Label_Name(setting, row);
         // Setting up selection box
@@ -198,20 +198,18 @@ public class Menu_Settings : MonoBehaviour
     }
 
     // Generating a CTS record
-    private void Generate_Record (Setting setting, GameObject row)
+    protected void Generate_Record (Setting setting, GameObject row)
     {
         // Setting up label with order
-        GameObject order = Instantiate(Find_Prefab("Description"), row.transform);
-        order.GetComponent<Text>().text = transform.childCount.ToString();
+        Create_Label(row, "Description", transform.childCount.ToString());
         // Setting up label with time
-        GameObject time = Instantiate(Find_Prefab("Description"), row.transform);
-        time.GetComponent<Text>().text = setting.Value + " s";
+        Create_Label(row, "Name", setting.Value + " s");
         // Setting up label with datetime
         Create_Label_Description(setting, row);
     }
 
     // Generating a credit row
-    private void Generate_Credit (Setting setting, GameObject row)
+    protected void Generate_Credit (Setting setting, GameObject row)
     {
         Create_Label_Name(setting, row);
         Create_Label_Description(setting, row);
