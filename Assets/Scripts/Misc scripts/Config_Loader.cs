@@ -11,8 +11,6 @@ public static class Config_Loader
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
-    
-    private static string Prefix = "Config loader ::: "; // Console prefix message
 
     // Getting config file path
     private static string Get_Filepath (string filename)
@@ -51,7 +49,7 @@ public static class Config_Loader
                 // Checking if a configuration file already exists
                 if(File.Exists(filepath))
                 {
-                    Console.Log(null, Prefix + "Config file found: '" + filepath + "'");
+                    Console.Log(null, "Config file found: '" + filepath + "'");
                     try 
                     {
                         var stream = new StreamReader(filepath);
@@ -69,14 +67,14 @@ public static class Config_Loader
                 var file = Resources.Load<TextAsset>(resource);
                 if(file != null)
                 {
-                    Console.Log(null, Prefix + "Resource file found: '" + resource + "'");
+                    Console.Log(null, "Resource file found: '" + resource + "'");
                     string json = file.text;
                     Config[filename] = JsonHelper.FromJson<Setting>(json);
                     Generate(filename);
                     return true;
                 }
                 else
-                    Console.Warning(null, Prefix + "Couldn't find config file or resource matching name '" + filename + "'.");
+                    Console.Warning(null, "Couldn't find config file or resource matching name '" + filename + "'.");
             }
             else
                 return true;
@@ -135,7 +133,7 @@ public static class Config_Loader
             {
                 stream.Write(JsonHelper.ToJson<Setting>(Config[filename], true));
             }
-            Console.Log(null, Prefix + "Data should be saved in '" + filepath + "'");
+            Console.Log(null, "Data should be saved in '" + filepath + "'");
             return true;
         }
         catch (Exception e)

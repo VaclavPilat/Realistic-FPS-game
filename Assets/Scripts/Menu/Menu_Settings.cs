@@ -112,7 +112,7 @@ public class Menu_Settings : MonoBehaviour
     // Generating slider with a description label
     protected void Generate_Slider (Setting setting, GameObject row)
     {
-        Create_Label_Name(setting, row);
+        Create_Label(row, "Name", setting.Description);
         // Setting up slider
         GameObject input = Instantiate(Find_Prefab("Slider"), row.transform);
         Slider slider = input.GetComponent<Slider>();
@@ -133,7 +133,7 @@ public class Menu_Settings : MonoBehaviour
     // Generating a selection box (dropdown?)
     protected void Generate_Selection (Setting setting, GameObject row)
     {
-        Create_Label_Name(setting, row);
+        Create_Label(row, "Name", setting.Description);
         // Setting up selection box
         GameObject input = Instantiate(Find_Prefab("Selection"), row.transform);
         Dropdown dropdown = input.GetComponent<Dropdown>();
@@ -182,7 +182,7 @@ public class Menu_Settings : MonoBehaviour
     // Generating a checkbox
     protected void Generate_Checkbox (Setting setting, GameObject row)
     {
-        Create_Label_Name(setting, row);
+        Create_Label(row, "Name", setting.Description);
         // Setting up selection box
         GameObject input = Instantiate(Find_Prefab("Checkbox"), row.transform);
         Toggle toggle = input.GetComponent<Toggle>();
