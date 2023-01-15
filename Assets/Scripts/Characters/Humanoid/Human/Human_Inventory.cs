@@ -169,7 +169,6 @@ public class Human_Inventory : Lockable_Script
         while(true)
             if(!Drop())
                 return true;
-        return false;
     }
 
 
