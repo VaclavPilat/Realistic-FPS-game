@@ -24,18 +24,28 @@ public class Fortress_Generator : MonoBehaviour
         Vehicle // Vehicle or its residue
     }
 
+    private GameObject[] Prefabs; // Array of loaded setting prefabs
+
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
     //##########################################################################################
 
     private Tile[,] Tiles = null; // 2D array of tiles that will be used for map generation
-    private void Awake() => Generate_Map(); // Loading initial tiles and performing operations on them
+    private int Tile_Size = 2; // Size of a single tile (in meters)
 
 
     //##########################################################################################
     //#####################################  SCRIPT FLOW  ######################################
     //##########################################################################################
+
+    private void Awake()
+    {
+        Prefabs = Resources.LoadAll<GameObject>("Maps/Singleplayer/Fortress/"); // Loading all tile prefabs
+        Generate_Map(); // Loading initial tiles and performing operations on them
+        for(int i = 0; i < Prefabs.Length; i++)
+            Console.Warning(this, Prefabs[i].name);
+    }
     
     // Generating map
     private void Generate_Map()
