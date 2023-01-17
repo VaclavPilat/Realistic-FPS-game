@@ -39,23 +39,19 @@ public class Fortress_Generator : MonoBehaviour
     //#####################################  SCRIPT FLOW  ######################################
     //##########################################################################################
 
+    // Generating map
     private void Awake()
     {
         Prefabs = Resources.LoadAll<GameObject>("Maps/Singleplayer/Fortress/"); // Loading all tile prefabs
-        Generate_Map(); // Loading initial tiles and performing operations on them
-        for(int i = 0; i < Prefabs.Length; i++)
-            Console.Warning(this, Prefabs[i].name);
-    }
-    
-    // Generating map
-    private void Generate_Map()
-    {
+        /*for(int i = 0; i < Prefabs.Length; i++)
+            Console.Warning(this, Prefabs[i].name);*/
         Load_Tiles();
         //Log_Tiles();
         Replace_Patterns();
         //Log_Tiles();
         Add_Outer_Walls();
         Log_Tiles();
+        Instantiate_Tiles();
     }
 
     // Printing out tiles into console
@@ -258,6 +254,25 @@ public class Fortress_Generator : MonoBehaviour
             {Tile.Unused}
         };
         Replace_All_Tiles(unused_pattern, unused_replacement);
+    }
+
+    // Showing tiles on scene
+    private void Instantiate_Tiles()
+    {
+        for(int i = 0; i < Tiles.GetLength(0); i++)
+        {
+            for(int j = 0; j < Tiles.GetLength(1); j++)
+            {
+                switch(Tiles[i, j])
+                {
+                    case Tile.Wall:
+                        var instance = Instantiate(Prefabs[0], new Vector3(i * Tile_Size, 0, j * Tile_Size), new Quaternion(1, 1, 1, 1));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 
 }
