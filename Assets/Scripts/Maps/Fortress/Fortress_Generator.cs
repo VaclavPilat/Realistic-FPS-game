@@ -19,7 +19,8 @@ public class Fortress_Generator : MonoBehaviour
         Fountain, // A dried out fountain
         Rubbish, // Small 1x1 building or an obstackle
         Wall, // Procedurally generated outer wall
-        Building // Procedurally generated building
+        Building, // Procedurally generated building
+        Container // Shipping container
     }
 
 
@@ -203,6 +204,20 @@ public class Fortress_Generator : MonoBehaviour
             {null,null,null}
         };
         Replace_All_Tiles(rubbish_pattern, rubbish_replacement);
+        // Replacing a shipping container
+        Tile? [,] container_pattern = {
+            {null,Tile.Empty,null},
+            {Tile.Empty,Tile.Filled,Tile.Empty},
+            {Tile.Empty,Tile.Filled,Tile.Empty},
+            {null,Tile.Empty,null}
+        };
+        Tile? [,] container_replacement = {
+            {null,null,null},
+            {null,Tile.Container,null},
+            {null,Tile.Unused,null},
+            {null,null,null}
+        };
+        Replace_All_Tiles(container_pattern, container_replacement);
     }
 
 }
