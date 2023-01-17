@@ -80,8 +80,11 @@ public class Fortress_Generator : MonoBehaviour
     // Adding outer walls and a spacing before it
     private void Add_Outer_Walls()
     {
-        int new_size = Tiles.GetLength(0) + 4;
+        // Creating new array of tiles
+        int old_size = Tiles.GetLength(0);
+        int new_size = old_size + 4;
         Fortress_Tile [,] new_tiles = new Fortress_Tile[new_size, new_size];
+        // Filling the new array of tiles
         for(int i = 0; i < new_size; i++)
         {
             // Adding outer walls
@@ -89,7 +92,21 @@ public class Fortress_Generator : MonoBehaviour
             new_tiles[i, 0] = Fortress_Tile.Wall;
             new_tiles[new_size - 1, i] = Fortress_Tile.Wall;
             new_tiles[i, new_size - 1] = Fortress_Tile.Wall;
+            // Adding spacing before the wall
+            if(i >= 1 && i <= new_size - 2)
+            {
+                new_tiles[1, i] = Fortress_Tile.Wall;
+                new_tiles[i, 1] = Fortress_Tile.Wall;
+                new_tiles[new_size - 2, i] = Fortress_Tile.Wall;
+                new_tiles[i, new_size - 2] = Fortress_Tile.Wall;
+            }
         }
+        // Adding the original tiles
+        for(int i = 0; i < old_size; i++)
+            for(int j = 0; j < old_size; j++)
+                new_tiles[i + 2, j + 2] = Tiles[i, j];
+        // Setting the new tiles as the current ones
+        Tiles = new_tiles;
     }
 
 }
