@@ -12,15 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 587abb05413017bf8998dbe4052c9e57
   - enabled: 1
-    path: Assets/Scenes/Singleplayer/Streetfight.unity
-    guid: 230b3f94aed2622fbad8b0b4118d0c20
-  - enabled: 1
-    path: Assets/Scenes/Singleplayer/Testmap.unity
-    guid: b1adddad8de8a57df8ad02149327c3af
-  - enabled: 1
-    path: Assets/Scenes/Singleplayer/Target practice.unity
-    guid: 592c45b4106ad6ea98641234a10a3cb5
-  - enabled: 1
     path: Assets/Scenes/Singleplayer/Fortress.unity
     guid: 311f8dff26403b58694ff94e55b39d00
   m_configObjects: {}
