@@ -41,8 +41,9 @@ public class Fortress_Generator : MonoBehaviour
     private void Generate_Map()
     {
         Load_Tiles();
+        //Log_Tiles();
         Replace_Patterns();
-        Log_Tiles();
+        //Log_Tiles();
         Add_Outer_Walls();
         Log_Tiles();
     }
@@ -231,6 +232,22 @@ public class Fortress_Generator : MonoBehaviour
             {null,null,null,null}
         };
         Replace_All_Tiles(vehicle_pattern, vehicle_replacement);
+        // Replacing buildings
+        Tile? [,] building_pattern = {
+            {Tile.Filled}
+        };
+        Tile? [,] building_replacement = {
+            {Tile.Building}
+        };
+        Replace_All_Tiles(building_pattern, building_replacement);
+        // Replacing unused spaces
+        Tile? [,] unused_pattern = {
+            {Tile.Empty}
+        };
+        Tile? [,] unused_replacement = {
+            {Tile.Unused}
+        };
+        Replace_All_Tiles(unused_pattern, unused_replacement);
     }
 
 }
