@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1083150965665438888
+--- !u!1 &2044466736050095238
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1083150965665438893}
-  - component: {fileID: 1083150965665438892}
-  - component: {fileID: 1083150965665438895}
-  - component: {fileID: 1083150965665438894}
-  - component: {fileID: 1083150965665438889}
+  - component: {fileID: 5328240026653682219}
+  - component: {fileID: 1562927056057908644}
+  - component: {fileID: 3938631889372419225}
+  - component: {fileID: 8916731141191489012}
+  - component: {fileID: 1486112910312558727}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &1083150965665438893
+--- !u!4 &5328240026653682219
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083150965665438888}
+  m_GameObject: {fileID: 2044466736050095238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1083150965665438892
+--- !u!114 &1562927056057908644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083150965665438888}
+  m_GameObject: {fileID: 2044466736050095238}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
@@ -238,30 +238,30 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 0, w: -1}
   - {x: -1, y: 0, z: 0, w: -1}
   m_Colors:
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
-  - {r: 1, g: 0.255, b: 0.212, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
+  - {r: 0.18, g: 0.8, b: 0.251, a: 1}
   m_UnwrapParameters:
     m_HardAngle: 88
     m_PackMargin: 20
@@ -274,13 +274,13 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!23 &1083150965665438895
+--- !u!23 &3938631889372419225
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083150965665438888}
+  m_GameObject: {fileID: 2044466736050095238}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -315,21 +315,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1083150965665438894
+--- !u!33 &8916731141191489012
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083150965665438888}
+  m_GameObject: {fileID: 2044466736050095238}
   m_Mesh: {fileID: 0}
---- !u!64 &1083150965665438889
+--- !u!64 &1486112910312558727
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083150965665438888}
+  m_GameObject: {fileID: 2044466736050095238}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

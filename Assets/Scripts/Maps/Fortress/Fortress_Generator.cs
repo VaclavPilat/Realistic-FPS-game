@@ -272,9 +272,12 @@ public class Fortress_Generator : MonoBehaviour
                 Tile tile = Tiles[i, j];
                 switch(tile)
                 {
+                    case Tile.Building:
+                    case Tile.Fountain:
+                    case Tile.Rubbish:
                     case Tile.Wall:
                         var prefab = Find_Prefab(tile.ToString());
-                        var instance = Instantiate(prefab, new Vector3(i * Tile_Size, 0, j * Tile_Size), new Quaternion(1, 1, 1, 1));
+                        var instance = Instantiate(prefab, new Vector3(i * Tile_Size, 0, -j * Tile_Size), new Quaternion(1, 1, 1, 1));
                         break;
                     default:
                         break;
