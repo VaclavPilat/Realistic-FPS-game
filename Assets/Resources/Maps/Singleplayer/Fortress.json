@@ -1,0 +1,9 @@
+{
+    "Description":"A procedurally generated map located in an old desert fortress. Full of buildings and other cover. Towers and two-story buildings add a bit of verticallity to the gameplay.",
+    "Size":"Medium",
+    "Modes":[
+        "CTF",
+        "DM",
+        "TDM"
+    ]
+}

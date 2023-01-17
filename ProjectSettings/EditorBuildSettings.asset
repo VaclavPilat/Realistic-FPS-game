@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Singleplayer/Target practice.unity
     guid: 592c45b4106ad6ea98641234a10a3cb5
+  - enabled: 1
+    path: Assets/Scenes/Singleplayer/Fortress.unity
+    guid: 311f8dff26403b58694ff94e55b39d00
   m_configObjects: {}
