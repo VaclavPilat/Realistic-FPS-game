@@ -20,7 +20,8 @@ public class Fortress_Generator : MonoBehaviour
         Rubbish, // Small 1x1 building or an obstackle
         Wall, // Procedurally generated outer wall
         Building, // Procedurally generated building
-        Container // Shipping container
+        Container, // Shipping container
+        Vehicle // Vehicle or its residue
     }
 
 
@@ -218,6 +219,18 @@ public class Fortress_Generator : MonoBehaviour
             {null,null,null}
         };
         Replace_All_Tiles(container_pattern, container_replacement);
+        // Replacing vehicle
+        Tile? [,] vehicle_pattern = {
+            {null,Tile.Empty,Tile.Empty,null},
+            {Tile.Empty,Tile.Filled,Tile.Filled,Tile.Empty},
+            {null,Tile.Empty,Tile.Empty,null}
+        };
+        Tile? [,] vehicle_replacement = {
+            {null,null,null,null},
+            {null,Tile.Vehicle,Tile.Unused,null},
+            {null,null,null,null}
+        };
+        Replace_All_Tiles(vehicle_pattern, vehicle_replacement);
     }
 
 }
