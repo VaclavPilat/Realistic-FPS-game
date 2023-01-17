@@ -256,6 +256,12 @@ public class Fortress_Generator : MonoBehaviour
         Replace_All_Tiles(unused_pattern, unused_replacement);
     }
 
+    // Attempts to find a setting prefab by name
+    private GameObject Find_Prefab (string name)
+    {
+        return Array.Find(Prefabs, g => g.name == name);
+    }
+
     // Showing tiles on scene
     private void Instantiate_Tiles()
     {
@@ -263,10 +269,12 @@ public class Fortress_Generator : MonoBehaviour
         {
             for(int j = 0; j < Tiles.GetLength(1); j++)
             {
-                switch(Tiles[i, j])
+                Tile tile = Tiles[i, j];
+                switch(tile)
                 {
                     case Tile.Wall:
-                        var instance = Instantiate(Prefabs[0], new Vector3(i * Tile_Size, 0, j * Tile_Size), new Quaternion(1, 1, 1, 1));
+                        var prefab = Find_Prefab(tile.ToString());
+                        var instance = Instantiate(prefab, new Vector3(i * Tile_Size, 0, j * Tile_Size), new Quaternion(1, 1, 1, 1));
                         break;
                     default:
                         break;
