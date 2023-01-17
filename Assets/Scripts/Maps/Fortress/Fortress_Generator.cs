@@ -41,7 +41,23 @@ public class Fortress_Generator : MonoBehaviour
     private void Generate_Map()
     {
         Load_Tiles();
+        Log_Tiles();
         Add_Outer_Walls();
+        Log_Tiles();
+    }
+
+    // Printing out tiles into console
+    private void Log_Tiles()
+    {
+        string output = "";
+        int size = Tiles.GetLength(0);
+        for(int i = 0; i < size; i++)
+        {
+            for(int j = 0; j < size; j++)
+                output += (int)Tiles[i, j];
+            output += "\n";
+        }
+        Console.Log(this, output);
     }
 
     // Loading initial 2D array of tiles
@@ -95,10 +111,10 @@ public class Fortress_Generator : MonoBehaviour
             // Adding spacing before the wall
             if(i >= 1 && i <= new_size - 2)
             {
-                new_tiles[1, i] = Fortress_Tile.Wall;
-                new_tiles[i, 1] = Fortress_Tile.Wall;
-                new_tiles[new_size - 2, i] = Fortress_Tile.Wall;
-                new_tiles[i, new_size - 2] = Fortress_Tile.Wall;
+                new_tiles[1, i] = Fortress_Tile.Unused;
+                new_tiles[i, 1] = Fortress_Tile.Unused;
+                new_tiles[new_size - 2, i] = Fortress_Tile.Unused;
+                new_tiles[i, new_size - 2] = Fortress_Tile.Unused;
             }
         }
         // Adding the original tiles
