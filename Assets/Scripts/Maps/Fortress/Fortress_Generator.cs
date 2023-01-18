@@ -265,9 +265,10 @@ public class Fortress_Generator : MonoBehaviour
     // Showing tiles on scene
     private void Instantiate_Tiles()
     {
-        for(int i = 0; i < Tiles.GetLength(0); i++)
-        {
-            for(int j = 0; j < Tiles.GetLength(1); j++)
+        int size = Tiles.GetLength(0);
+        int offset = (int)((size / 2.0f) * Tile_Size);
+        for(int i = 0; i < size; i++)
+            for(int j = 0; j < size; j++)
             {
                 Tile tile = Tiles[i, j];
                 switch(tile)
@@ -280,13 +281,12 @@ public class Fortress_Generator : MonoBehaviour
                     case Tile.Container:
                     case Tile.Vehicle:
                         var prefab = Find_Prefab(tile.ToString());
-                        var instance = Instantiate(prefab, new Vector3(j * Tile_Size, 0, -i * Tile_Size), new Quaternion(0, 0, 0, 1));
+                        var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
                         break;
                     default:
                         break;
                 }
             }
-        }
     }
 
 }
