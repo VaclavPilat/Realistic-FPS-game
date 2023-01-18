@@ -47,9 +47,9 @@ public class Fortress_Generator : MonoBehaviour
             Console.Warning(this, Prefabs[i].name);*/
         Load_Tiles();
         //Log_Tiles();
-        Replace_Patterns();
-        //Log_Tiles();
         Add_Outer_Walls();
+        //Log_Tiles();
+        Replace_Patterns();
         Log_Tiles();
         Instantiate_Tiles();
     }
@@ -131,7 +131,7 @@ public class Fortress_Generator : MonoBehaviour
         if(Tiles[0, 0] != Tile.Wall)
         {
             if(Tiles[0, 0] != Tile.Empty)
-                Add_Outer_Layer(Tile.Unused);
+                Add_Outer_Layer(Tile.Empty);
             Add_Outer_Layer(Tile.Wall);
         }
     }
