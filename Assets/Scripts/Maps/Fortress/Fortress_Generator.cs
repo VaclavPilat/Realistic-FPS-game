@@ -257,14 +257,13 @@ public class Fortress_Generator : MonoBehaviour
     private void Instantiate_Tiles()
     {
         int size = Tiles.GetLength(0);
-        int offset = (int)((size / 2.0f) * Tile_Size);
+        float offset = ((size / 2.0f) * Tile_Size);
         for(int i = 0; i < size; i++)
             for(int j = 0; j < size; j++)
             {
                 Tile tile = Tiles[i, j];
                 switch(tile)
                 {
-                    case Tile.Building:
                     case Tile.Fountain:
                     case Tile.Rubbish:
                     case Tile.Tower:
@@ -273,8 +272,9 @@ public class Fortress_Generator : MonoBehaviour
                     case Tile.Vehicle:
                         var prefab = Find_Prefab(tile.ToString());
                         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
-                        if(tile == Tile.Building)
-                            Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + Get_Building_String(i, j));
+                        break;
+                    case Tile.Building:
+                        Instantiate_Procedural_Building(i, j, offset);
                         break;
                     default:
                         break;
@@ -296,6 +296,18 @@ public class Fortress_Generator : MonoBehaviour
         value += (Tiles[i+1,j] == Tile.Building ? "1" : "0"); // Bottom
         value += (Tiles[i+1,j+1] == Tile.Building && Tiles[i+1,j] == Tile.Building && Tiles[i,j+1] == Tile.Building ? "1" : "0"); // Bottom right
         return value;
+    }
+
+    // Finding building prefab and instantiating it with a specific rotation and scale
+    private void Instantiate_Procedural_Building(int i, int j, float offset)
+    {
+        string building = Get_Building_String(i, j);
+        GameObject prefab = Find_Prefab("Building_" + building);
+        Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + (prefab != null ? prefab.name : "--"));
+        if(prefab != null)
+            Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
+        else
+            Instantiate(Find_Prefab("Building"), new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
     }
 
 }
