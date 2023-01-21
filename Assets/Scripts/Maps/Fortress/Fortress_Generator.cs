@@ -323,17 +323,17 @@ public class Fortress_Generator : MonoBehaviour
         while(true)
         {
             // Resetting rotation
-            string currentBuilding = (translated ? Translate_Building_String(building) : building);
+            string current = (translated ? Translate_Building_String(building) : building);
             // Trying every possible rotation + translation
             for(rotates = 0; rotates < 4; rotates++)
             {
-                prefab = Find_Prefab("Building_" + currentBuilding);
+                prefab = Find_Prefab("Building_" + current);
                 if(prefab != null)
                 {
                     Instantiate_Procedural_Building(i, j, offset, prefab, rotates, translated);
                     return;
                 }
-                currentBuilding = Rotate_Building_String(currentBuilding);
+                current = Rotate_Building_String(current);
             }
             // Changing translation
             if(translated)
@@ -361,8 +361,8 @@ public class Fortress_Generator : MonoBehaviour
     {
         if(translated)
         {
+            instance.transform.RotateAround(instance.transform.position + new Vector3(-tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, -90 * rotates);
             ScaleAroundRelative(instance, instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), new Vector3(-1, 1, 1));
-            instance.transform.RotateAround(instance.transform.position + new Vector3(-tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, 90 * rotates);
         }
         else
             instance.transform.RotateAround(instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, 90 * rotates);
@@ -371,7 +371,7 @@ public class Fortress_Generator : MonoBehaviour
     // Finding building prefab and instantiating it with a specific rotation and scale
     private void Instantiate_Procedural_Building(int i, int j, float offset, GameObject prefab, int rotates, bool translated)
     {
-        Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
+        //Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
         Rotate_Translate_Instance(instance, 1, 1, rotates, translated);
         instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + (translated ? "translated horizontally, " : "") + rotates.ToString() + "x clockwise";
