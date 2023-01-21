@@ -42,8 +42,8 @@ public class Fortress_Generator : MonoBehaviour
     private void Awake()
     {
         Prefabs = Resources.LoadAll<GameObject>("Maps/Singleplayer/Fortress/"); // Loading all tile prefabs
-        for(int i = 0; i < Prefabs.Length; i++)
-            Console.Warning(this, Prefabs[i].name);
+        /*for(int i = 0; i < Prefabs.Length; i++)
+            Console.Warning(this, Prefabs[i].name);*/
         Load_Tiles();
         //Log_Tiles();
         Add_Outer_Walls();
@@ -273,11 +273,29 @@ public class Fortress_Generator : MonoBehaviour
                     case Tile.Vehicle:
                         var prefab = Find_Prefab(tile.ToString());
                         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
+                        if(tile == Tile.Building)
+                            Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + Get_Building_String(i, j));
                         break;
                     default:
                         break;
                 }
             }
+    }
+
+    // Getting a string that represents the building
+    private string Get_Building_String(int i, int j)
+    {
+        string value = "";
+        value += (Tiles[i-1,j-1] == Tile.Building && Tiles[i-1,j] == Tile.Building && Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Top left
+        value += (Tiles[i-1,j] == Tile.Building ? "1" : "0"); // Top
+        value += (Tiles[i-1,j+1] == Tile.Building && Tiles[i-1,j] == Tile.Building && Tiles[i,j+1] == Tile.Building ? "1" : "0"); // Top right
+        value += (Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Left
+        value += "1"; // Middle
+        value += (Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Right
+        value += (Tiles[i+1,j-1] == Tile.Building && Tiles[i+1,j] == Tile.Building && Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Bottom left
+        value += (Tiles[i+1,j] == Tile.Building ? "1" : "0"); // Bottom
+        value += (Tiles[i+1,j+1] == Tile.Building && Tiles[i+1,j] == Tile.Building && Tiles[i,j+1] == Tile.Building ? "1" : "0"); // Bottom right
+        return value;
     }
 
 }
