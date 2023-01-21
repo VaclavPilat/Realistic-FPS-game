@@ -301,7 +301,7 @@ public class Fortress_Generator : MonoBehaviour
     // Rotating building by 90 degrees clockwise
     private string Rotate_Building_String(string building)
     {
-        return building.Substring(6, 1) + building.Substring(3, 1) + building.Substring(0, 1) + building.Substring(7, 1) + building.Substring(4, 1) + building.Substring(1, 1) + building.Substring(8, 1) + building.Substring(5, 1) + building.Substring(2, 1);
+        return building.Substring(2, 1) + building.Substring(5, 1) + building.Substring(8, 1) + building.Substring(1, 1) + building.Substring(4, 1) + building.Substring(7, 1) + building.Substring(0, 1) + building.Substring(3, 1) + building.Substring(6, 1);
     }
 
     // Translating building string -> -1 times on X scale
@@ -348,6 +348,8 @@ public class Fortress_Generator : MonoBehaviour
     private void Rotate_Translate_Instance(GameObject instance, int tiles_w, int tiles_h, int rotates, bool translated)
     {
         instance.transform.Rotate(new Vector3(0, 90 * rotates, 0), Space.World);
+        //if(translated)
+        //    instance.transform.localScale = new Vector3(-instance.transform.localScale.x, instance.transform.localScale.y, instance.transform.localScale.z);
         Vector3 position_increment = Vector3.zero;
         switch(rotates)
         {
@@ -371,8 +373,7 @@ public class Fortress_Generator : MonoBehaviour
     {
         Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
-        //if(i == 2 && j == 12)
-            Rotate_Translate_Instance(instance, 1, 1, rotates, translated);
+        Rotate_Translate_Instance(instance, 1, 1, rotates, translated);
     }
 
 }
