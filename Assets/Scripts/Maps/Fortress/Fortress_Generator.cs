@@ -31,7 +31,7 @@ public class Fortress_Generator : MonoBehaviour
     //##########################################################################################
 
     private Tile[,] Tiles = null; // 2D array of tiles that will be used for map generation
-    private int Tile_Size = 2; // Size of a single tile (in meters)
+    private int Tile_Size = 3; // Size of a single tile (in meters)
 
 
     //##########################################################################################
