@@ -344,11 +344,35 @@ public class Fortress_Generator : MonoBehaviour
         Console.Warning(this, i.ToString() + "-" + j.ToString() + " : Unable to find correct building prefab");
     }
 
+    // Rotating and translating instantiated building
+    private void Rotate_Translate_Instance(GameObject instance, int tiles_w, int tiles_h, int rotates, bool translated)
+    {
+        instance.transform.Rotate(new Vector3(0, 90 * rotates, 0), Space.World);
+        Vector3 position_increment = Vector3.zero;
+        switch(rotates)
+        {
+            case 1:
+                position_increment = new Vector3(tiles_w * Tile_Size, 0, 0);
+                break;
+            case 2:
+                position_increment = new Vector3(tiles_w * Tile_Size, 0, -tiles_h * Tile_Size);
+                break;
+            case 3:
+                position_increment = new Vector3(0, 0, -tiles_h * Tile_Size);
+                break;
+            default:
+                break;
+        }
+        instance.transform.position += position_increment;
+    }
+
     // Finding building prefab and instantiating it with a specific rotation and scale
     private void Instantiate_Procedural_Building(int i, int j, float offset, GameObject prefab, int rotates, bool translated)
     {
         Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
-        Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
+        var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
+        //if(i == 2 && j == 12)
+            Rotate_Translate_Instance(instance, 1, 1, rotates, translated);
     }
 
 }
