@@ -14,7 +14,6 @@ public class Fortress_Generator : MonoBehaviour
     {
         Empty, // Nothing here, not yet used
         Filled, // Something here, not yet used
-        Unused, // This tile will not be used
         Tower, // Guard tower
         Fountain, // A dried out fountain
         Rubbish, // Small 1x1 building or an obstackle
@@ -179,13 +178,13 @@ public class Fortress_Generator : MonoBehaviour
             {Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled}
         };
         Tile? [,] tower_replacement = {
-            {Tile.Tower,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused},
-            {Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused},
-            {Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused},
-            {Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused},
-            {Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused},
-            {Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused},
-            {Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused,Tile.Unused}
+            {Tile.Tower,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
+            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
+            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
+            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
+            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
+            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
+            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty}
         };
         Replace_All_Tiles(tower_pattern, tower_replacement);
         // Replacing fountains
@@ -222,7 +221,7 @@ public class Fortress_Generator : MonoBehaviour
         Tile? [,] container_replacement = {
             {null,null,null},
             {null,Tile.Container,null},
-            {null,Tile.Unused,null},
+            {null,Tile.Empty,null},
             {null,null,null}
         };
         Replace_All_Tiles(container_pattern, container_replacement);
@@ -234,7 +233,7 @@ public class Fortress_Generator : MonoBehaviour
         };
         Tile? [,] vehicle_replacement = {
             {null,null,null,null},
-            {null,Tile.Vehicle,Tile.Unused,null},
+            {null,Tile.Vehicle,Tile.Empty,null},
             {null,null,null,null}
         };
         Replace_All_Tiles(vehicle_pattern, vehicle_replacement);
@@ -246,14 +245,6 @@ public class Fortress_Generator : MonoBehaviour
             {Tile.Building}
         };
         Replace_All_Tiles(building_pattern, building_replacement);
-        // Replacing unused spaces
-        Tile? [,] unused_pattern = {
-            {Tile.Empty}
-        };
-        Tile? [,] unused_replacement = {
-            {Tile.Unused}
-        };
-        Replace_All_Tiles(unused_pattern, unused_replacement);
     }
 
     // Attempts to find a setting prefab by name
