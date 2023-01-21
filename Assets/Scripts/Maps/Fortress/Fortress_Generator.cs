@@ -274,7 +274,7 @@ public class Fortress_Generator : MonoBehaviour
                         Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
                         break;
                     case Tile.Building:
-                        Instantiate_Procedural_Building(i, j, offset);
+                        Prepare_Procedural_Building(i, j, offset);
                         break;
                     default:
                         break;
@@ -311,22 +311,44 @@ public class Fortress_Generator : MonoBehaviour
     }
 
     // Finding building prefab and instantiating it with a specific rotation and scale
-    private void Instantiate_Procedural_Building(int i, int j, float offset)
+    private void Prepare_Procedural_Building(int i, int j, float offset)
     {
         // Getting building string
         string building = Get_Building_String(i, j);
         // Variables for representing current rotation / translation
-        int rotates;
+        int rotates = 0;
         bool translated = false;
         GameObject prefab;
         // Getting the correct prefab + rotation / translation values
-        
-        prefab = Find_Prefab("Building_" + building);
-        Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + (prefab != null ? prefab.name : "--"));
-        if(prefab != null)
-            Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
-        else
-            Instantiate(Find_Prefab("Building"), new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
+        while(true)
+        {
+            // Resetting rotation
+            string currentBuilding = (translated ? Translate_Building_String(building) : building);
+            // Trying every possible rotation + translation
+            for(rotates = 0; rotates < 4; rotates++)
+            {
+                prefab = Find_Prefab("Building_" + currentBuilding);
+                if(prefab != null)
+                {
+                    Instantiate_Procedural_Building(i, j, offset, prefab, rotates, translated);
+                    return;
+                }
+                currentBuilding = Rotate_Building_String(currentBuilding);
+            }
+            // Changing translation
+            if(translated)
+                break;
+            else
+                translated = true;
+        }
+        Console.Warning(this, i.ToString() + "-" + j.ToString() + " : Unable to find correct building prefab");
+    }
+
+    // Finding building prefab and instantiating it with a specific rotation and scale
+    private void Instantiate_Procedural_Building(int i, int j, float offset, GameObject prefab, int rotates, bool translated)
+    {
+        Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
+        Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
     }
 
 }
