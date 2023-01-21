@@ -291,7 +291,7 @@ public class Fortress_Generator : MonoBehaviour
         value += (Tiles[i-1,j+1] == Tile.Building && Tiles[i-1,j] == Tile.Building && Tiles[i,j+1] == Tile.Building ? "1" : "0"); // Top right
         value += (Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Left
         value += "1"; // Middle
-        value += (Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Right
+        value += (Tiles[i,j+1] == Tile.Building ? "1" : "0"); // Right
         value += (Tiles[i+1,j-1] == Tile.Building && Tiles[i+1,j] == Tile.Building && Tiles[i,j-1] == Tile.Building ? "1" : "0"); // Bottom left
         value += (Tiles[i+1,j] == Tile.Building ? "1" : "0"); // Bottom
         value += (Tiles[i+1,j+1] == Tile.Building && Tiles[i+1,j] == Tile.Building && Tiles[i,j+1] == Tile.Building ? "1" : "0"); // Bottom right
