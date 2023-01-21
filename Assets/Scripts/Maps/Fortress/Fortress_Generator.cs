@@ -42,8 +42,8 @@ public class Fortress_Generator : MonoBehaviour
     private void Awake()
     {
         Prefabs = Resources.LoadAll<GameObject>("Maps/Singleplayer/Fortress/"); // Loading all tile prefabs
-        /*for(int i = 0; i < Prefabs.Length; i++)
-            Console.Warning(this, Prefabs[i].name);*/
+        for(int i = 0; i < Prefabs.Length; i++)
+            Console.Warning(this, Prefabs[i].name);
         Load_Tiles();
         //Log_Tiles();
         Add_Outer_Walls();
