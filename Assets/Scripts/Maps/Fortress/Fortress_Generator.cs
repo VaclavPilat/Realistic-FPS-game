@@ -343,29 +343,29 @@ public class Fortress_Generator : MonoBehaviour
         }
         Console.Warning(this, i.ToString() + "-" + j.ToString() + " : Unable to find correct building prefab");
     }
+    
+    // https://forum.unity.com/threads/scale-around-point-similar-to-rotate-around.232768/#post-5505829
+    // Relative scaling around a pivot
+    private void ScaleAroundRelative(GameObject target, Vector3 pivot, Vector3 scaleFactor)
+    {
+        var pivot_delta = target.transform.localPosition - pivot;
+        pivot_delta.Scale(scaleFactor);
+        target.transform.localPosition = pivot + pivot_delta;
+        var final_scale = target.transform.localScale;
+        final_scale.Scale(scaleFactor);
+        target.transform.localScale = final_scale;
+    }
 
-    // Rotating and translating instantiated building
+    // Rotating and translating instantiated building 19-16
     private void Rotate_Translate_Instance(GameObject instance, int tiles_w, int tiles_h, int rotates, bool translated)
     {
-        instance.transform.Rotate(new Vector3(0, 90 * rotates, 0), Space.World);
-        //if(translated)
-        //    instance.transform.localScale = new Vector3(-instance.transform.localScale.x, instance.transform.localScale.y, instance.transform.localScale.z);
-        Vector3 position_increment = Vector3.zero;
-        switch(rotates)
+        if(translated)
         {
-            case 1:
-                position_increment = new Vector3(tiles_w * Tile_Size, 0, 0);
-                break;
-            case 2:
-                position_increment = new Vector3(tiles_w * Tile_Size, 0, -tiles_h * Tile_Size);
-                break;
-            case 3:
-                position_increment = new Vector3(0, 0, -tiles_h * Tile_Size);
-                break;
-            default:
-                break;
+            ScaleAroundRelative(instance, instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), new Vector3(-1, 1, 1));
+            instance.transform.RotateAround(instance.transform.position + new Vector3(-tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, 90 * rotates);
         }
-        instance.transform.position += position_increment;
+        else
+            instance.transform.RotateAround(instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, 90 * rotates);
     }
 
     // Finding building prefab and instantiating it with a specific rotation and scale
@@ -374,6 +374,7 @@ public class Fortress_Generator : MonoBehaviour
         Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
         Rotate_Translate_Instance(instance, 1, 1, rotates, translated);
+        instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + (translated ? "translated horizontally, " : "") + rotates.ToString() + "x clockwise";
     }
 
 }
