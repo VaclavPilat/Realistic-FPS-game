@@ -271,7 +271,7 @@ public class Fortress_Generator : MonoBehaviour
                     case Tile.Container:
                     case Tile.Vehicle:
                         var prefab = Find_Prefab(tile.ToString());
-                        var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
+                        Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
                         break;
                     case Tile.Building:
                         Instantiate_Procedural_Building(i, j, offset);
@@ -298,11 +298,30 @@ public class Fortress_Generator : MonoBehaviour
         return value;
     }
 
+    // Rotating building by 90 degrees clockwise
+    private string Rotate_Building_String(string building)
+    {
+        return building.Substring(6, 1) + building.Substring(3, 1) + building.Substring(0, 1) + building.Substring(7, 1) + building.Substring(4, 1) + building.Substring(1, 1) + building.Substring(8, 1) + building.Substring(5, 1) + building.Substring(2, 1);
+    }
+
+    // Translating building string -> -1 times on X scale
+    private string Translate_Building_String(string building)
+    {
+        return building.Substring(2, 1) + building.Substring(1, 1) + building.Substring(0, 1) + building.Substring(5, 1) + building.Substring(4, 1) + building.Substring(3, 1) + building.Substring(8, 1) + building.Substring(7, 1) + building.Substring(6, 1);
+    }
+
     // Finding building prefab and instantiating it with a specific rotation and scale
     private void Instantiate_Procedural_Building(int i, int j, float offset)
     {
+        // Getting building string
         string building = Get_Building_String(i, j);
-        GameObject prefab = Find_Prefab("Building_" + building);
+        // Variables for representing current rotation / translation
+        int rotates;
+        bool translated = false;
+        GameObject prefab;
+        // Getting the correct prefab + rotation / translation values
+        
+        prefab = Find_Prefab("Building_" + building);
         Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + (prefab != null ? prefab.name : "--"));
         if(prefab != null)
             Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), new Quaternion(0, 0, 0, 1));
