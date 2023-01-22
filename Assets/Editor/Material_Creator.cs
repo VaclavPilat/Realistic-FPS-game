@@ -54,8 +54,27 @@ public class Material_Creator : Editor
                     filepaths.Add(path);
                     // Applying texture to material
                     string name = Path.GetFileName(path);
-                    if(name.Contains("_Color"))
-                        material.mainTexture = texture;
+                    if(name.Contains("_Color")) // Albedo
+                        material.SetTexture("_MainTex", texture);
+                    else if(name.Contains("_NormalGL")) // OpenGL Core is default for Linux
+                    {
+                        material.EnableKeyword("_NORMALMAP");
+                        material.SetTexture("_BumpMap", texture);
+                    }
+                    else if(name.Contains("_Displacement")) // Height
+                    {
+                        material.EnableKeyword("_PARALLAXMAP");
+                        material.SetTexture("_ParallaxMap", texture);
+                    }
+                    else if(name.Contains("_Metallness")) // Metallic map
+                    {
+                        material.EnableKeyword("_METALLICGLOSSMAP");
+                        material.SetTexture("_MetallicGlossMap", texture);
+                    }
+                    else if(name.Contains("_AmbientOcclusion")) // Ambient occlusion
+                    {
+                        material.SetTexture("_OcclusionMap", texture);
+                    }
                     else
                         Console.Warning(null, "Texture was not used: " + name);
                 }
@@ -78,6 +97,7 @@ public class Material_Creator : Editor
         {
             AssetDatabase.StopAssetEditing();
             AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
     }
 
