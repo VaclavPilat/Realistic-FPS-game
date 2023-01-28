@@ -258,10 +258,15 @@ public class Fortress_Generator : MonoBehaviour
     {
         int size = Tiles.GetLength(0);
         float offset = ((size / 2.0f) * Tile_Size);
+        GameObject ground = Find_Prefab("Ground");
         for(int i = 0; i < size; i++)
             for(int j = 0; j < size; j++)
             {
                 Tile tile = Tiles[i, j];
+                // Instantiating ground
+                if(tile != Tile.Wall)
+                    Instantiate(ground, new Vector3(j*Tile_Size - offset, 0, offset - (i+1)*Tile_Size), new Quaternion(0, 0, 0, 1));
+                // Instantiating special prefabs
                 switch(tile)
                 {
                     case Tile.Fountain:
