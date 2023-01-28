@@ -258,6 +258,13 @@ public class Fortress_Generator : MonoBehaviour
     {
         int size = Tiles.GetLength(0);
         float offset = ((size / 2.0f) * Tile_Size);
+        // Instantiating outer ground
+        GameObject outer_ground = Find_Prefab("Outer_Ground");
+        Instantiate(outer_ground, new Vector3(Tile_Size - offset, 0, offset - Tile_Size), Quaternion.Euler(0, 0, 0));
+        Instantiate(outer_ground, new Vector3(offset - Tile_Size, 0, offset - Tile_Size), Quaternion.Euler(0, 90, 0));
+        Instantiate(outer_ground, new Vector3(offset - Tile_Size, 0, Tile_Size - offset), Quaternion.Euler(0, 180, 0));
+        Instantiate(outer_ground, new Vector3(Tile_Size - offset, 0, Tile_Size - offset), Quaternion.Euler(0, 270, 0));
+        // Instantiating inner prefabs
         GameObject ground = Find_Prefab("Ground");
         for(int i = 0; i < size; i++)
             for(int j = 0; j < size; j++)
