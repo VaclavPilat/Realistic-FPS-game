@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4606594899372748442}
   - component: {fileID: 7041119344197921740}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Roofing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -634,11 +634,11 @@ GameObject:
   - component: {fileID: 4122737479483326179}
   - component: {fileID: 5585763382386060925}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8166834073335046708
 Transform:
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 1974367216895517446}
   - component: {fileID: 3211563944762632606}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Roofing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1603,7 +1603,7 @@ GameObject:
   - component: {fileID: 7574358515792160809}
   - component: {fileID: 5919613363277435583}
   m_Layer: 0
-  m_Name: New Game Object
+  m_Name: Roofing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 1390352311826236325}
   - component: {fileID: 467077518604828536}
   m_Layer: 0
-  m_Name: New Game Object (1)
+  m_Name: Roofing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2186,7 +2186,7 @@ GameObject:
   - component: {fileID: 5238350310040802236}
   - component: {fileID: 5303556462973041778}
   m_Layer: 0
-  m_Name: New Game Object (3)
+  m_Name: Roofing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2686,7 +2686,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7799724139212857027
 Transform:

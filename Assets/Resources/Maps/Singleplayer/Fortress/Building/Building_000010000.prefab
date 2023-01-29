@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 605689506954944736}
   - component: {fileID: 8738319573338800916}
   m_Layer: 0
-  m_Name: Cone
+  m_Name: Roofing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
