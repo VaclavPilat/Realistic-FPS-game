@@ -1602,6 +1602,7 @@ GameObject:
   - component: {fileID: 5236739755865786249}
   - component: {fileID: 7574358515792160809}
   - component: {fileID: 5919613363277435583}
+  - component: {fileID: 8761998967803792840}
   m_Layer: 0
   m_Name: Roofing
   m_TagString: Untagged
@@ -1763,6 +1764,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4655644319270988575}
   m_Mesh: {fileID: 0}
+--- !u!64 &8761998967803792840
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655644319270988575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6840454207654455264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1790,7 @@ GameObject:
   - component: {fileID: 982927300587181983}
   - component: {fileID: 1390352311826236325}
   - component: {fileID: 467077518604828536}
+  - component: {fileID: 8936149941732548086}
   m_Layer: 0
   m_Name: Roofing
   m_TagString: Untagged
@@ -2173,6 +2189,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6840454207654455264}
   m_Mesh: {fileID: 0}
+--- !u!64 &8936149941732548086
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840454207654455264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &7252790001202846723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,6 +2215,7 @@ GameObject:
   - component: {fileID: 3716774020152632178}
   - component: {fileID: 5238350310040802236}
   - component: {fileID: 5303556462973041778}
+  - component: {fileID: 927395913541478332}
   m_Layer: 0
   m_Name: Roofing
   m_TagString: Untagged
@@ -2667,6 +2698,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7252790001202846723}
+  m_Mesh: {fileID: 0}
+--- !u!64 &927395913541478332
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252790001202846723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &8837396782066588678
 GameObject:

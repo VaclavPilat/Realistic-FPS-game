@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 2036118137547043337}
   - component: {fileID: 4033593419007018258}
   - component: {fileID: 7881599291998424979}
+  - component: {fileID: 7328368462782517124}
   m_Layer: 0
   m_Name: Roofing
   m_TagString: Untagged
@@ -819,6 +820,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968481092593438550}
+  m_Mesh: {fileID: 0}
+--- !u!64 &7328368462782517124
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968481092593438550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &2828749654538291181
 GameObject:
