@@ -189,14 +189,18 @@ public class Fortress_Generator : MonoBehaviour
         Replace_All_Tiles(tower_pattern, tower_replacement);
         // Replacing fountains
         Tile? [,] fountain_pattern = {
-            {Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Filled,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty}
+            {Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled},
+            {Tile.Filled,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Filled},
+            {Tile.Filled,Tile.Empty,Tile.Filled,Tile.Empty,Tile.Filled},
+            {Tile.Filled,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Filled},
+            {Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled}
         };
         Tile? [,] fountain_replacement = {
-            {null,null,null},
-            {null,Tile.Fountain,null},
-            {null,null,null}
+            {null,null,null,null,null},
+            {null,null,null,null,null},
+            {null,null,Tile.Fountain,null,null},
+            {null,null,null,null,null},
+            {null,null,null,null,null}
         };
         Replace_All_Tiles(fountain_pattern, fountain_replacement);
         // Replacing 1x1 buildings / rubbish
