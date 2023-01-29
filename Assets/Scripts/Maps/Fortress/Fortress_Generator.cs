@@ -200,7 +200,7 @@ public class Fortress_Generator : MonoBehaviour
         };
         Replace_All_Tiles(fountain_pattern, fountain_replacement);
         // Replacing 1x1 buildings / rubbish
-        Tile? [,] rubbish_pattern = {
+        /*Tile? [,] rubbish_pattern = {
             {null,Tile.Empty,null},
             {Tile.Empty,Tile.Filled,Tile.Empty},
             {null,Tile.Empty,null}
@@ -210,7 +210,7 @@ public class Fortress_Generator : MonoBehaviour
             {null,Tile.Rubbish,null},
             {null,null,null}
         };
-        Replace_All_Tiles(rubbish_pattern, rubbish_replacement);
+        Replace_All_Tiles(rubbish_pattern, rubbish_replacement);*/
         // Replacing a shipping container
         Tile? [,] container_pattern = {
             {null,Tile.Empty,null},
