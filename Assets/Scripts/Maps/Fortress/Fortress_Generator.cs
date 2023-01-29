@@ -320,77 +320,41 @@ public class Fortress_Generator : MonoBehaviour
         return building.Substring(2, 1) + building.Substring(5, 1) + building.Substring(8, 1) + building.Substring(1, 1) + building.Substring(4, 1) + building.Substring(7, 1) + building.Substring(0, 1) + building.Substring(3, 1) + building.Substring(6, 1);
     }
 
-    // Translating building string -> -1 times on X scale
-    private string Translate_Building_String(string building)
-    {
-        return building.Substring(2, 1) + building.Substring(1, 1) + building.Substring(0, 1) + building.Substring(5, 1) + building.Substring(4, 1) + building.Substring(3, 1) + building.Substring(8, 1) + building.Substring(7, 1) + building.Substring(6, 1);
-    }
-
     // Finding building prefab and instantiating it with a specific rotation and scale
     private void Prepare_Procedural_Building(int i, int j, float offset)
     {
         // Getting building string
         string building = Get_Building_String(i, j);
-        // Variables for representing current rotation / translation
+        // Variables for representing current rotation
         int rotates = 0;
-        bool translated = false;
         GameObject prefab;
-        // Getting the correct prefab + rotation / translation values
-        while(true)
+        // Trying every possible rotation
+        for(rotates = 0; rotates < 4; rotates++)
         {
-            // Resetting rotation
-            string current = (translated ? Translate_Building_String(building) : building);
-            // Trying every possible rotation + translation
-            for(rotates = 0; rotates < 4; rotates++)
+            prefab = Find_Prefab("Building_" + building);
+            if(prefab != null)
             {
-                prefab = Find_Prefab("Building_" + current);
-                if(prefab != null)
-                {
-                    Instantiate_Procedural_Building(i, j, offset, prefab, rotates, translated);
-                    return;
-                }
-                current = Rotate_Building_String(current);
+                Instantiate_Procedural_Building(i, j, offset, prefab, rotates);
+                return;
             }
-            // Changing translation
-            if(translated)
-                break;
-            else
-                translated = true;
+            building = Rotate_Building_String(building);
         }
         Console.Warning(this, i.ToString() + "-" + j.ToString() + " : Unable to find correct building prefab");
     }
-    
-    // https://forum.unity.com/threads/scale-around-point-similar-to-rotate-around.232768/#post-5505829
-    // Relative scaling around a pivot
-    private void ScaleAroundRelative(GameObject target, Vector3 pivot, Vector3 scaleFactor)
-    {
-        var pivot_delta = target.transform.localPosition - pivot;
-        pivot_delta.Scale(scaleFactor);
-        target.transform.localPosition = pivot + pivot_delta;
-        var final_scale = target.transform.localScale;
-        final_scale.Scale(scaleFactor);
-        target.transform.localScale = final_scale;
-    }
 
-    // Rotating and translating instantiated building 19-16
-    private void Rotate_Translate_Instance(GameObject instance, int tiles_w, int tiles_h, int rotates, bool translated)
+    // Rotating and translating instantiated building
+    private void Rotate_Instance(GameObject instance, int tiles_w, int tiles_h, int rotates)
     {
-        if(translated)
-        {
-            instance.transform.RotateAround(instance.transform.position + new Vector3(-tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, -90 * rotates);
-            ScaleAroundRelative(instance, instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), new Vector3(-1, 1, 1));
-        }
-        else
-            instance.transform.RotateAround(instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, 90 * rotates);
+        instance.transform.RotateAround(instance.transform.position + new Vector3(tiles_w * Tile_Size / 2f, 0, -tiles_h * Tile_Size / 2f), Vector3.up, 90 * rotates);
     }
 
     // Finding building prefab and instantiating it with a specific rotation and scale
-    private void Instantiate_Procedural_Building(int i, int j, float offset, GameObject prefab, int rotates, bool translated)
+    private void Instantiate_Procedural_Building(int i, int j, float offset, GameObject prefab, int rotates)
     {
-        //Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise" + (translated ? ", translated" : ""));
+        //Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise");
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
-        Rotate_Translate_Instance(instance, 1, 1, rotates, translated);
-        instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + (translated ? "translated horizontally, " : "") + rotates.ToString() + "x clockwise";
+        Rotate_Instance(instance, 1, 1, rotates);
+        instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + rotates.ToString() + "x clockwise";
     }
 
 }
