@@ -178,13 +178,13 @@ public class Fortress_Generator : MonoBehaviour
             {Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled}
         };
         Tile? [,] tower_replacement = {
-            {Tile.Tower,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty},
-            {Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Empty}
+            {null,null,null,null,null,null,null},
+            {null,null,null,null,null,null,null},
+            {null,null,Tile.Tower,Tile.Empty,Tile.Empty,null,null},
+            {null,null,Tile.Empty,Tile.Empty,Tile.Empty,null,null},
+            {null,null,Tile.Empty,Tile.Empty,Tile.Empty,null,null},
+            {null,null,null,null,null,null,null},
+            {null,null,null,null,null,null,null}
         };
         Replace_All_Tiles(tower_pattern, tower_replacement);
         // Replacing fountains
