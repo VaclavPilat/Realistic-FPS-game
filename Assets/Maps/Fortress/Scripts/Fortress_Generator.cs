@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using System;
 using System.Linq;
-using Random = System.Random;
 
 // Generating a map from a QR code
 public class Fortress_Generator : MonoBehaviour
@@ -33,10 +32,10 @@ public class Fortress_Generator : MonoBehaviour
     private Tile[,] Tiles = null; // 2D array of tiles that will be used for map generation
     private int Tile_Size = 3; // Size of a single tile (in meters)
 
-    private Random Random;
-
     private GameObject[] Prefabs; // Array of loaded setting prefabs
+
     private Material[] Roofing_Materials; // Array of materials
+    private int Roofing_Material_Index = 0; // Index of a roofing material
 
     // Attempts to find a setting prefab by name
     private GameObject Find_Prefab (string name)
@@ -55,15 +54,11 @@ public class Fortress_Generator : MonoBehaviour
         // Loading resources
         Prefabs = Resources.LoadAll<GameObject>("Maps/Fortress/"); // Loading all tile prefabs
         Roofing_Materials = Resources.LoadAll<Material>("Maps/Fortress/Roofing"); // Loading all materials
-        for(int i = 0; i < Roofing_Materials.Length; i++)
-            Console.Warning(this, "--- " + Roofing_Materials[i].name);
         // Manipulating tiles
         Load_Tiles();
         Add_Outer_Walls();
         Replace_Patterns();
-        // Setting up RNG
         Log_Tiles();
-        Random = new Random();
         // Generating map
         Instantiate_Tiles();
     }
@@ -360,12 +355,13 @@ public class Fortress_Generator : MonoBehaviour
     // Finding building prefab and instantiating it with a specific rotation and scale
     private void Instantiate_Procedural_Building(int i, int j, float offset, GameObject prefab, int rotates)
     {
+        // Instantiating prefab instance
         //Console.Log(this, i.ToString() + "-" + j.ToString() + " : " + prefab.name + ", " + rotates.ToString() + "x clockwise");
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
         Rotate_Instance(instance, 1, 1, rotates);
         instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + rotates.ToString() + "x clockwise";
         // Setting a material to all roofing objects
-        Material material = Roofing_Materials[ Random.Next(0, Roofing_Materials.Length) ];
+        Material material = Roofing_Materials[ Roofing_Material_Index++ % Roofing_Materials.Length ];
         foreach (Transform roofing in instance.GetComponentsInChildren<Transform>().Where(t => t.name == "Roofing").ToArray())
             roofing.GetComponent<Renderer>().material = material;
     }
