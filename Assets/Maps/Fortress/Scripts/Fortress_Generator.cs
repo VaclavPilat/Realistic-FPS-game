@@ -35,9 +35,8 @@ public class Fortress_Generator : MonoBehaviour
     private GameObject[] Prefabs; // Array of loaded setting prefabs
 
     private Material[] Roofing_Materials; // Array of materials
-    private int Roofing_Material_Index = 0; // Index of a roofing material
 
-    private GameObject?[,] Instances; // 2D array of instances
+    private GameObject[,] Instances; // 2D array of instances
     private int?[,] Flood_Indexes; // 2D array of indexes from a flood fill algorithm
 
     // Attempts to find a setting prefab by name
@@ -63,7 +62,7 @@ public class Fortress_Generator : MonoBehaviour
         Replace_Patterns();
         Log_Tiles();
         // Generating map
-        Instances = new GameObject?[Tiles.GetLength(0), Tiles.GetLength(1)];
+        Instances = new GameObject[Tiles.GetLength(0), Tiles.GetLength(1)];
         Instantiate_Tiles();
         // Flood filling the tiles
         Flood_Indexes = new int?[Tiles.GetLength(0), Tiles.GetLength(1)];
@@ -207,7 +206,7 @@ public class Fortress_Generator : MonoBehaviour
         };
         Replace_All_Tiles(tower_pattern, tower_replacement);
         // Replacing fountains
-        Tile? [,] fountain_pattern = {
+        /*Tile? [,] fountain_pattern = {
             {Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled,Tile.Filled},
             {Tile.Filled,Tile.Empty,Tile.Empty,Tile.Empty,Tile.Filled},
             {Tile.Filled,Tile.Empty,Tile.Filled,Tile.Empty,Tile.Filled},
@@ -223,7 +222,7 @@ public class Fortress_Generator : MonoBehaviour
         };
         Replace_All_Tiles(fountain_pattern, fountain_replacement);
         // Replacing 1x1 buildings / rubbish
-        /*Tile? [,] rubbish_pattern = {
+        Tile? [,] rubbish_pattern = {
             {null,Tile.Empty,null},
             {Tile.Empty,Tile.Filled,Tile.Empty},
             {null,Tile.Empty,null}
@@ -233,7 +232,7 @@ public class Fortress_Generator : MonoBehaviour
             {null,Tile.Rubbish,null},
             {null,null,null}
         };
-        Replace_All_Tiles(rubbish_pattern, rubbish_replacement);*/
+        Replace_All_Tiles(rubbish_pattern, rubbish_replacement);
         // Replacing a shipping container
         Tile? [,] container_pattern = {
             {null,Tile.Empty,null},
@@ -259,7 +258,7 @@ public class Fortress_Generator : MonoBehaviour
             {null,Tile.Vehicle,Tile.Empty,null},
             {null,null,null,null}
         };
-        Replace_All_Tiles(vehicle_pattern, vehicle_replacement);
+        Replace_All_Tiles(vehicle_pattern, vehicle_replacement);*/
         // Replacing buildings
         Tile? [,] building_pattern = {
             {Tile.Filled}
