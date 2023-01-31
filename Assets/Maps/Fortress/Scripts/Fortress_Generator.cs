@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System;
 using System.Linq;
+using Random = System.Random;
 
 // Generating a map from a QR code
 public class Fortress_Generator : MonoBehaviour
@@ -24,10 +25,6 @@ public class Fortress_Generator : MonoBehaviour
         Vehicle // Vehicle or its residue
     }
 
-    private GameObject[] Prefabs; // Array of loaded setting prefabs
-
-    private Material[] Materials; // Array of materials
-
 
     //##########################################################################################
     //#############################  PRIVATE METHODS / VARIABLES  ##############################
@@ -36,16 +33,15 @@ public class Fortress_Generator : MonoBehaviour
     private Tile[,] Tiles = null; // 2D array of tiles that will be used for map generation
     private int Tile_Size = 3; // Size of a single tile (in meters)
 
+    private Random Random;
+
+    private GameObject[] Prefabs; // Array of loaded setting prefabs
+    private Material[] Roofing_Materials; // Array of materials
+
     // Attempts to find a setting prefab by name
     private GameObject Find_Prefab (string name)
     {
         return Array.Find(Prefabs, g => g.name == name);
-    }
-
-    // Attempts to find a material by name
-    private Material Find_Material (string name)
-    {
-        return Array.Find(Materials, g => g.name == name);
     }
 
 
@@ -56,16 +52,19 @@ public class Fortress_Generator : MonoBehaviour
     // Generating map
     private void Awake()
     {
+        // Loading resources
         Prefabs = Resources.LoadAll<GameObject>("Maps/Fortress/"); // Loading all tile prefabs
-        Materials = Resources.LoadAll<Material>("Maps/Fortress/"); // Loading all materials
-        for(int i = 0; i < Materials.Length; i++)
-            Console.Warning(this, "--- " + Materials[i].name);
+        Roofing_Materials = Resources.LoadAll<Material>("Maps/Fortress/Roofing"); // Loading all materials
+        for(int i = 0; i < Roofing_Materials.Length; i++)
+            Console.Warning(this, "--- " + Roofing_Materials[i].name);
+        // Manipulating tiles
         Load_Tiles();
-        //Log_Tiles();
         Add_Outer_Walls();
-        //Log_Tiles();
         Replace_Patterns();
+        // Setting up RNG
         Log_Tiles();
+        Random = new Random();
+        // Generating map
         Instantiate_Tiles();
     }
 
@@ -330,12 +329,6 @@ public class Fortress_Generator : MonoBehaviour
         return building.Substring(2, 1) + building.Substring(5, 1) + building.Substring(8, 1) + building.Substring(1, 1) + building.Substring(4, 1) + building.Substring(7, 1) + building.Substring(0, 1) + building.Substring(3, 1) + building.Substring(6, 1);
     }
 
-    // Finding all children by name
-    private Transform[] Find_Children(Transform transform, string name)
-    {
-        return transform.GetComponentsInChildren<Transform>().Where(t => t.name == name).ToArray();
-    }
-
     // Finding building prefab and instantiating it with a specific rotation and scale
     private void Prepare_Procedural_Building(int i, int j, float offset)
     {
@@ -371,13 +364,10 @@ public class Fortress_Generator : MonoBehaviour
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
         Rotate_Instance(instance, 1, 1, rotates);
         instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + rotates.ToString() + "x clockwise";
-        var red = Find_Material("Red");
-        var children = Find_Children(instance.transform, "Roofing");
-        foreach (var item in children)
-        {
-            Console.Log(this, i.ToString() + "-" + j.ToString() + " :: " + item.name);
-            item.GetComponent<Renderer>().material = red;
-        }
+        // Setting a material to all roofing objects
+        Material material = Roofing_Materials[ Random.Next(0, Roofing_Materials.Length) ];
+        foreach (Transform roofing in instance.GetComponentsInChildren<Transform>().Where(t => t.name == "Roofing").ToArray())
+            roofing.GetComponent<Renderer>().material = material;
     }
 
 }
