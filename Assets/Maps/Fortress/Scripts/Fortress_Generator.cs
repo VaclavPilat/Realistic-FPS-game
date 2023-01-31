@@ -37,6 +37,9 @@ public class Fortress_Generator : MonoBehaviour
     private Material[] Roofing_Materials; // Array of materials
     private int Roofing_Material_Index = 0; // Index of a roofing material
 
+    private GameObject?[,] Instances; // 2D array of instances
+    private int?[,] Flood_Indexes; // 2D array of indexes from a flood fill algorithm
+
     // Attempts to find a setting prefab by name
     private GameObject Find_Prefab (string name)
     {
@@ -60,7 +63,13 @@ public class Fortress_Generator : MonoBehaviour
         Replace_Patterns();
         Log_Tiles();
         // Generating map
+        Instances = new GameObject?[Tiles.GetLength(0), Tiles.GetLength(1)];
         Instantiate_Tiles();
+        // Flood filling the tiles
+        Flood_Indexes = new int?[Tiles.GetLength(0), Tiles.GetLength(1)];
+        Flood_Fill_Instances();
+        Log_Flood_Indexes();
+        Change_Building_Materials();
     }
 
     // Printing out tiles into console
@@ -360,10 +369,68 @@ public class Fortress_Generator : MonoBehaviour
         var instance = Instantiate(prefab, new Vector3(j*Tile_Size - offset, 0, offset - i*Tile_Size), Quaternion.Euler(0, 0, 0));
         Rotate_Instance(instance, 1, 1, rotates);
         instance.name = "Building, " + i.ToString() + "-" + j.ToString() + ", " + rotates.ToString() + "x clockwise";
-        // Setting a material to all roofing objects
-        Material material = Roofing_Materials[ Roofing_Material_Index++ % Roofing_Materials.Length ];
-        foreach (Transform roofing in instance.GetComponentsInChildren<Transform>().Where(t => t.name == "Roofing").ToArray())
-            roofing.GetComponent<Renderer>().material = material;
+        // Adding instance to array
+        Instances[i, j] = instance;
+    }
+
+    // Setting a material to all children with a set name
+    private void Set_Children_Material (Transform instance, string name, Material material)
+    {
+        foreach (Transform element in instance.GetComponentsInChildren<Transform>().Where(t => t.name == name).ToArray())
+            element.GetComponent<Renderer>().material = material;
+    }
+
+    // Flooding tiles
+    private int Flood_Fill (int size, int i, int j, int index, int count = 0)
+    {
+        if(Instances[i, j] != null && Flood_Indexes[i, j] == null)
+        {
+            Flood_Indexes[i, j] = index;
+            count++;
+            if(j < size -1)
+                count += Flood_Fill(size, i, j+1, index);
+            if(i < size -1)
+                count += Flood_Fill(size, i+1, j, index);
+            if(i > 0)
+                count += Flood_Fill(size, i-1, j, index);
+            if(j > 0)
+                count += Flood_Fill(size, i, j-1, index);
+        }
+        return count;
+    }
+
+    // Flood filling tiles
+    private void Flood_Fill_Instances ()
+    {
+        int size = Flood_Indexes.GetLength(0);
+        int index = 0;
+        for(int i = 0; i < Instances.GetLength(0); i++)
+            for(int j = 0; j < Instances.GetLength(0); j++)
+                if(Flood_Fill(size, i, j, index) > 0)
+                    index++;
+    }
+
+    // Logging flood indexes
+    private void Log_Flood_Indexes ()
+    {
+        string output = "";
+        for(int i = 0; i < Instances.GetLength(0); i++)
+        {
+            output += "\n";
+            for(int j = 0; j < Instances.GetLength(0); j++)
+                output += " " + (Flood_Indexes[i, j] != null ? Flood_Indexes[i, j].ToString() : "-");
+        }
+        Console.Log(this, output);
+    }
+
+    // Changing building materials
+    private void Change_Building_Materials ()
+    {
+        // Setting roofing materials
+        for(int i = 0; i < Instances.GetLength(0); i++)
+            for(int j = 0; j < Instances.GetLength(0); j++)
+                if(Instances[i, j] != null)
+                    Set_Children_Material(Instances[i, j].transform, "Roofing", Roofing_Materials[ (int)Flood_Indexes[i, j] % Roofing_Materials.Length ]);
     }
 
 }
