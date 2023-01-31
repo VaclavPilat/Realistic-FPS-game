@@ -45,7 +45,7 @@ public class Menu_Maps : MonoBehaviour
     {
         List<string> maplist = new List<string>();
         for(int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-            if(SceneUtility.GetScenePathByBuildIndex(i).Contains(Folder + "/"))
+            if(!SceneUtility.GetScenePathByBuildIndex(i).Contains("Start") && !SceneUtility.GetScenePathByBuildIndex(i).Contains("Main"))
             {
                 // Getting name from scene
                 string name = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
@@ -70,7 +70,7 @@ public class Menu_Maps : MonoBehaviour
             // Adding an action to a start button
             map_content.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(() => Scene_Transition.Load(map));
             // Loading map information from file
-            string resource = "Maps/" + Folder + "/" + map;
+            string resource = "Maps/" + map + "/Info";
             var file = Resources.Load<TextAsset>(resource);
             if(file != null)
             {
